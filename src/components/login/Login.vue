@@ -28,21 +28,16 @@
       <div style="text-align: center">
         <button type="submit" class="enter-btn">登录</button>
       </div>
-
-      <div class="foor">
-        <div class="left"><span>忘记密码 ?</span></div>
-
-        <div class="right"><span>注册账户</span></div>
-      </div>
     </form>
-
   </div>
-
 </template>
 
 <style>
 body {
-  background: #353f42;
+  background: #ffffff;
+  background-image: url(../../assets/images/login_background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 * {
@@ -56,7 +51,7 @@ body {
   padding-right: 25px;
   padding-top: 15px;
   width: 350px;
-  height: 350px;
+  height: 300px;
   background: #FFFFFF;
   /*以下css用于让登录表单垂直居中在界面,可删除*/
   position: absolute;
@@ -64,11 +59,14 @@ body {
   left: 50%;
   margin-top: -175px;
   margin-left: -175px;
+  /* 添加 边框线 */
+  border: 2px solid black;
+  border-radius: 20px;
 }
 
 .title {
   width: 100%;
-  height: 40px;
+  height: 30px;
   line-height: 40px;
 }
 
@@ -120,30 +118,8 @@ body {
   border: 0px;
 }
 
-.foor {
-  width: 100%;
-  height: auto;
-  color: #9b9c98;
-  font-size: 12px;
-  margin-top: 20px;
-}
-
 .enter-btn:hover {
   cursor: pointer;
   background: #1db5c9;
-}
-
-.foor div:hover {
-  cursor: pointer;
-  color: #484847;
-  font-weight: 600;
-}
-
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
 }
 </style>
