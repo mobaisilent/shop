@@ -55,19 +55,24 @@ function handleSubmit(event) {
       let msg = data.msg;
       if (statu == 400) {
         alert("用户已存在");
-      }
-      else if (statu == 200) {
-        alert("注册成功，点击确认返回登录页面");
+      } else if (statu == 200) {
+        if (confirm("注册成功，点击确认返回登录页面")) {
+          window.location.href = "../../../html/login/logn.html";
+        }
+        // 这里提示用window.location.href实现页面的直接跳转，比表单跳转方便多了（主要是有个异步fetch，比较难以控制流程）
       }
     })
     .catch(error => {
       console.error('There has been a problem with your fetch operation:', error);
       alert("登录失败，服务器状态和你的网络");
-      // 这边表示data未找到信息
     });
 }
 
 
+// 确保表单上的 submit 事件只会触发一次处理程序
+// const form = document.querySelector('form');
+// form.addEventListener('submit', handleSubmit);
+// 由于已经绑定@submit="handleSubmit"就不需要额外添加监控器了
 </script>
 
 <template>
@@ -80,7 +85,7 @@ function handleSubmit(event) {
       <span>请输入新建账户和密码</span>
     </div>
     <!-- 注册之后跳转到登录界面 所以这个index还算是合理 -->
-    <form class="login-form" action="/html/index/index.html" method="post" novalidate @submit="handleSubmit">
+    <form class="login-form" action="../../../html/login/logn.html" method="post" novalidate @submit="handleSubmit">
       <div class="input-content">
         <div>
           <input type="text" autocomplete="off" placeholder="用户名" name="username" required v-model="name" />
