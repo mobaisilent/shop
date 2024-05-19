@@ -53,11 +53,23 @@ function handleSubmit(event) {
       })
       .then(data => {
         console.log(data);
-        alert("登录成功,点击确定跳转");
+        let statu = data.code;
+        let msg = data.msg;
+        if (statu == 500 && msg == "密码错误") {
+          alert("密码错误，请检查你的输入信息");
+        }
+        else if (statu == 200 && msg == "登录成功") {
+          alert("登录成功,点击确定跳转");
+
+        }
+        else if(statu==500&&msg=="用户名不存在"){
+          alert("用户名不存在，请检查你的输入信息");
+        }
       })
       .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
-        alert("登录失败，请检查你的用户名和密码");
+        alert("登录失败，服务器状态和你的网络");
+        // 这边表示data未找到信息
       });
   }
 }
