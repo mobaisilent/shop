@@ -12,7 +12,7 @@
       <span>请输入登录账户和密码</span>
     </div>
 
-    <form class="login-form" action="/authentication/form" method="post" novalidate>
+    <form class="login-form" action="/html/index/index.html" method="post" novalidate>
       <!--输入框-->
       <div class="input-content">
         <!--autoFocus-->
