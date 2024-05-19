@@ -1,0 +1,40 @@
+.loading {
+  position: absolute;
+  top: 30%;
+  left: 70%;
+  /* background-color: rgba(255, 255, 255, 0.8);    */
+}
+.loading-img {
+  width: 5.556vw;
+  height: 5.556vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+@keyframes turn {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+.loading-img img {
+  width: 100%;
+  animation: turn 1s linear infinite;
+}
+.loading-none {
+  display: none;
+}

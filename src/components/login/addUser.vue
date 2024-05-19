@@ -40,7 +40,7 @@ function handleSubmit(event) {
     },
     body: JSON.stringify({
       userName: name.value,
-      passwor: passwords.p1,
+      password: passwords.p1,
     })
   })
     .then(response => {
@@ -51,6 +51,7 @@ function handleSubmit(event) {
     })
     .then(data => {
       console.log(data);
+      // 这用于查看注册用户的响应数据
       let statu = data.code;
       let msg = data.msg;
       if (statu == 400) {

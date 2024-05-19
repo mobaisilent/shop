@@ -1,5 +1,5 @@
 <script setup>
-import { ref, vShow } from "vue";
+import { ref } from "vue";
 // 为忘记密码和添加用户两个span添加点击信息
 // windows.onload可以实现确保页面加载完毕之后执行后续代码段
 window.onload = function () {
@@ -23,7 +23,7 @@ window.onload = function () {
 };
 // 上面是 忘记密码和注册用户的跳转
 
-const jumpdiv = ref(false);
+
 
 // 下面是输入的逻辑判断和对应的信息提示 用@submit进行绑定
 const usernameRef = ref('');
@@ -60,16 +60,9 @@ function handleSubmit(event) {
           alert("密码错误，请检查你的输入信息");
         }
         else if (statu == 200 && msg == "登录成功") {
-          // alert("登录成功,点击确定跳转");
-          // 提示信息
-          document.getElementById("main").style.display = "none";
-          jumpdiv.value = !jumpdiv.value;
-          // what can i say :这里错了我好久
-          setTimeout(function () {
-            window.location.href = "/html/index/index.html";
-          }, 2000); // 2000毫秒后执行，即2秒后
-        }
+          alert("登录成功,点击确定跳转");
 
+        }
         else if (statu == 500 && msg == "用户名不存在") {
           alert("用户名不存在，请检查你的输入信息");
         }
@@ -81,17 +74,17 @@ function handleSubmit(event) {
       });
   }
 }
-// 上面就是实现API交互
-// 和前面类似就是为 form添加一个事件，不过上面的跳转时为下面 忘记密码 和 注册用户 添加点击事件
 
 
-// 下面就添加一个组件实现非必要是不显示：登录成功时显示然后跳转到index.html
-import "../../JS/login/loading_img.js"
-// 导入动画js
+// 和上面类似就是为 form添加一个事件，不过上面的跳转时为下面 忘记密码 和 注册用户 添加点击事件
+
+
+
+// 下面还差利用 api  进行交互了
 </script>
 
 <template>
-  <div class="main" id="main">
+  <div class="main">
     <div class="title">
       <span>密码登录</span>
     </div>
@@ -126,15 +119,6 @@ import "../../JS/login/loading_img.js"
       <!-- 添加注册用户信息  -->
     </form>
   </div>
-  <div class="jumpdiv" v-if="jumpdiv">
-    <p class="loading_success">登录成功，正在加载</p>
-    <p style="margin-top: 40px; font-size: 15px;color: green;">若2s后未跳转请刷新后重试</p>
-    <div class="loading">
-      <div class="loading-img">
-        <img src="../../../public/loading_img.png" />
-      </div>
-    </div>
-  </div>
 </template>
 
 <!-- 创建表单输入框实现提交数据，创建登录页面 -->
@@ -142,34 +126,8 @@ import "../../JS/login/loading_img.js"
 
 <style>
 @import "../../CSS/login.css";
-@import "../../CSS/loading_img.css";
 
 body {
   background-image: url(../../assets/images/login_background.png);
-}
-
-.jumpdiv {
-  box-sizing: border-box;
-  width: 500px;
-  height: 160px;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #FFFFFF;
-  position: absolute;
-  border: 2px solid pink;
-  border-radius: 20px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 70px;
-  padding-top: 30px;
-}
-
-.loading_success {
-  position: absolute;
-  top: 30%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  font-size: 30px;
 }
 </style>
