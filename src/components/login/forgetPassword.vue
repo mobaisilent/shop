@@ -23,6 +23,12 @@ function attachKeyPressHandler() {
 }
 
 attachKeyPressHandler();
+
+window.onload = function () {
+  alert("权限不够");
+}
+// 这里默认添加一个 window加载/渲染完毕之后执行 alert指令
+
 </script>
 
 
