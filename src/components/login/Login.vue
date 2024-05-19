@@ -62,7 +62,7 @@ function handleSubmit(event) {
           alert("登录成功,点击确定跳转");
 
         }
-        else if(statu==500&&msg=="用户名不存在"){
+        else if (statu == 500 && msg == "用户名不存在") {
           alert("用户名不存在，请检查你的输入信息");
         }
       })

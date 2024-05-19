@@ -12,7 +12,10 @@ const checkPasswords = () => {
     showCheckMessage.value = false;
   }
 };
+// 上面是检测两次密码是否输入正确
 
+
+// 下面是检测是否输入了用户名
 const checkname = ref("请输入用户名");
 const showcname = ref(false);
 const name = ref('');
@@ -23,6 +26,46 @@ const checkcname = () => {
     showcname.value = false;
   }
 };
+
+
+// 下面是处理提交表单事件
+// 备注两个响应式变量是passwords.p1 和 name
+function handleSubmit(event) {
+  event.preventDefault();
+  // 先默认阻止提交
+  fetch('http://localhost:4000/api/v1/user/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userName: name.value,
+      passwor: passwords.p1,
+    })
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      let statu = data.code;
+      let msg = data.msg;
+      if (statu == 400) {
+        alert("用户已存在");
+      }
+      else if (statu == 200) {
+        alert("注册成功，点击确认返回登录页面");
+      }
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+      alert("登录失败，服务器状态和你的网络");
+      // 这边表示data未找到信息
+    });
+}
 
 
 </script>
@@ -37,7 +80,7 @@ const checkcname = () => {
       <span>请输入新建账户和密码</span>
     </div>
     <!-- 注册之后跳转到登录界面 所以这个index还算是合理 -->
-    <form class="login-form" action="/html/index/index.html" method="post" novalidate>
+    <form class="login-form" action="/html/index/index.html" method="post" novalidate @submit="handleSubmit">
       <div class="input-content">
         <div>
           <input type="text" autocomplete="off" placeholder="用户名" name="username" required v-model="name" />
@@ -153,30 +196,6 @@ body {
 .enter-btn:hover {
   cursor: pointer;
   background: #1db5c9;
-}
-
-
-.foor {
-  width: 100%;
-  height: auto;
-  color: #9b9c98;
-  font-size: 12px;
-  margin-top: 20px;
-}
-
-
-.foor div:hover {
-  cursor: pointer;
-  color: #484847;
-  font-weight: 600;
-}
-
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
 }
 
 .checkmassage {
