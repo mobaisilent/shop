@@ -90,8 +90,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -175px;
-  margin-left: -175px;
+  transform: translate(-50%, -50%);
   /* 添加 边框线 */
   border: 2px solid black;
   border-radius: 20px;

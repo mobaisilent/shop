@@ -5,7 +5,7 @@
 
 登录页面形式如下：
 
-![image-20240519110157109](.\README.assets\login.png)
+![image-20240519110157109](https://images.mobaisama.top/i/2024/05/19/144714.png)
 
 通过表单行为实现向后端发送登录请求实现登录检查和跳转
 
