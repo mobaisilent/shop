@@ -14,7 +14,7 @@ window.onload = function () {
   const element2 = document.getElementById("forgetPassword");
   if (element2) {
     element2.addEventListener('click', () => {
-      window.location.href = "";
+      window.location.href = "../../html/login/forget.html";
     });
   } else {
     console.error("Element not found");
@@ -22,6 +22,8 @@ window.onload = function () {
   // ok 两个都跳转成功
   const temp = document.getElementById("temp");
   temp.addEventListener("click", () => {
+    localStorage.clear();
+    // 清空可能保存的信息
     window.location.href = "../../html/index/index.html"
   });
 
