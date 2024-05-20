@@ -53,21 +53,23 @@ function handleSubmit(event) {
       })
       .then(data => {
         console.log(data);
-        // 这里用于查看登录成功的响应数据示例
+        // 这里用于查看登录成功的响应数据示例 
         let statu = data.code;
         let msg = data.msg;
         if (statu == 500 && msg == "密码错误") {
           alert("密码错误，请检查你的输入信息");
         }
         else if (statu == 200 && msg == "登录成功") {
+          console.log(data.data.token);
           // alert("登录成功,点击确定跳转");
           // 提示信息
           document.getElementById("main").style.display = "none";
           jumpdiv.value = !jumpdiv.value;
           // what can i say :这里错了我好久
-          setTimeout(function () {
-            window.location.href = "/html/index/index.html";
-          }, 2000); // 2000毫秒后执行，即2秒后
+          // setTimeout(function () {
+          //   window.location.href = "/html/index/index.html";
+          // }, 2000); // 2000毫秒后执行，即2秒后
+          // 先临时注释掉测试返回的token
         }
 
         else if (statu == 500 && msg == "用户名不存在") {

@@ -27,46 +27,59 @@ const checkcname = () => {
   }
 };
 
+const nickname = ref('');
 
 // 下面是处理提交表单事件
 // 备注两个响应式变量是passwords.p1 和 name
 function handleSubmit(event) {
   event.preventDefault();
   // 先默认阻止提交
-  fetch('http://localhost:4000/api/v1/user/register', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      userName: name.value,
-      password: passwords.p1,
+  if (name.value.length == 0) {
+    alert("用户名不为空！");
+  }
+  if (nickname.value.length == 0) {
+    nickname.value = "momo";
+  }
+  if (passwords.p1 != passwords.p2) {
+    alert("输入的密码不一致！")
+  }
+  else if (name.value.length != 0) {
+    fetch('http://localhost:4000/api/v1/user/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userName: name.value,
+        password: passwords.p1,
+        nickname: nickname.value
+      })
     })
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      // 这用于查看注册用户的响应数据
-      let statu = data.code;
-      let msg = data.msg;
-      if (statu == 400) {
-        alert("用户已存在");
-      } else if (statu == 200) {
-        if (confirm("注册成功，点击确认返回登录页面")) {
-          window.location.href = "../../../html/login/logn.html";
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
-        // 这里提示用window.location.href实现页面的直接跳转，比表单跳转方便多了（主要是有个异步fetch，比较难以控制流程）
-      }
-    })
-    .catch(error => {
-      console.error('There has been a problem with your fetch operation:', error);
-      alert("登录失败，服务器状态和你的网络");
-    });
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        // 这用于查看注册用户的响应数据
+        let statu = data.code;
+        let msg = data.msg;
+        if (statu == 400) {
+          alert("用户已存在");
+        } else if (statu == 200) {
+          if (confirm("注册成功，点击确认返回登录页面")) {
+            window.location.href = "../../../html/login/logn.html";
+          }
+          // 这里提示用window.location.href实现页面的直接跳转，比表单跳转方便多了（主要是有个异步fetch，比较难以控制流程）
+        }
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+        alert("登录失败，服务器状态和你的网络");
+      });
+  }
 }
 
 
@@ -89,16 +102,20 @@ function handleSubmit(event) {
     <form class="login-form" action="../../../html/login/logn.html" method="post" novalidate @submit="handleSubmit">
       <div class="input-content">
         <div>
-          <input type="text" autocomplete="off" placeholder="用户名" name="username" required v-model="name" />
+          <input type="text" autocomplete="off" placeholder="用户名(必填)" name="username" required v-model="name" />
         </div>
         <div id="cnamed" class="cnamed">
           <p id="cname" class="cname" v-if="showcname">{{ checkname }}</p>
+        </div>
+        <div style="margin-top: 10px">
+          <input type="text" autocomplete="off" placeholder="昵称(选填:默认momo)" name="nickname" required
+            v-model="nickname" />
         </div>
         <div style="margin-top: 16px">
           <input type="password" id="p1" autocomplete="off" placeholder="密码" name="password" required maxlength="32"
             v-model="passwords.p1" @input="checkcname" />
         </div>
-        <div style="margin-top: 25px">
+        <div style="margin-top: 16px">
           <input type="password" id="p2" autocomplete="off" placeholder="确认密码" name="password" required maxlength="32"
             v-model="passwords.p2" @input="checkPasswords" />
         </div>
@@ -106,7 +123,7 @@ function handleSubmit(event) {
           <p id="checkmassage" class="checkmassage" v-if="showCheckMessage">{{ checkmessage }}</p>
         </div>
       </div>
-      <div style="text-align: center; margin-top: 80px;">
+      <div style="text-align: center; margin-top: 125px;">
         <button type="submit" class="enter-btn">创建用户</button>
       </div>
     </form>
@@ -122,7 +139,7 @@ body {
 }
 
 .main {
-  height: 365px;
+  height: 410px;
 }
 
 .checkmassage {
