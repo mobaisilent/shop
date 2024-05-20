@@ -80,6 +80,7 @@ body {
   color: #9b9c98;
   font-size: 12px;
   margin-top: 20px;
+  display: flex;
 }
 .foor div:hover {
   cursor: pointer;
@@ -87,8 +88,14 @@ body {
   font-weight: 600;
 }
 .left {
-  float: left;
+  left: 0;
 }
 .right {
   float: right;
+  margin-left: 100px;
+}
+
+.temp {
+  right: 0;
+  margin-left: 94px;
 }

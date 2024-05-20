@@ -22,7 +22,7 @@
     <div class="w">
       <div class="user-info">
         <span class="user not-login">
-          <span class="link js-login">登录</span>
+          <span class="link js-login" id="to_login">登录</span>
           <span class="link js-register">注册</span>
         </span>
         <span class="user login">
@@ -318,6 +318,20 @@
   </div>
   <!--footer-->
 </body>
+
+<script>
+  var json = JSON.parse(localStorage.getItem("json"));
+  // console.log(json);
+  // ok 实现了主页面保存一个共同的信息，还需要的是用户名和昵称
+  // console.log(typeof (json));
+  // console.log(json.data.userInfo.userName);
+  // ok 测试成功，JSON.parse 成功将json改为json对象，可用json方式进行操作
+
+  const to_login = document.getElementById("to_login");
+  to_login.addEventListener("click", () => {
+    window.location.href = "../../../index.html";
+  })
+</script>
 
 </html>
 
