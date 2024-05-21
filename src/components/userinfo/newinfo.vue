@@ -17,25 +17,20 @@ const newavatar = ref('');
 
 // 下面是创建表单提交函数：：先是默认阻止提交
 function handleSubmit(event) {
-  alert("用户名和密码暂不可修改：谢谢配合！\n如果有问题欢迎致电：12345678900")
+  alert("用户名和密码暂不可修改：谢谢配合！\n如果有问题欢迎致电：12345678900");
+
   fetch('http://localhost:4000/api/v1/money/', {
     method: 'POST',
     headers: {
-      'User-Agent': 'PostmanRuntime-ApipostRuntime/1.1.0',
-      'Cache-Control': 'no-cache',
-      'Accept': '*/*',
-      'Accept-Encoding': 'gzip, deflate, br',
-      'Connection': 'keep-alive',
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlck5hbWUiOiJjIiwiaXNzIjoibWFsbCIsInN1YiI6InVzZXIgdG9rZW4iLCJleHAiOjE3MTYzNjczOTgsImlhdCI6MTcxNjI4MDk5OH0.Sdv_h_M--X2sCcyMix1Kw5LznmyBuOsni77dM5AVf4c',
-      'Content-Type': 'multipart/form-data; boundary=--------------------------428346279195907789126734',
-      'Content-Length': '174',
-      'cache': "no-cache",
+      'Cache-Control': 'no-cache'
     },
     body: JSON.stringify({
       NickName: newNickName.value,
       Key: 1234567887654321,
     }),
-    mode: 'no-cors'
   })
     .then(response => {
       if (!response.ok) {
@@ -53,9 +48,10 @@ function handleSubmit(event) {
       console.log(error);
       alert(error);
       alert("修改失败，请检查你的服务器状态和你的网络");
-    })
+    });
+}
 
-};
+
 // 用逻辑进行nickname的绑定就行：判断逻辑：是用之前页面传递的nickname还是修改之后的信息
 </script>
 
