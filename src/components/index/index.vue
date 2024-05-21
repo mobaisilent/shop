@@ -11,6 +11,7 @@ import { ref } from 'vue';
 
 // 判断是否正常登录
 const statu = ref(true);
+console.log(statu.value);
 var jsonStr = localStorage.getItem("json");
 console.log(jsonStr);
 if (jsonStr) {
@@ -19,6 +20,7 @@ if (jsonStr) {
   console.log(json);
   console.log(json.data.userInfo.userName);
   // 存在就打印信息给我看
+  statu.value = false;
 } else {
   console.log("json not found in localStorage");
   // 否则打印报错信息
@@ -46,9 +48,10 @@ const showLong = ref('登录');
     <div class="w">
       <div class="user-info">
         <span class="user not-login">
-          <span class="link js-login" id="to_login" v-show="!statu" @click="to_login()">登录</span>
-          <span class="link js-register" id="register" v-show="!statu" @click="register">注册</span>
-          <span class="link js-register" id="showname" v-show="statu && jsonStr" @click="userinfo">我的信息</span>
+          <span class="link js-login" id="to_login" v-show="statu" @click="to_login">登录</span>
+          <span class="link js-register" id="register" v-show="statu" @click="register">注册</span>
+          <span class="link js-register" id="showname" v-show="!statu && jsonStr" @click="userinfo">我的信息</span>
+          <span class="link js-register" id="showname" v-show="!statu && jsonStr" @click="to_login">重新登录</span>
         </span>
         <span class="user login">
           <span class="link-text">
@@ -69,7 +72,7 @@ const showLong = ref('登录');
           <a class="link" href="./order.html">我的订单</a>
         </li>
         <li class="nav-item">
-          <a class="link" href="./about.html">关于SHOP</a>
+          <a class="link" href="../../../html/user/address.html">我的地址</a>
         </li>
       </ul>
     </div>
@@ -88,57 +91,7 @@ const showLong = ref('登录');
   <!--header-->
   <!--index-->
   <div class="w">
-    <ul class="keywords-list">
-      <li class="keywords-item">
-        <a class="link" target="_blank" href="./list.html?keyword=手机">手机</a>
-        <a class="link" target="_blank" href="./list.html?keyword=数码">数码</a>
-      </li>
-      <li class="keywords-item">
-        <a class="link" target="_blank" href="./list.html?keyword=电脑">电脑</a>
-        <a class="link" target="_blank" href="./list.html?keyword=办公配件">办公配件</a>
-      </li>
-      <li class="keywords-item">
-        <a class="link" target="_blank" href="./list.html?keyword=电视">电视</a>
-        <a class="link" target="_blank" href="./list.html?keyword=空调">空调</a>
-        <a class="link" target="_blank" href="./list.html?keyword=冰箱">冰箱</a>
-        <a class="link" target="_blank" href="./list.html?keyword=洗衣机">洗衣机</a>
-      </li>
-      <li class="keywords-item">
-        <a class="link" target="_blank" href="./list.html?keyword=厨卫家电">厨卫家电</a>
-        <a class="link" target="_blank" href="./list.html?keyword=小家电">小家电</a>
-      </li>
-      <li class="keywords-item">
-        <a class="link" target="_blank" href="./list.html?keyword=家具">家具</a>
-        <a class="link" target="_blank" href="./list.html?keyword=家具">家具</a>
-        <a class="link" target="_blank" href="./list.html?keyword=家装">家装</a>
-      </li>
-      <li class="keywords-item">
-        <a class="link" target="_blank" href="./list.html?keyword=厨卫家电">厨卫家电</a>
-        <a class="link" target="_blank" href="./list.html?keyword=小家电">小家电</a>
-      </li>
-      <li class="keywords-item">
-        <a class="link" target="_blank" href="./list.html?keyword=个护化妆">个护化妆</a>
-        <a class="link" target="_blank" href="./list.html?keyword=清洁用品">清洁用品</a>
-        <a class="link" target="_blank" href="./list.html?keyword=纸品">纸品</a>
-      </li>
-      <li class="keywords-item">
-        <a class="link" target="_blank" href="./list.html?keyword=母婴用品">母婴用品</a>
-        <a class="link" target="_blank" href="./list.html?keyword=儿童玩具">儿童玩具</a>
-        <a class="link" target="_blank" href="./list.html?keyword=童装童鞋">童装童鞋</a>
-      </li>
-      <li class="keywords-item">
-        <a class="link" target="_blank" href="./list.html?keyword=鞋靴">鞋靴</a>
-        <a class="link" target="_blank" href="./list.html?keyword=箱包">箱包</a>
-        <a class="link" target="_blank" href="./list.html?keyword=钟表">钟表</a>
-        <a class="link" target="_blank" href="./list.html?keyword=珠宝">珠宝</a>
-      </li>
-      <li class="keywords-item">
-        <a class="link" target="_blank" href="./list.html?keyword=图书">图书</a>
-        <a class="link" target="_blank" href="./list.html?keyword=音像">音像</a>
-        <a class="link" target="_blank" href="./list.html?keyword=电子书">电子书</a>
-      </li>
-    </ul>
-    <div class="banner-con">
+    <div class="banner-con" style="margin-left: 135px;">
       <!--<div class="loading"></div>-->
       <ul>
         <li><a href="" title=""><img class="banner-img" src="../../../../public/logo/logo.png" alt=""></a> </li>
