@@ -9,9 +9,8 @@ import { ref } from 'vue';
 // window.location.href = "../../../../index.html";
 // });
 
-// 判断是否正常登录
+// 保存是否正常登录，默认true表示未登录：显示登录选项和注册选项
 const statu = ref(true);
-console.log(statu.value);
 var jsonStr = localStorage.getItem("json");
 console.log(jsonStr);
 if (jsonStr) {
@@ -19,7 +18,7 @@ if (jsonStr) {
   var json = JSON.parse(jsonStr);
   console.log(json);
   console.log(json.data.userInfo.userName);
-  // 存在就打印信息给我看
+  // 存在就打印信息给我看，将statu改为false：表示不显示登录和注册选项：显示我的信息选项
   statu.value = false;
 } else {
   console.log("json not found in localStorage");
@@ -69,7 +68,7 @@ const showLong = ref('登录');
           </a>
         </li>
         <li class="nav-item">
-          <a class="link" href="./order.html">我的订单</a>
+          <a class="link" href="../../../html/order/order.html">我的订单</a>
         </li>
         <li class="nav-item">
           <a class="link" href="../../../html/user/address.html">我的地址</a>

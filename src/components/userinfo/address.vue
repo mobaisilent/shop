@@ -65,7 +65,7 @@ async function deleteAddress() {
 
 function changeaddress() {
   console.log("here");
-    
+
 }
 
 </script>
@@ -82,7 +82,7 @@ function changeaddress() {
       <!-- 地址显示模块 -->
     </div>
     <div class="address-container">
-      <button @click="fetchAddress, judge = true">显示地址</button>
+      <button @click="fetchAddress,  judge = true">显示地址</button>
       <button @click="deleteAddress">删除地址</button>
     </div>
     <div id="info">请谨慎展示/删除地址 </div>
