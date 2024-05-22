@@ -15,7 +15,7 @@ console.log(token);
 async function fetchAddress() {
   console.log("Here");
   try {
-    const response = await fetch('http://localhost:4000/api/v1/address/', {
+    const response = await fetch('http://localhost:4000/api/v1/address', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

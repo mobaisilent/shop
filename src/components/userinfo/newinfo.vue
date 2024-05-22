@@ -19,7 +19,7 @@ const newavatar = ref('');
 function handleSubmit(event) {
   alert("用户名和密码暂不可修改：谢谢配合！\n如果有问题欢迎致电：12345678900");
 
-  fetch('http://localhost:4000/api/v1/money/', {
+  fetch('http://localhost:4000/api/v1/money', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

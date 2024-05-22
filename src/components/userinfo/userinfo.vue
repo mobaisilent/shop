@@ -14,7 +14,7 @@ const show_money_button = ref(true);
 
 function getmoney() {
   console.log("Here prepare to fetch");
-  fetch('http://localhost:4000/api/v1/money/', {
+  fetch('http://localhost:4000/api/v1/money', {
     method: 'POST',
     headers: {
       'User-Agent': 'PostmanRuntime-ApipostRuntime/1.1.0',
