@@ -182,9 +182,8 @@ function judgelogin(event) {
         </li>
       </ul>
     </div>
-    <div id="showtext" class="showtext">
+    <div class="anime1" id="animatedElement">
       <p>其他功能正在完善中，敬请期待...</p>
-      hello world
     </div>
 
   </div>
@@ -215,15 +214,41 @@ function judgelogin(event) {
   height: 370px;
 }
 
-.showtext {
-  width: 100%;
+.amine1 {
+  width: 100px;
   height: 30px;
   display: block;
+  position: absolute;
   left: 50%;
-  /* background-color: pink; */
+  background-color: pink;
   text-align: center;
-  vertical-align: middle;
   /* 这里可以添加之前我喜欢的从左到右动画效果 */
+}
+
+.anime1 p {
+  /* background-color: aqua; */
+  margin-left: 38%;
+  animation: span_move linear infinite 7s;
+  font-family: YouYuan;
+}
+
+@keyframes span_move {
+  0% {
+    transform: translate(100%);
+  }
+
+  33% {
+    transform: translate(0%);
+  }
+
+  /* 在0%的位置暂停2秒 */
+  66% {
+    transform: translate(0%);
+  }
+
+  100% {
+    transform: translate(-100%);
+  }
 }
 </style>
 /* 创建index组件 */
