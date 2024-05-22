@@ -13,8 +13,9 @@ console.log(token);
 // 获取token和打印token
 
 async function fetchAddress() {
+  console.log("Here");
   try {
-    const response = await fetch('http://localhost:4000/api/v1/address/1', {
+    const response = await fetch('http://localhost:4000/api/v1/address/', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -64,7 +65,6 @@ async function deleteAddress() {
 }
 
 function changeaddress() {
-  console.log("here");
 
 }
 
@@ -82,7 +82,7 @@ function changeaddress() {
       <!-- 地址显示模块 -->
     </div>
     <div class="address-container">
-      <button @click="fetchAddress,  judge = true">显示地址</button>
+      <button @click="fetchAddress">显示地址</button>
       <button @click="deleteAddress">删除地址</button>
     </div>
     <div id="info">请谨慎展示/删除地址 </div>
