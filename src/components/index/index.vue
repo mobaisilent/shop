@@ -111,7 +111,7 @@ function judgelogin(event) {
       </ul>
     </div>
   </div>
-  <div class="w">
+  <div class="w imganime">
     <div class="floor-wrap">
       <h1 class="floor-title">F1 家用电器</h1>
       <ul class="floor-list">
@@ -136,13 +136,13 @@ function judgelogin(event) {
         <li class="floor-item">
           <a href="./list.html?categoryId=100009">
             <span class="floor-text">空调</span>
-            <img class="floor-img" src="../../../public/image/floor/floor1-4.jpg" alt="空调" />
+            <img class="floor-img" src="../../../public/image/floor/4.jpg" alt="空调" />
           </a>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100010">
             <span class="floor-text">热水器</span>
-            <img class="floor-img" src="../../../public/image/floor/floor1-5.jpg" alt="热水器" />
+            <img class="floor-img" src="../../../public/image/floor/5.jpg" alt="热水器" />
           </a>
         </li>
       </ul>
@@ -153,31 +153,31 @@ function judgelogin(event) {
         <li class="floor-item">
           <a href="./list.html?categoryId=100011">
             <span class="floor-text">笔记本电脑</span>
-            <img class="floor-img" src="../../../public/image/floor/floor2-1.jpg" alt="笔记本电脑" />
+            <img class="floor-img" src="../../../public/image/floor/6.jpg" alt="笔记本电脑" />
           </a>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100012">
             <span class="floor-text">手机</span>
-            <img class="floor-img" src="../../../public/image/floor/floor2-2.jpg" alt="手机" />
+            <img class="floor-img" src="../../../public/image/floor/7.jpg" alt="手机" />
           </a>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100013">
             <span class="floor-text">平板电脑</span>
-            <img class="floor-img" src="../../../public/image/floor/floor2-3.jpg" alt="平板电脑" />
+            <img class="floor-img" src="../../../public/image/floor/8.jpg" alt="平板电脑" />
           </a>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100014">
             <span class="floor-text">数码相机</span>
-            <img class="floor-img" src="../../../public/image/floor/floor2-4.jpg" alt="数码相机" />
+            <img class="floor-img" src="../../../public/image/floor/9.jpg" alt="数码相机" />
           </a>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100015">
             <span class="floor-text">3C配件</span>
-            <img class="floor-img" src="../../../public/image/floor/floor2-5.jpg" alt="3C配件" />
+            <img class="floor-img" src="../../../public/image/floor/10.jpg" alt="3C配件" />
           </a>
         </li>
       </ul>
@@ -209,6 +209,7 @@ function judgelogin(event) {
 <style>
 @import "../../CSS/index/index_multi.css";
 
+/* 下面是临时页面实现index的特殊功能的 */
 .banner-con .banner-img {
   width: 100%;
   height: 370px;
@@ -250,5 +251,21 @@ function judgelogin(event) {
     transform: translate(-100%);
   }
 }
+
+/* 下面是实现图片动画的缩放的 */
+.imganime img:hover {
+  animation: img-animation 2s forwards;
+}
+
+@keyframes img-animation {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+}
+/* ok 图片的动画效果实现 */
 </style>
 /* 创建index组件 */
