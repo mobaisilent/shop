@@ -31,18 +31,32 @@ function hideButton(floorIndex, itemIndex) {
 </template>
 
 <style scoped>
+.floor-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .add-to-cart-button {
-  display: none;
+  display: block;
+  top: 10%;
   margin-top: 10px;
   padding: 5px 10px;
   background-color: #ff4500;
   color: white;
   border: none;
   cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  /* 距离底部10px */
+  left: 50%;
+  /* 水平居中 */
+  transform: translateX(-50%);
+  /* 水平居中修正 */
 }
 
 .floor-item:hover .add-to-cart-button {
   display: block;
-  
 }
 </style>

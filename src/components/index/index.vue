@@ -195,6 +195,7 @@ function judgelogin(event) {
       </ul>
     </div>
 
+
     <div class="anime1" id="animatedElement">
       <p>其他功能正在完善中，敬请期待...</p>
     </div>
@@ -266,7 +267,7 @@ function judgelogin(event) {
 }
 
 /* 下面是实现图片动画的缩放的 */
-.imganime img:hover {
+.imganime img:hover   {
   animation: img-animation 2s forwards;
 }
 
@@ -290,5 +291,23 @@ function judgelogin(event) {
 .floor-item:hover .add-to-cart-button {
   display: block;
 }
+
+.add-to-cart-button {
+  font-family: YouYuan;
+  font-size: 13px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 15px;
+}
+
+/* 将这段代码从vue组件里移出来就实现了居中 */
 </style>
 /* 创建index组件 */
