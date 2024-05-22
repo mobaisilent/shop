@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 var json = JSON.parse(localStorage.getItem("json"));
 const token = json.data.token;
+console.log("here is new");
 console.log(token);
 // 获取全局变量
 
@@ -17,31 +18,29 @@ const newavatar = ref('');
 
 // 下面是创建表单提交函数：：先是默认阻止提交
 function handleSubmit(event) {
-  alert("用户名和密码暂不可修改：谢谢配合！\n如果有问题欢迎致电：12345678900");
+  // alert("用户名和密码暂不可修改：谢谢配合！\n如果有问题欢迎致电：12345678900");
 
-  fetch('http://localhost:4000/api/v1/money', {
-    method: 'POST',
+  fetch('http://localhost:4000/api/v1/user', {
+    method: 'PUT',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlck5hbWUiOiJjIiwiaXNzIjoibWFsbCIsInN1YiI6InVzZXIgdG9rZW4iLCJleHAiOjE3MTYzNjczOTgsImlhdCI6MTcxNjI4MDk5OH0.Sdv_h_M--X2sCcyMix1Kw5LznmyBuOsni77dM5AVf4c',
+      'Authorization': 'Bearer ' + token,
       'Cache-Control': 'no-cache'
     },
     body: JSON.stringify({
       NickName: newNickName.value,
-      Key: 1234567887654321,
     }),
   })
     .then(response => {
       if (!response.ok) {
-        console.log("here error");
         console.log(response);
         throw new Error('Network response was not ok');
       }
       return response.json();
     })
     .then(data => {
-      console.log("here");
+      console.log("here is data");
       console.log(data);
     })
     .catch(error => {

@@ -10,6 +10,8 @@ const money = json.data.userInfo.money;
 const token = json.data.token;
 console.log("here is token");
 console.log(token);
+var num;
+// 打印token信息用于调试
 const show_money_button = ref(true);
 
 function getmoney() {
@@ -22,7 +24,7 @@ function getmoney() {
       'Accept': '*/*',
       'Accept-Encoding': 'gzip, deflate, br',
       'Connection': 'keep-alive',
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlck5hbWUiOiJhYSIsImlzcyI6Im1hbGwiLCJzdWIiOiJ1c2VyIHRva2VuIiwiZXhwIjoxNzE2MzUyNzIxLCJpYXQiOjE3MTYyNjYzMjF9.grh5tb5oAbYjAyb7ZYFD6KKEWpP2n7ZNc9w_JeepR4I',
+      'Authorization': 'Bearer ' + token,
       'Content-Type': 'multipart/form-data; boundary=--------------------------325823930463777833009108',
     },
     body: JSON.stringify({
@@ -41,8 +43,11 @@ function getmoney() {
       return response.json();
     })
     .then(data => {
-      console.log(data);
-      money = data.data;
+      console.log(data.data);
+      console.log(money);
+      num = data.data;
+      console.log(num);
+      document.getElementById("shownum").innerText = num;
     });
 }
 
@@ -62,7 +67,7 @@ function getmoney() {
       <p>{{ nickName }}</p>
       <p>余额</p>
       <button @click="show_money_button = !show_money_button, getmoney()" v-show="show_money_button">点击显示</button>
-      <p v-show="!show_money_button">{{ money }}</p>
+      <p v-show="!show_money_button" id="shownum"></p>
     </div>
     <newinfo />
   </div>
