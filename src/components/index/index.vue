@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue';
+import addbutton from "../../components/shop/addbutton.vue";
+
 // 位置要正确：否则报错
 // var json = JSON.parse(localStorage.getItem("json"));
 // console.log(json.data.userInfo.userName);
@@ -120,30 +122,35 @@ function judgelogin(event) {
             <span class="floor-text">双开门冰箱</span>
             <img class="floor-img" src="../../../public/image/floor/1.jpg" alt="双开门冰箱" />
           </a>
+          <button class="add-to-cart-button">添加至购物车</button>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100007">
             <span class="floor-text">电视</span>
             <img class="floor-img" src="../../../public/image/floor/2.jpg" alt="电视" />
           </a>
+          <button class="add-to-cart-button">添加至购物车</button>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100008">
             <span class="floor-text">洗衣机</span>
             <img class="floor-img" src="../../../public/image/floor/3.jpg" alt="洗衣机" />
           </a>
+          <button class="add-to-cart-button">添加至购物车</button>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100009">
             <span class="floor-text">空调</span>
             <img class="floor-img" src="../../../public/image/floor/4.jpg" alt="空调" />
           </a>
+          <button class="add-to-cart-button">添加至购物车</button>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100010">
             <span class="floor-text">热水器</span>
             <img class="floor-img" src="../../../public/image/floor/5.jpg" alt="热水器" />
           </a>
+          <button class="add-to-cart-button">添加至购物车</button>
         </li>
       </ul>
     </div>
@@ -155,33 +162,39 @@ function judgelogin(event) {
             <span class="floor-text">笔记本电脑</span>
             <img class="floor-img" src="../../../public/image/floor/6.jpg" alt="笔记本电脑" />
           </a>
+          <button class="add-to-cart-button">添加至购物车</button>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100012">
             <span class="floor-text">手机</span>
             <img class="floor-img" src="../../../public/image/floor/7.jpg" alt="手机" />
           </a>
+          <button class="add-to-cart-button">添加至购物车</button>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100013">
             <span class="floor-text">平板电脑</span>
             <img class="floor-img" src="../../../public/image/floor/8.jpg" alt="平板电脑" />
           </a>
+          <button class="add-to-cart-button">添加至购物车</button>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100014">
             <span class="floor-text">数码相机</span>
             <img class="floor-img" src="../../../public/image/floor/9.jpg" alt="数码相机" />
           </a>
+          <button class="add-to-cart-button">添加至购物车</button>
         </li>
         <li class="floor-item">
           <a href="./list.html?categoryId=100015">
             <span class="floor-text">3C配件</span>
             <img class="floor-img" src="../../../public/image/floor/10.jpg" alt="3C配件" />
           </a>
+          <button class="add-to-cart-button">添加至购物车</button>
         </li>
       </ul>
     </div>
+
     <div class="anime1" id="animatedElement">
       <p>其他功能正在完善中，敬请期待...</p>
     </div>
@@ -266,6 +279,16 @@ function judgelogin(event) {
     transform: scale(1.2);
   }
 }
+
 /* ok 图片的动画效果实现 */
+
+/* 下面准备实现添加至购物车按钮 */
+.add-to-cart-button {
+  display: none;
+}
+
+.floor-item:hover .add-to-cart-button {
+  display: block;
+}
 </style>
 /* 创建index组件 */
