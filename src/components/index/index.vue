@@ -41,17 +41,15 @@ const showLong = ref('登录');
 
 console.log(statu.value);
 
-function judgelogin() {
-  console.log("here judge loging");
-  // 临时检测judge使用：是否需要弹窗，或者正常跳转
+function judgelogin(event) {
+  console.log("here judge loging ");
   if (statu.value == true) {
+    event.preventDefault();  // 阻止a标签的默认行为
     alert("请先登录");
-    // 刷新当前页面
-    // window.location.reload();
-    // 刷新当前页面失效
-    window.location.href = "../../";
+    // 然后弹出警告框
   }
 }
+
 </script>
 <!-- 直接复制模块竟然出错了 -->
 
@@ -82,10 +80,10 @@ function judgelogin() {
           </a>
         </li>
         <li class="nav-item">
-          <a class="link" href="../../../html/order/order.html" @click="judgelogin()">我的订单</a>
+          <a class="link" href="../../../html/order/order.html" @click="judgelogin">我的订单</a>
         </li>
         <li class="nav-item">
-          <a class="link" href="../../../html/user/address.html" @click="judgelogin()">我的地址</a>
+          <a class="link" href="../../../html/user/address.html" @click="judgelogin">我的地址</a>
         </li>
       </ul>
     </div>
