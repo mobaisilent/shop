@@ -86,7 +86,6 @@ function handleSubmit(event) {
 <style>
 body {
   font-family: 'YouYuan', sans-serif;
-
 }
 
 .new {

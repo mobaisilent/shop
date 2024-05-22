@@ -1,0 +1,62 @@
+body {
+  font-family: "YouYuan", sans-serif;
+  /* 还是youyuan字体好看 */
+}
+.order-container {
+  width: 65%;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border:2px #b1b1b1 solid;
+}
+.order-main {
+  display: flex;
+  flex-direction: column;
+}
+section {
+  margin-bottom: 20px;
+}
+.order-info ul {
+  list-style: none;
+  padding: 0;
+}
+.order-info li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.order-info img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.price-details p,
+.submit-order {
+  font-size: 18px;
+  font-weight: bold;
+}
+.submit-order {
+  padding: 10px;
+  background: #00aaff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.submit-order:hover {
+  background: #0088cc;
+}
+.order-note {
+  /* background-color: pink; */
+  /* //测试使用的背景色 */
+}
+.putnote {
+  /* background-color: aqua; */
+  /* 测试使用背景颜色 */
+  width: 99%;
+  /* height: 10%; */
+  resize: vertical;
+  /* 实现只能上下拉取 */
+  resize: none;
+  /* 直接一步到位禁止拉取 */
+}
