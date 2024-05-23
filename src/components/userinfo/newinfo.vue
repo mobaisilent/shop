@@ -1,18 +1,15 @@
 <script setup>
 import { ref } from 'vue';
-import { toRefs } from 'vue';
 var json = JSON.parse(localStorage.getItem("json"));
 const token = json.data.token;
 console.log("here is new");
 console.log(token);
 // 获取全局变量
 
-// 用来修改显示的是之前登录获取的nickname还是之后修改获得的username
-const button1 = ref(false);
-const button2 = ref(false);
 // 检测逻辑
 const newUserName = ref('');
 const newNickName = ref('');
+// 直接使用响应式变量向父组件传递值实现修改父组件的信息
 const newpassword = ref('');
 const newavatar = ref('');
 // 创建响应式变量用于绑定:绑定成功：显示成功
@@ -23,8 +20,6 @@ function handleSubmit(event) {
   event.preventDefault();
   console.log(newNickName.value);
   console.log(typeof (newNickName));
-
-  console.log(button1.value);
   // click交互式改变button1
 
   // 创建一个新的FormData实例
@@ -63,11 +58,20 @@ function handleSubmit(event) {
         alert("修改失败，请检查你的服务器状态和你的网络");
       });
   }
-
-
 }
 
+// const toggleButton = () => {
+//   button1.value = true;
+//   // 直接修改button=！button可能会报错 使用value就不会报错
+// }
 
+// toRefs({ button1, toggleButton })
+//该方案弃置
+// const updateNickName = () => {
+//   emit('update-nickname', newNickName.value);
+//   // 父级创建的事件是update-nickname
+// };
+// 使用emit进行向父级传递信息
 // 用逻辑进行nickname的绑定就行：判断逻辑：是用之前页面传递的nickname还是修改之后的信息
 </script>
 
@@ -80,12 +84,14 @@ function handleSubmit(event) {
       <br>
       <br>
       <label>新的昵称：</label><input v-model="newNickName" type="text" name="newNickName" placeholder="新的昵称">
+      <!--       <label>新的昵称：</label><input v-model="newNickName" type="text" name="newNickName" placeholder="新的昵称"
+        @input="updateNickName"> -->
       <br>
       <br>
       <label>新的密码：</label><input v-model="newpassword" type="password" name="newpassword" placeholder="新的密码">
       <br>
       <br>
-      <button id="button" class="button" @click="button1 = !button">提交信息</button>
+      <button id="button" class="button">提交信息</button>
     </form>
     <br>
     <label style="font-size: 18px;">上传头像</label>

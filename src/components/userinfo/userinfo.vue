@@ -50,8 +50,10 @@ function getmoney() {
       document.getElementById("shownum").innerText = num;
     });
 }
-
-
+// const nickName_from_son = ref('');
+// const handleNickNameUpdate = (newName) => {
+//   nickName_from_son.value = newName;
+// };
 </script>
 
 <template>
@@ -65,12 +67,15 @@ function getmoney() {
       <p>{{ userName }}</p>
       <p>昵称</p>
       <p>{{ nickName }}</p>
+      <!-- <p v-else="nickName_from_son.length != 0">{{ nickName_from_son }}</p> -->
       <p>余额</p>
       <button @click="show_money_button = !show_money_button, getmoney()" v-show="show_money_button">点击显示</button>
       <p v-show="!show_money_button" id="shownum"></p>
     </div>
     <newinfo />
-    <!-- 这里使用另一个vue组件 -->
+    <!--     <newinfo @update-nickname="handleNickNameUpdate" />
+ -->
+    <!-- 这里使用另一 -->
   </div>
 
 </template>
