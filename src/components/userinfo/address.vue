@@ -33,7 +33,9 @@ async function fetchAddress() {
       alert('没有地址信息');
     } else {
       // 这里实现显示地址：：通过响应式变量实现
-
+      const items = data.data.item;
+      console.log(items);
+      console.log(items[0].address);
     }
   } catch (error) {
     alert('响应失败，请检查服务器/你的网络状态');
@@ -75,17 +77,18 @@ function changeaddress() {
 
 const newaddress = ref('');// 先创建一个空的响应式变量
 // 向响应式变量中添加数据用于测试：多利用这些测试方法
-function addresform() {
+function addresform(event) {
   // 处理表单事件的响应
   event.preventDefault();
+  const formData = new FormData();
+  formData.append('Address', newaddress.value);
+  // 使用响应式变量的时候记得使用value,使用value之后就成功咯
   fetch("http://localhost:4000/api/v1/address", {
     method: 'POST',
     headers: {
       'Authorization': 'Bearer ' + token,
     },
-    body: JSON.stringify({
-      Address: newaddress,
-    }),
+    body: formData,
   })
     .then((response) => {
       if (!response.ok) {
