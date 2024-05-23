@@ -100,7 +100,13 @@ function addresform() {
         + newaddress.value + "`" + '\n'
         + "成功");
     });
-    creatbutton.value = true;
+  creatbutton.value = true;
+}
+
+function nosubmit() {
+  // 直接阻止表单提交，修改变量即可
+  event.preventDefault();
+  creatbutton.value = true;
 }
 </script>
 
@@ -124,9 +130,10 @@ function addresform() {
       <form action="" @submit="addresform">
         新地址<input type="text" v-model="newaddress">
         <br> <button style="margin-top: 10px;">确认创建</button>
+        <button style="margin-top: 10px;" @click="nosubmit">取消创建</button>
       </form>
     </div>
-    <div id="info">请谨慎删除地址 </div>
+    <div id="info" v-show="creatbutton">请谨慎删除地址 </div>
   </div>
 </template>
 
