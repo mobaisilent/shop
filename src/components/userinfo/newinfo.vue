@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from 'vue';
+import { toRefs } from 'vue';
 var json = JSON.parse(localStorage.getItem("json"));
 const token = json.data.token;
 console.log("here is new");
 console.log(token);
 // 获取全局变量
 
+// 用来修改显示的是之前登录获取的nickname还是之后修改获得的username
 const button1 = ref(false);
 const button2 = ref(false);
 // 检测逻辑
@@ -18,36 +20,51 @@ const newavatar = ref('');
 
 // 下面是创建表单提交函数：：先是默认阻止提交
 function handleSubmit(event) {
-  // alert("用户名和密码暂不可修改：谢谢配合！\n如果有问题欢迎致电：12345678900");
+  event.preventDefault();
+  console.log(newNickName.value);
+  console.log(typeof (newNickName));
 
-  fetch('http://localhost:4000/api/v1/user', {
-    method: 'PUT',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token,
-      'Cache-Control': 'no-cache'
-    },
-    body: JSON.stringify({
-      NickName: newNickName.value,
-    }),
-  })
-    .then(response => {
-      if (!response.ok) {
-        console.log(response);
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
+  console.log(button1.value);
+  // click交互式改变button1
+
+  // 创建一个新的FormData实例
+  var formData = new FormData();
+  // 添加键值对
+  if (newNickName.value.length == 0) {
+    alert("必须输入新的昵称");
+  }
+  else {
+    formData.append('NickName', newNickName.value);
+    // 注意看apipost那里的请求相应的格式
+
+    fetch('http://localhost:4000/api/v1/user', {
+      method: 'PUT',
+      headers: {
+        'Accept': '*/*',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+        'Authorization': 'Bearer ' + token,
+      },
+      body: formData, // 使用formData作为请求体
     })
-    .then(data => {
-      console.log("here is data");
-      console.log(data);
-    })
-    .catch(error => {
-      console.log(error);
-      alert(error);
-      alert("修改失败，请检查你的服务器状态和你的网络");
-    });
+      .then(response => {
+        if (!response.ok) {
+          console.log(response);
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+
+      })
+      .catch(error => {
+        console.log(error);
+        alert("修改失败，请检查你的服务器状态和你的网络");
+      });
+  }
+
+
 }
 
 
@@ -59,19 +76,19 @@ function handleSubmit(event) {
   <div id="new" class="new">
     <h2>修改用户信息（重新登录显示新信息）</h2>
     <form action="" class="form" @submit="handleSubmit">
-      <label for="">新用户名：</label><input v-model="newUserName" type=" text" name="newUserName" placeholder="新的用户名">
+      <label>新用户名：</label><input v-model="newUserName" type=" text" name="newUserName" placeholder="新的用户名">
       <br>
       <br>
-      <label for="">新的昵称：</label><input v-model="newNickName" type="text" name="newNickName" placeholder="新的昵称">
+      <label>新的昵称：</label><input v-model="newNickName" type="text" name="newNickName" placeholder="新的昵称">
       <br>
       <br>
-      <label for="">新的密码：</label><input v-model="newpassword" type="password" name="newpassword" placeholder="新的密码">
+      <label>新的密码：</label><input v-model="newpassword" type="password" name="newpassword" placeholder="新的密码">
       <br>
       <br>
-      <button id="button" class="button">提交信息</button>
+      <button id="button" class="button" @click="button1 = !button">提交信息</button>
     </form>
     <br>
-    <label for="" style="font-size: 18px;">上传头像</label>
+    <label style="font-size: 18px;">上传头像</label>
     <br><input v-model="newavatar" type="text" name="newavatar" placeholder="填入图床地址"><a
       href="https://images.mobaisama.top" target="_blank">mobai's images</a>
     <button>上传 </button>

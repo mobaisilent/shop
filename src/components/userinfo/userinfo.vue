@@ -70,6 +70,7 @@ function getmoney() {
       <p v-show="!show_money_button" id="shownum"></p>
     </div>
     <newinfo />
+    <!-- 这里使用另一个vue组件 -->
   </div>
 
 </template>
