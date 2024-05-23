@@ -73,6 +73,47 @@ function handleSubmit(event) {
 // };
 // 使用emit进行向父级传递信息
 // 用逻辑进行nickname的绑定就行：判断逻辑：是用之前页面传递的nickname还是修改之后的信息
+
+
+// 下面是需要实现 上传头像的功能
+const fileInput = ref(null);
+const uploadFile = async () => {
+  const file = fileInput.value.files[0];
+
+  if (!file) {
+    alert('请选择一个文件');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  fetch('http://localhost:4000/api/v1/avatar', {
+    method: 'POST',
+    headers: {
+      'Accept': '*/*',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive',
+      'Authorization': 'Bearer ' + token,
+    },
+    body: formData,
+  })
+    .then(response => {
+      if (!response.ok) {
+        console.log(response);
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+
+    })
+    .catch(error => {
+      console.log(error);
+      alert("上传失败，请检查你的服务器状态和你的网络");
+    });
+};
 </script>
 
 <template>
@@ -95,11 +136,10 @@ function handleSubmit(event) {
     </form>
     <br>
     <label style="font-size: 18px;">上传头像</label>
-    <br><input v-model="newavatar" type="text" name="newavatar" placeholder="填入图床地址"><a
-      href="https://images.mobaisama.top" target="_blank">mobai's images</a>
-    <button>上传 </button>
-
-
+    <br>
+    <input type="file" ref="fileInput">
+    <button id="uploadfile" @click="uploadFile">上传</button>
+    <!-- https://images.mobaisama.top/i/2024/05/23/153415.png -->
   </div>
 
 </template>

@@ -54,13 +54,20 @@ function getmoney() {
 // const handleNickNameUpdate = (newName) => {
 //   nickName_from_son.value = newName;
 // };
+
+// 添加返回按钮
+function backtoindex() {
+  window.location.href = '../index/index.html';
+}
 </script>
 
 <template>
+  <button id="back" @click="backtoindex">返回</button>
   <div class="main">
     <div class="origin_info">
       <h2>基本信息</h2>
-      <div id="avatar" class="avatar"><img :src="avatar" alt="头像信息" id="showavatar">
+      <div id="avatar" class="avatar">
+        <img :src="avatar" alt="头像信息" id="showavatar">
         <!-- 使用vue绑定的方式来显示avatar -->
       </div>
       <p>用户名</p>
@@ -71,6 +78,7 @@ function getmoney() {
       <p>余额</p>
       <button @click="show_money_button = !show_money_button, getmoney()" v-show="show_money_button">点击显示</button>
       <p v-show="!show_money_button" id="shownum"></p>
+      <p style="top: 49%; left: 38%; position: absolute; font-size: 12px;">重新登录刷新显示信息 </p>
     </div>
     <newinfo />
     <!--     <newinfo @update-nickname="handleNickNameUpdate" />
@@ -114,10 +122,43 @@ body {
 
 .avatar {
   position: relative;
+  /* 父相子绝:否则出错 */
+  display: block;
   width: 50px;
   height: 50px;
   background-color: pink;
   left: 45%;
+  /* overflow: hidden; */
+  margin-bottom: 10px;
+}
 
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 可选：确保图片按比例填充容器 */
+}
+
+#back {
+  position: absolute;
+  left: 34%;
+  top: 8%;
+  z-index: 1000;
+  border: 1px solid black;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  padding: 8px 15px;
+  border-radius: 15px;
+}
+
+#back:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+#back:active {
+  background-color: #3e8e41;
+  transform: scale(0.95);
 }
 </style>
