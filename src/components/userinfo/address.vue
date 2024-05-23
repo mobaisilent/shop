@@ -309,7 +309,7 @@ body {
 
 #back {
   position: absolute;
-  left: 6%;
+  left: 4%;
   top: 2%;
   border: none;
   cursor: pointer;
@@ -320,6 +320,16 @@ body {
   padding-right: 10px;
   padding-left: 10px;
   text-align: center;
+}
+
+#back:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+#back:active {
+  background-color: #3e8e41;
+  transform: scale(0.95);
 }
 </style>
 

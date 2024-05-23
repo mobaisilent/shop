@@ -62,8 +62,8 @@ function backtoindex() {
 </script>
 
 <template>
-  <button id="back" @click="backtoindex">返回</button>
   <div class="main">
+    <button id="back" @click="backtoindex">返回</button>
     <div class="origin_info">
       <h2>基本信息</h2>
       <div id="avatar" class="avatar">
@@ -141,8 +141,8 @@ img {
 
 #back {
   position: absolute;
-  left: 34%;
-  top: 8%;
+  left: 3%;
+  top: 2%;
   z-index: 1000;
   border: 1px solid black;
   cursor: pointer;
