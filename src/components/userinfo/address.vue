@@ -113,6 +113,7 @@ const newaddress = ref(''); // 先创建一个空的响应式变量
 function addresform(event) {
   // 处理表单事件的响应
   event.preventDefault();
+
   const formData = new FormData();
   formData.append('Address', newaddress.value);
   // 使用响应式变量的时候记得使用value,使用value之后就成功咯
@@ -137,8 +138,6 @@ function addresform(event) {
         + "成功");
     });
   creatbutton.value = true;
-  newaddress.value = "";
-  // 重置newaddress
 }
 
 function nosubmit(event) {

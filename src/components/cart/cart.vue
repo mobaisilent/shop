@@ -5,10 +5,12 @@ const cart = reactive([
   { id: 1, name: '商品1', price: 100, quantity: 1, image: 'https://via.placeholder.com/100' },
   { id: 2, name: '商品2', price: 200, quantity: 1, image: 'https://via.placeholder.com/100' }
 ]);
+// 创建属性数组响应式示例
 
 const totalPrice = computed(() => {
   return cart.reduce((total, item) => total + item.price * item.quantity, 0);
 });
+// 创建计算属性
 
 function increaseQuantity(item) {
   item.quantity++;
@@ -21,6 +23,7 @@ function decreaseQuantity(item) {
     animateItem(item);
   }
 }
+// 调用动画
 
 function removeItem(item) {
   const index = cart.findIndex(i => i.id === item.id);
@@ -29,10 +32,19 @@ function removeItem(item) {
     animateItem(item, 'fadeOut');
   }
 }
+// 调用动画将组件移除
+
 
 function checkout() {
-  alert('结算功能尚未实现');
+  // 创建全局浏览器变量
+  window.localStorage.setItem("total_price", totalPrice.value);
+
+  var info = window.localStorage.getItem("total_price");
+  console.log(info);
+  // 成功实现向结算页面传递总价格（动态）
+  // window.location.href = "../../../html/order/order.html";
 }
+// 转移到其他组件处理
 
 function animateItem(item, animationType = 'bounce') {
   const itemElement = document.querySelector(`.cart-item[data-id='${item.id}']`);
@@ -51,7 +63,7 @@ function animateItem(item, animationType = 'bounce') {
     <ul>
       <li v-for="item in cart" :key="item.id" :data-id="item.id" class="cart-item">
         <img :src="item.image" alt="item.name" class="item-image" />
-        <div class="item-details">
+        <div class="item-details" style="margin-left: 2px">
           <h2>{{ item.name }}</h2>
           <p>{{ item.price }} 元</p>
           <div class="quantity">
@@ -136,12 +148,13 @@ function animateItem(item, animationType = 'bounce') {
   display: block;
   width: 100%;
   padding: 10px;
-  background: green;
-  color: white;
+  background: rgb(239, 163, 228);
+  color: black;
   border: none;
   cursor: pointer;
   font-size: 18px;
   margin-top: 20px;
+  border-radius: 20px;
 }
 
 /* Animations */
