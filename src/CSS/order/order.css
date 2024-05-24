@@ -8,7 +8,7 @@ body {
   padding: 20px;
   background: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border:2px #b1b1b1 solid;
+  border: 2px #b1b1b1 solid;
 }
 .order-main {
   display: flex;
@@ -59,4 +59,20 @@ section {
   /* 实现只能上下拉取 */
   resize: none;
   /* 直接一步到位禁止拉取 */
+}
+
+.back {
+  padding: 4px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.back:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.back:active {
+  background-color: #3e8e41;
+  transform: scale(0.95);
 }

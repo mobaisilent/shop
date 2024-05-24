@@ -283,7 +283,7 @@
   top: 34px;
   display: block;
   font-size: 36px;
-  color: #c60023;
+  color: orange;
   font-weight: bold;
   text-decoration: none;
 }
@@ -296,7 +296,7 @@
   line-height: 40px;
   padding-left: 10px;
   font-size: 15px;
-  border: 2px solid #c60023;
+  border: 2px solid orange;
   outline: none;
 }
 .header .search-con .search-btn {
@@ -312,7 +312,7 @@
   background: #eee;
   color: #888;
   font-size: 14px;
-  border-top: 2px solid #c60023;
+  border-top: 2px solid orange;
 }
 .keywords-list {
   float: left;
@@ -487,7 +487,7 @@ input[type="checkbox"] {
 }
 /* 超链样式 */
 .link {
-  color: #999;
+  color: black;
   cursor: pointer;
   text-decoration: none;
 }
@@ -506,7 +506,7 @@ input[type="checkbox"] {
   line-height: 40px;
   vertical-align: middle;
   border: none;
-  background: #c60023;
+  background: orange  ;
   font-size: 17px;
   font-weight: bold;
   color: #fff;

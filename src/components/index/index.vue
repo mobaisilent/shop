@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 import addbutton from "../../components/shop/addbutton.vue";
+//导入动态展示“添加到购物车”的按键
+import search from './search.vue';
+import { provide } from 'vue';
 
 // 位置要正确：否则报错
 // var json = JSON.parse(localStorage.getItem("json"));
@@ -54,6 +57,35 @@ function judgelogin(event) {
   }
 }
 
+
+console.log(localStorage.getItem("json")); //依旧是json数据块
+var json = JSON.parse(localStorage.getItem("json")); //依旧是将json数据块转为json格式
+const token = json.data.token;
+console.log("here is token for search");
+console.log(token); // 依旧是我最常用的打印token数据  
+const ifsearch = ref(false);
+const searchwhat = ref('');
+function searchbutton() {
+  // console.log(searchwhat.value);
+  ifsearch.value = true; // 显示窗口
+  // 先创建一个全局共享变量到search中：search中获得该变量后显示该页面信息
+  window.localStorage.setItem("searchwhat", searchwhat.value);
+  // 创建好了变量之后重定向到显示页面吧：使用动态组件的显示似乎不太方便
+  fetch("http://localhost:4000/api/v1/product/search", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+      // 这里注意Bearer后面有一个空格：否则错误
+      // ok 接收到响应数据：只是尚未处理罢了
+    },
+  })
+}
+provide("ifsearch", ifsearch);
+provide("searchwhat", searchwhat);
+// 向下传递搜索的值是what
+// 这里标注一下：响应式变量的传递时不需要使用value的：只是再某些二是直接修改值的时候需要使用.value：
+// 使用插值表达式的就不需要使用.value
 </script>
 <!-- 直接复制模块竟然出错了 -->
 
@@ -97,9 +129,10 @@ function judgelogin(event) {
   <div class="header">
     <div class="w">
       <a class="logo" href="./index.html">SHOP</a>
+      <search v-show="ifsearch" />
       <div class="search-con">
-        <input class="search-input" id="search-input" placeholder="请输入商品名称" />
-        <button class="btn search-btn" id="search-btn">搜索</button>
+        <input class="search-input" id="search-input" placeholder="请输入商品名称" v-model="searchwhat" />
+        <button class="btn search-btn" id="search-btn" @click="searchbutton">搜索</button>
       </div>
     </div>
   </div>
@@ -267,7 +300,7 @@ function judgelogin(event) {
 }
 
 /* 下面是实现图片动画的缩放的 */
-.imganime img:hover   {
+.imganime img:hover {
   animation: img-animation 2s forwards;
 }
 
