@@ -61,13 +61,11 @@ function judgelogin(event) {
 
 console.log(localStorage.getItem("json")); //依旧是json数据块
 var json = JSON.parse(localStorage.getItem("json")); //依旧是将json数据块转为json格式
+const token = json && json.data ? json.data.token : null;
+// 需要 先检测token是否存在：不然就报错
 
 
 // 下面这段是为search服务  
-// 需要 先检测token是否存在：不然就报错
-if (json) {
-  const token = json.data.token;
-}
 console.log("here is token for search");
 // console.log(token); // 依旧是我最常用的打印token数据  
 const ifsearch = ref(false);
@@ -91,7 +89,7 @@ function searchbutton() {
   })
     .then(response => {
       if (!response.ok) {
-        alert("请检查你的服务器/网络状态")
+        alert("请检查你的登录状态/服务器/网络状态")
         throw new Error('Network response was not ok');
       }
       return response.json();
@@ -184,35 +182,35 @@ const id = ref(0);
     <div class="floor-wrap">
       <h1 class="floor-title">F1 家用电器</h1>
       <ul class="floor-list">
-        <li class="floor-item" id="1" onmouseenter="id.value=this.id">
+        <li class="floor-item" id="1" onmouseenter="id.value=this.id,console.log(this.id)">
           <a href="./list.html?categoryId=100006">
             <span class="floor-text">双开门冰箱</span>
             <img class="floor-img" src="../../../public/image/floor/1.jpg" alt="双开门冰箱" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item" id="2" onmouseenter="id.value=this.id">
+        <li class="floor-item" id="2" onmouseenter="id.value=this.id,console.log(this.id)">
           <a href="./list.html?categoryId=100007">
             <span class="floor-text">电视</span>
             <img class="floor-img" src="../../../public/image/floor/2.jpg" alt="电视" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item" id="3" onmouseenter="id.value=this.id">
+        <li class="floor-item" id="3" onmouseenter="id.value=this.id,console.log(this.id)">
           <a href="./list.html?categoryId=100008">
             <span class="floor-text">洗衣机</span>
             <img class="floor-img" src="../../../public/image/floor/3.jpg" alt="洗衣机" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item" id="4" onmouseenter="id.value=this.id">
+        <li class="floor-item" id="4" onmouseenter="id.value=this.id,console.log(this.id)">
           <a href="./list.html?categoryId=100009">
             <span class="floor-text">空调</span>
             <img class="floor-img" src="../../../public/image/floor/4.jpg" alt="空调" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item" id="5" onmouseenter="id.value=this.id">
+        <li class="floor-item" id="5" onmouseenter="id.value=this.id,console.log(this.id)">
           <a href="./list.html?categoryId=100010">
             <span class="floor-text">热水器</span>
             <img class="floor-img" src="../../../public/image/floor/5.jpg" alt="热水器" />
@@ -224,35 +222,35 @@ const id = ref(0);
     <div class="floor-wrap">
       <h1 class="floor-title">F2 数码3C</h1>
       <ul class="floor-list">
-        <li class="floor-item" id="6" onmouseenter="id.value=this.id">
+        <li class="floor-item" id="6" onmouseenter="id.value=this.id,console.log(this.id)">
           <a href="./list.html?categoryId=100011">
             <span class="floor-text">笔记本电脑</span>
             <img class="floor-img" src="../../../public/image/floor/6.jpg" alt="笔记本电脑" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item" id="7" onmouseenter="id.value=this.id">
+        <li class="floor-item" id="7" onmouseenter="id.value=this.id,console.log(this.id)">
           <a href="./list.html?categoryId=100012">
             <span class="floor-text">手机</span>
             <img class="floor-img" src="../../../public/image/floor/7.jpg" alt="手机" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item" id="8" onmouseenter="id.value=this.id">
+        <li class="floor-item" id="8" onmouseenter="id.value=this.id,console.log(this.id)">
           <a href="./list.html?categoryId=100013">
             <span class="floor-text">平板电脑</span>
             <img class="floor-img" src="../../../public/image/floor/8.jpg" alt="平板电脑" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item" id="9" onmouseenter="id.value=this.id">
+        <li class="floor-item" id="9" onmouseenter="id.value=this.id,console.log(this.id)">
           <a href="./list.html?categoryId=100014">
             <span class="floor-text">数码相机</span>
             <img class="floor-img" src="../../../public/image/floor/9.jpg" alt="数码相机" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item" id="10" onmouseenter="id.value=this.id">
+        <li class="floor-item" id="10" onmouseenter="id.value=this.id,console.log(this.id)">
           <a href="./list.html?categoryId=100015">
             <span class="floor-text">3C配件</span>
             <img class="floor-img" src="../../../public/image/floor/10.jpg" alt="3C配件" />
@@ -291,4 +289,5 @@ const id = ref(0);
 @import "../../CSS/index/index_multi.css";
 @import "../../CSS/index/index_anime.css";
 </style>
-/* 创建index组件 */
+<!--  创建index组件  -->
+<!-- 测试环境先保留id的打印 -->
