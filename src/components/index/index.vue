@@ -108,6 +108,12 @@ provide("searchwhat", searchwhat);
 // provide("item", item);
 // 这里标注一下：响应式变量的传递时不需要使用value的：只是再某些二是直接修改值的时候需要使用.value：
 // 使用插值表达式的就不需要使用.value
+
+
+// 下面开始实现添加购物车功能了，主要是定位系统（id） ：重点是商品id不是从1开始而是从3开始的
+// ok使用onmouseenter实现了动态的id切换（进入某个框架的时候切换）
+const id = ref(0);
+
 </script>
 <!-- 直接复制模块竟然出错了 -->
 
@@ -175,35 +181,35 @@ provide("searchwhat", searchwhat);
     <div class="floor-wrap">
       <h1 class="floor-title">F1 家用电器</h1>
       <ul class="floor-list">
-        <li class="floor-item">
+        <li class="floor-item" id="1" onmouseenter="id.value=this.id">
           <a href="./list.html?categoryId=100006">
             <span class="floor-text">双开门冰箱</span>
             <img class="floor-img" src="../../../public/image/floor/1.jpg" alt="双开门冰箱" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item">
+        <li class="floor-item" id="2" onmouseenter="id.value=this.id">
           <a href="./list.html?categoryId=100007">
             <span class="floor-text">电视</span>
             <img class="floor-img" src="../../../public/image/floor/2.jpg" alt="电视" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item">
+        <li class="floor-item" id="3" onmouseenter="id.value=this.id">
           <a href="./list.html?categoryId=100008">
             <span class="floor-text">洗衣机</span>
             <img class="floor-img" src="../../../public/image/floor/3.jpg" alt="洗衣机" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item">
+        <li class="floor-item" id="4" onmouseenter="id.value=this.id">
           <a href="./list.html?categoryId=100009">
             <span class="floor-text">空调</span>
             <img class="floor-img" src="../../../public/image/floor/4.jpg" alt="空调" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item">
+        <li class="floor-item" id="5" onmouseenter="id.value=this.id">
           <a href="./list.html?categoryId=100010">
             <span class="floor-text">热水器</span>
             <img class="floor-img" src="../../../public/image/floor/5.jpg" alt="热水器" />
@@ -215,35 +221,35 @@ provide("searchwhat", searchwhat);
     <div class="floor-wrap">
       <h1 class="floor-title">F2 数码3C</h1>
       <ul class="floor-list">
-        <li class="floor-item">
+        <li class="floor-item" id="6" onmouseenter="id.value=this.id">
           <a href="./list.html?categoryId=100011">
             <span class="floor-text">笔记本电脑</span>
             <img class="floor-img" src="../../../public/image/floor/6.jpg" alt="笔记本电脑" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item">
+        <li class="floor-item" id="7" onmouseenter="id.value=this.id">
           <a href="./list.html?categoryId=100012">
             <span class="floor-text">手机</span>
             <img class="floor-img" src="../../../public/image/floor/7.jpg" alt="手机" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item">
+        <li class="floor-item" id="8" onmouseenter="id.value=this.id">
           <a href="./list.html?categoryId=100013">
             <span class="floor-text">平板电脑</span>
             <img class="floor-img" src="../../../public/image/floor/8.jpg" alt="平板电脑" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item">
+        <li class="floor-item" id="9" onmouseenter="id.value=this.id">
           <a href="./list.html?categoryId=100014">
             <span class="floor-text">数码相机</span>
             <img class="floor-img" src="../../../public/image/floor/9.jpg" alt="数码相机" />
           </a>
           <button class="add-to-cart-button">添加至购物车</button>
         </li>
-        <li class="floor-item">
+        <li class="floor-item" id="10" onmouseenter="id.value=this.id">
           <a href="./list.html?categoryId=100015">
             <span class="floor-text">3C配件</span>
             <img class="floor-img" src="../../../public/image/floor/10.jpg" alt="3C配件" />
@@ -280,92 +286,6 @@ provide("searchwhat", searchwhat);
 
 <style>
 @import "../../CSS/index/index_multi.css";
-
-/* 下面是临时页面实现index的特殊功能的 */
-.banner-con .banner-img {
-  width: 100%;
-  height: 370px;
-}
-
-.amine1 {
-  width: 100px;
-  height: 30px;
-  display: block;
-  position: absolute;
-  left: 50%;
-  background-color: pink;
-  text-align: center;
-  /* 这里可以添加之前我喜欢的从左到右动画效果 */
-}
-
-.anime1 p {
-  /* background-color: aqua; */
-  margin-left: 38%;
-  animation: span_move linear infinite 7s;
-  font-family: YouYuan;
-}
-
-@keyframes span_move {
-  0% {
-    transform: translate(100%);
-  }
-
-  33% {
-    transform: translate(0%);
-  }
-
-  /* 在0%的位置暂停2秒 */
-  66% {
-    transform: translate(0%);
-  }
-
-  100% {
-    transform: translate(-100%);
-  }
-}
-
-/* 下面是实现图片动画的缩放的 */
-.imganime img:hover {
-  animation: img-animation 2s forwards;
-}
-
-@keyframes img-animation {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(1.2);
-  }
-}
-
-/* ok 图片的动画效果实现 */
-
-/* 下面准备实现添加至购物车按钮 */
-.add-to-cart-button {
-  display: none;
-}
-
-.floor-item:hover .add-to-cart-button {
-  display: block;
-}
-
-.add-to-cart-button {
-  font-family: YouYuan;
-  font-size: 13px;
-  margin-top: 10px;
-  padding: 5px 10px;
-  background-color: #ff4500;
-  color: white;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 15px;
-}
-
-/* 将这段代码从vue组件里移出来就实现了居中 */
+@import "../../CSS/index/index_anime.css";
 </style>
 /* 创建index组件 */

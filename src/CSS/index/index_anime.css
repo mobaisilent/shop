@@ -1,0 +1,86 @@
+/* 下面是临时页面实现index的特殊功能的 */
+.banner-con .banner-img {
+  width: 100%;
+  height: 370px;
+}
+
+.amine1 {
+  width: 100px;
+  height: 30px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  background-color: pink;
+  text-align: center;
+  /* 这里可以添加之前我喜欢的从左到右动画效果 */
+}
+
+.anime1 p {
+  /* background-color: aqua; */
+  margin-left: 38%;
+  animation: span_move linear infinite 7s;
+  font-family: YouYuan;
+}
+
+@keyframes span_move {
+  0% {
+    transform: translate(100%);
+  }
+
+  33% {
+    transform: translate(0%);
+  }
+
+  /* 在0%的位置暂停2秒 */
+  66% {
+    transform: translate(0%);
+  }
+
+  100% {
+    transform: translate(-100%);
+  }
+}
+
+/* 下面是实现图片动画的缩放的 */
+.imganime img:hover {
+  animation: img-animation 2s forwards;
+}
+
+@keyframes img-animation {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+/* ok 图片的动画效果实现 */
+
+/* 下面准备实现添加至购物车按钮 */
+.add-to-cart-button {
+  display: none;
+}
+
+.floor-item:hover .add-to-cart-button {
+  display: block;
+}
+
+.add-to-cart-button {
+  font-family: YouYuan;
+  font-size: 13px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 15px;
+}
+
+/* 将这段代码从vue组件里移出来就实现了居中 */

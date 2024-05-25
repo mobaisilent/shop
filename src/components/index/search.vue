@@ -34,6 +34,8 @@ function ifbutton() {
   // 放在外面反而打印不出来：那么就关闭的时候打印一次就行
   if (searchwhat.value.length == 0) {
     alert("请输入搜索内容");
+    ifsearch.value = false;
+    clickbutton.value = false;
   }
   else {
     clickbutton.value = !clickbutton.value;
@@ -74,68 +76,6 @@ function ifbutton() {
 </template>
 
 <style scoped>
-.search {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 500px;
-  height: auto;
-  background-color: white;
-  z-index: 1000;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.close {
-  border: 2px solid black;
-  padding: 0 4px;
-  border-radius: 8px;
-}
-
-.showinfo {
-  margin-top: 15px;
-}
-
-.showinfo h2 {
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.showinfo p {
-  margin: 5px 0;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.product-image {
-  max-width: 100px;
-  max-height: 100px;
-  width: auto;
-  height: auto;
-  display: block;
-  margin-top: 5px;
-}
-
-.newbutton {
-  /* position: relative; */
-  /* display: block; */
-  left: 39%;
-  width: 120px;
-  /* top: 90%;; */
-  /* background-color: pink; */
-  border: 2px black solid;
-}
+@import url(../../CSS/search/search.css);
 </style>
 <!-- 创建为悬浮窗的格式就实现了覆盖下面的图片 -->
