@@ -4,8 +4,8 @@ import { ref } from 'vue';
 const paymethod = window.localStorage.getItem("paymethod");
 console.log(paymethod);
 const method = ref('');
-const url1 = "https://images.mobaisama.top/i/2024/05/25/230422.jpg";
-const url2 = "https://images.mobaisama.top/i/2024/05/25/230554.jpg";
+const url1 = "https://images.mobaisama.top/i/2024/05/26/000518.jpg";
+const url2 = "https://images.mobaisama.top/i/2024/05/26/000541.png";
 if (paymethod == 'alipay') {
   method.value = url1;
 } else {
@@ -62,7 +62,7 @@ body {
 }
 
 .main img {
-  width: 400px;
+  width: 300px;
   height: 400px;
   /* background-color: pink; */
   /* 测试使用 */
