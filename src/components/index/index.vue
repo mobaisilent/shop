@@ -57,6 +57,10 @@ function judgelogin(event) {
     alert("请先登录");
     // 然后弹出警告框
   }
+  else {
+    window.localStorage.setItem("tocartinfo", JSON.stringify(cartinfo.value));
+    // 打包为JSON数据类型就行了：否则老是无法正常使用该全局变量
+  }
 }
 
 
@@ -120,6 +124,19 @@ provide("searchwhat", searchwhat);
 const curid = ref(0); //处理哪个id
 const cartcnt = ref(0); //处理显示的购物车数量
 const cartinfo = ref([]); //处理向购物车传递的信息
+const tocartinfo = JSON.parse(window.localStorage.getItem("tocartinfo"));
+if (tocartinfo) {
+  var temp = 0;
+  console.log(tocartinfo);
+  console.log(tocartinfo.length);
+  for (var i = 0; i < tocartinfo.length; i++) {
+    temp += tocartinfo[i].cnt;
+  }
+  console.log(temp);
+  cartcnt.value = temp;  // ok成功了
+  cartinfo.value = tocartinfo;
+  console.log(cartinfo.value);
+}
 // 使用响应式变量失败就使用全局变量吧：：纠正，还是响应式变量：要用分号
 // provide("id", id);
 // 将id向（添加购物车）按钮提供id值：：注：provide失败
@@ -148,17 +165,16 @@ function addtocart() {
   console.log(curid.value);
   // ok抓取id实现
   // 修改 就不用具体的id实现了，用下标实现吧
-  cartcnt.value++;
   console.log(cartinfo);
   let found = false;
   for (let i = 0; i < cartinfo.value.length; i++) {
     if (cartinfo.value[i].key === curid.value) {
-      cartinfo.value[i].cnt++;
       found = true;
       break;
     }
   }
   if (!found) {
+    cartcnt.value++;
     cartinfo.value.push({ key: curid.value, cnt: 1 });
   }
   console.log(cartinfo.value);
@@ -166,7 +182,6 @@ function addtocart() {
 }
 provide("cartinfo", cartinfo);
 // 向购物车传入购物信息
-
 </script>
 <!-- 直接复制模块竟然出错了 -->
 
@@ -197,10 +212,6 @@ provide("cartinfo", cartinfo);
             <!-- 显示总数量吧 -->
           </a>
         </li>
-        <!-- <-- <li class="nav-item">
-          <a class="link" href="../../../html/order/order.html" @click="judgelogin">我的订单</a>
-          </li>
-          / -->
         <li class="nav-item">
           <a class="link" href="../../../html/user/address.html" @click="judgelogin">我的地址</a>
         </li>

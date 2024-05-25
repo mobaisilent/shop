@@ -1,19 +1,93 @@
 <script setup>
-import { reactive, computed } from 'vue';
+import { reactive, computed, inject, onMounted } from 'vue';
+import { ref } from 'vue';
 
-const cart = reactive([
-  { id: 1, name: '商品1', price: 100, quantity: 1, image: 'https://via.placeholder.com/100' },
-  { id: 2, name: '商品2', price: 200, quantity: 1, image: 'https://via.placeholder.com/100' }
-]);
+const showidcnt = ref(0);
+const cart = reactive([]);
 // 创建属性数组响应式示例
 
-const totalPrice = computed(() => {
+// // 先接收从父级传递过来的cartinfo
+// const cartinfo = inject("cartinfo");
+// console.log(cartinfo);
+// 上面方法失效：因为采取了跨页面的形式：所以准确来说不是父子级之间的关系：故采取全局变量
+const cartinfo = JSON.parse(window.localStorage.getItem("tocartinfo"));
+console.log(cartinfo);
+console.log(cartinfo.length);
+// console.log(cartinfo[0]);
+// 单独打印第0项是可以打印出来的  
+// 使用接口查询一次所有信息
+var json = JSON.parse(localStorage.getItem("json"));
+const token = json && json.data ? json.data.token : null;
+console.log(token);
+const allinfo = ref();
+onMounted(async () => {
+  console.log("here data init");
+  const response = await fetch("http://localhost:4000/api/v1/product/search", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+    },
+    body: JSON.stringify({})
+  })
+    .then(response => {
+      if (!response.ok) {
+        alert("请检查你的登录状态/服务器/网络状态")
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      allinfo.value = data.data.item;
+      console.log(allinfo.value);
+      console.log(allinfo.value.length);
+      // 测试成功
+    });
+
+  //增加商品信息
+  for (var i = 0; i < cartinfo.length; i++) {
+    for (var j = 0; j < allinfo.value.length; j++) {
+      if (cartinfo[i].key == j) {
+        showidcnt.value++;
+        cart.push({
+          id: showidcnt.value,
+          name: allinfo.value[j].name,
+          price: allinfo.value[j].price,
+          quantity: cartinfo[i].cnt,
+          image: allinfo.value[i].imgPath
+        })
+      }
+    }
+  }
+  if (cartinfo.length == 0) {
+    alert("请添加商品");
+  }
+});
+// ok获取所有信息成功
+
+const totalprice = computed(() => {
   return cart.reduce((total, item) => total + item.price * item.quantity, 0);
 });
 // 创建计算属性
 
 function increaseQuantity(item) {
   item.quantity++;
+  // // console.log(item.name); // 用name检索一下：实现同时修改cartinfo的值
+  // for (var j = 0; j < allinfo.value.length; j++) {
+  //   if (allinfo.value[j].name == item.name) {
+  //     // console.log("here test"); // 测试成功
+  //     // console.log(j);
+  //     for (var i = 0; i < cartinfo.length; i++) {
+  //       if (cartinfo[i].key == j) {
+  //         cartinfo[i].cnt++;
+  //         break;
+  //         // 这边信息修改成功：但是没有同步
+  //       }
+  //     }
+  //   }  
+  // }
+  // 本想双边同时计数但是工作量太大了：所以主页传入的数量就是1就行：这边实现计数
   animateItem(item);
 }
 
@@ -26,6 +100,7 @@ function decreaseQuantity(item) {
 // 调用动画
 
 function removeItem(item) {
+  // console.log(item.name );  // 双边实现删除也很麻烦：那就返回和结算的时候自动清除购物车tocartinfo就行
   const index = cart.findIndex(i => i.id === item.id);
   if (index !== -1) {
     cart.splice(index, 1);
@@ -36,13 +111,14 @@ function removeItem(item) {
 
 
 function checkout() {
-  // 创建全局浏览器变量
-  // window.localStorage.setItem("total_price", totalPrice.value);
-
-  // var info = window.localStorage.getItem("total_price");
-  // console.log(info);
-  // 成功实现向结算页面传递总价格（动态）
-  window.location.href = "../../../html/order/order.html";
+  if (cartinfo.length == 0) {
+    alert("请添加商品再进行结算");
+    window.location.href = "../../html/index/index.html";
+  }
+  else {
+    window.localStorage.setItem("totalprice", totalprice.value);
+    window.location.href = "../../../html/order/order.html";
+  }
 }
 // 转移到其他组件处理
 
@@ -59,6 +135,20 @@ function animateItem(item, animationType = 'bounce') {
 function backToIndex() {
   window.location.href = "../../html/index/index.html";
 }
+
+function clearcart() {
+  if (cartinfo.length == 0) {
+    alert("请添加商品之后再清空购物车");
+  }
+  else {
+    let isConfirmed = confirm("将清空购物车，请确认你的操作？");
+    if (isConfirmed) {
+      window.localStorage.removeItem("tocartinfo");
+    }
+  }
+  window.location.href = "../../html/index/index.html";
+}
+
 </script>
 
 <template>
@@ -82,9 +172,12 @@ function backToIndex() {
           </li>
         </ul>
         <div class="total">
-          总计: {{ totalPrice }} 元
+          总计: {{ totalprice }} 元
         </div>
         <button class="checkout-button" @click="checkout">结算</button>
+        <button class="checkout-button" @click="clearcart"
+          style="background-color: greenyellow;margin-top: 30px;">清空购物车</button>
+        <!-- alt+shift上下键实现快速添加一行（同） -->
   </div>
 </template>
 

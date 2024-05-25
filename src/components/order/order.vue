@@ -1,11 +1,6 @@
 <script setup>
 import { reactive, computed, ref } from 'vue';
 
-const orderItems = reactive([
-  { id: 1, name: '商品1', quantity: 2, price: 100, image: 'link_to_image1' },
-  { id: 2, name: '商品2', quantity: 1, price: 200, image: 'link_to_image2' }
-]);
-
 const selectedAddress = reactive({
   name: '张三',
   phone: '13800000000',
@@ -15,23 +10,16 @@ const selectedAddress = reactive({
 const paymentMethods = reactive([
   { id: 'wechat', name: '微信支付' },
   { id: 'alipay', name: '支付宝' },
-  { id: 'credit-card', name: '信用卡' }
 ]);
 
 const selectedPaymentMethod = ref('wechat');
-const invoiceType = ref('个人');
-const invoiceTitle = ref('');
-const invoiceTaxNumber = ref('');
 const orderNote = ref('');
-const shippingFee = ref(10);
-const discount = ref(20);
+const shippingFee = ref(0);
 
-const totalPrice = computed(() => {
-  return orderItems.reduce((total, item) => total + item.price * item.quantity, 0);
-});
+const totalPrice = window.localStorage.getItem("totalprice");
 
 const totalPayable = computed(() => {
-  return totalPrice.value + shippingFee.value - discount.value;
+  return totalPrice;
 });
 
 function addAddress() {
@@ -60,24 +48,10 @@ function backToCart() {
       < 返回 </button>
         <h1>订单结算</h1>
         <div class="order-main">
-          <!-- 订单信息 -->
-          <section class="order-info">
-            <h2>订单商品</h2>
-            <ul>
-              <li v-for="item in orderItems" :key="item.id">
-                <img :src="item.image" alt="product image" />
-                <div>
-                  <p>{{ item.name }}</p>
-                  <p>数量: {{ item.quantity }}</p>
-                  <p>价格: ¥{{ item.price }}</p>
-                </div>
-              </li>
-            </ul>
-          </section>
-
           <!-- 收货地址 -->
           <section class="shipping-address">
-            <h2>收货地址(默认使用第一个地址)</h2>
+            <h2>收货地址</h2>
+            <p>注：(默认使用第一个地址,若要修改请前往编辑地址 )</p>
             <div v-if="selectedAddress">
               <p>{{ selectedAddress.name }} {{ selectedAddress.phone }}</p>
               <p>{{ selectedAddress.address }}</p>
@@ -98,23 +72,6 @@ function backToCart() {
             </div>
           </section>
 
-          <!-- 发票信息 -->
-          <section class="invoice-info">
-            <h2>发票信息</h2>
-            <div>
-              <label>
-                <input type="radio" value="个人" v-model="invoiceType" /> 个人
-              </label>
-              <label>
-                <input type="radio" value="公司" v-model="invoiceType" /> 公司
-              </label>
-            </div>
-            <div v-if="invoiceType === '公司'">
-              <input type="text" v-model="invoiceTitle" placeholder="发票抬头" />
-              <input type="text" v-model="invoiceTaxNumber" placeholder="税号" />
-            </div>
-          </section>
-
           <!-- 订单备注 -->
           <section class="order-note">
             <h2>订单备注</h2>
@@ -126,7 +83,6 @@ function backToCart() {
             <h2>价格详情</h2>
             <p>商品总价: ¥{{ totalPrice }}</p>
             <p>运费: ¥{{ shippingFee }}</p>
-            <p>优惠: ¥{{ discount }}</p>
             <p>应付总额: ¥{{ totalPayable }}</p>
           </section>
 
@@ -139,6 +95,5 @@ function backToCart() {
 <style scoped>
 @import url(../../CSS/order/order.css);
 /* 这里备注一下 导入css文件需要使用@符号 */
-
 </style>
 <!-- 使用导入的方式将代码简化实现更方便的询问ai了 -->
