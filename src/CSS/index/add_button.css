@@ -1,0 +1,40 @@
+.floor-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-to-cart-button {
+  display: block;
+  top: 10%;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #ff4500;
+  /* background-color: pink; */
+  /* 修改颜色不生效？ */
+  color: white;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  /* 距离底部10px */
+  left: 50%;
+  /* 水平居中 */
+  transform: translateX(-50%);
+  /* 水平居中修正 */
+}
+
+.floor-item:hover .add-to-cart-button {
+  display: block;
+}
+
+.add-to-cart-button:hover {
+  background-color: pink;
+  transform: scale(1.05);
+}
+
+.add-to-cart-button:hover {
+  transform: scale(0.95);
+}
+/* 失效：添加无用 */
