@@ -4,11 +4,17 @@ import { inject } from 'vue'
 
 const ifsearch = inject('ifsearch');
 const searchwhat = inject('searchwhat');
+const allproduct = JSON.parse(window.localStorage.getItem("allproduct"));
+// ok 这边成功接收到了所有商品的信息
 // console.log(typeof (searchwhat));
 // console.log(searchwhat);
 // 信息调试
 const closeWindow = () => {
-  // console.log(searchwhat.value);
+  console.log("here is son's item");
+  // console.log(allproduct.data.total);
+  // console.log(typeof (allproduct));
+  console.log(allproduct.data.item[1]);
+  // 还是这种原生格式使用起来比较方便：现在就是信息检索
   // 放在外面反而打印不出来：那么就关闭的时候打印一次就行
   ifsearch.value = false;
 };
@@ -27,6 +33,7 @@ const closeWindow = () => {
   <div v-if="ifsearch" class="search">
     <div class="showinfo">
       {{ searchwhat }}
+      {{ allproduct }}
     </div>
     <button class="close" @click="closeWindow">关闭</button>
   </div>

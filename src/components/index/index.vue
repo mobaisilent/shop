@@ -58,8 +58,12 @@ function judgelogin(event) {
 }
 
 
+
 console.log(localStorage.getItem("json")); //依旧是json数据块
 var json = JSON.parse(localStorage.getItem("json")); //依旧是将json数据块转为json格式
+
+
+// 下面这段是为search服务
 const token = json.data.token;
 console.log("here is token for search");
 console.log(token); // 依旧是我最常用的打印token数据  
@@ -79,11 +83,29 @@ function searchbutton() {
       // 这里注意Bearer后面有一个空格：否则错误
       // ok 接收到响应数据：只是尚未处理罢了
     },
+    body: JSON.stringify({
+    })
   })
+    .then(response => {
+      if (!response.ok) {
+        alert("请检查你的服务器/网络状态")
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      // ok查询成功：传入一个空的body的JSON就行了
+      var json = JSON.stringify(data);
+      // console.log(json);
+      // 这里再迟调到到需要主动将传出去的数据JSON化，不然就是object，调试数据浪费时间
+      window.localStorage.setItem("allproduct", json);
+    });
+  // 我勒个豆：这边局部格式不方便传递就传递整个json就好了：省的将json拆开之后内容就不是json格式了：传递object不方便使用
 }
 provide("ifsearch", ifsearch);
 provide("searchwhat", searchwhat);
-// 向下传递搜索的值是what
+// provide("item", item);
 // 这里标注一下：响应式变量的传递时不需要使用value的：只是再某些二是直接修改值的时候需要使用.value：
 // 使用插值表达式的就不需要使用.value
 </script>
@@ -115,9 +137,10 @@ provide("searchwhat", searchwhat);
             购物车(<span class=" cart-count">0</span>)
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <-- <li class="nav-item">
           <a class="link" href="../../../html/order/order.html" @click="judgelogin">我的订单</a>
-        </li>
+          </li>
+          / -->
         <li class="nav-item">
           <a class="link" href="../../../html/user/address.html" @click="judgelogin">我的地址</a>
         </li>
