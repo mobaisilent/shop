@@ -117,7 +117,9 @@ provide("searchwhat", searchwhat);
 
 // 下面开始实现添加购物车功能了，主要是定位系统（id） ：重点是商品id不是从1开始而是从3开始的
 // ok使用onmouseenter实现了动态的id切换（进入某个框架的时候切换）
-const curid = ref(0);
+const curid = ref(0); //处理哪个id
+const cartcnt = ref(0); //处理显示的购物车数量
+const cartinfo = ref([]); //处理向购物车传递的信息
 // 使用响应式变量失败就使用全局变量吧：：纠正，还是响应式变量：要用分号
 // provide("id", id);
 // 将id向（添加购物车）按钮提供id值：：注：provide失败
@@ -142,9 +144,29 @@ const curid = ref(0);
 function addtocart() {
   // 修改失败的原因是因为 id='1' 默认是字符1需要转为数字 let numId = parseInt(id); 
   console.log("here in function to show the ref id");
+  // console.log(typeof (curid.value));  number类型就更方便了
   console.log(curid.value);
   // ok抓取id实现
+  // 修改 就不用具体的id实现了，用下标实现吧
+  cartcnt.value++;
+  console.log(cartinfo);
+  let found = false;
+  for (let i = 0; i < cartinfo.value.length; i++) {
+    if (cartinfo.value[i].key === curid.value) {
+      cartinfo.value[i].cnt++;
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    cartinfo.value.push({ key: curid.value, cnt: 1 });
+  }
+  console.log(cartinfo.value);
+  // 加入和修改值成功：将打印信息展开看看就知道了：然后向购物车传入该响应式变量
 }
+provide("cartinfo", cartinfo);
+// 向购物车传入购物信息
+
 </script>
 <!-- 直接复制模块竟然出错了 -->
 
@@ -171,7 +193,8 @@ function addtocart() {
         <li class="nav-item">
           <a class="link" href="./cart.html" @click="judgelogin">
             <i class="fa fa-shopping-cart"></i>
-            购物车(<span class=" cart-count">0</span>)
+            购物车({{ cartcnt }})
+            <!-- 显示总数量吧 -->
           </a>
         </li>
         <!-- <-- <li class="nav-item">
@@ -217,7 +240,7 @@ function addtocart() {
             <span class="floor-text">双开门冰箱</span>
             <img class="floor-img" src="../../../public/image/floor/1.jpg" alt="双开门冰箱" />
           </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 1; addtocart();">添加至购物车</button>
+          <button class="add-to-cart-button" id="tocart" @click="curid = 0; addtocart();">添加至购物车</button>
           <!-- md终于成功了：：原来是要用分号 -->
         </li>
         <li class="floor-item" id="2">
@@ -225,28 +248,28 @@ function addtocart() {
             <span class="floor-text">电视</span>
             <img class="floor-img" src="../../../public/image/floor/2.jpg" alt="电视" />
           </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 2; addtocart();">添加至购物车</button>
+          <button class="add-to-cart-button" id="tocart" @click="curid = 1; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="3">
           <a href="./list.html?categoryId=100008">
             <span class="floor-text">洗衣机</span>
             <img class="floor-img" src="../../../public/image/floor/3.jpg" alt="洗衣机" />
           </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 3; addtocart();">添加至购物车</button>
+          <button class="add-to-cart-button" id="tocart" @click="curid = 2; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="4">
           <a href="./list.html?categoryId=100009">
             <span class="floor-text">空调</span>
             <img class="floor-img" src="../../../public/image/floor/4.jpg" alt="空调" />
           </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 4; addtocart();">添加至购物车</button>
+          <button class="add-to-cart-button" id="tocart" @click="curid = 3; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="5">
           <a href="./list.html?categoryId=100010">
             <span class="floor-text">热水器</span>
             <img class="floor-img" src="../../../public/image/floor/5.jpg" alt="热水器" />
           </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 5; addtocart();">添加至购物车</button>
+          <button class="add-to-cart-button" id="tocart" @click="curid = 4; addtocart();">添加至购物车</button>
         </li>
       </ul>
     </div>
@@ -258,35 +281,35 @@ function addtocart() {
             <span class="floor-text">笔记本电脑</span>
             <img class="floor-img" src="../../../public/image/floor/6.jpg" alt="笔记本电脑" />
           </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 6; addtocart();">添加至购物车</button>
+          <button class="add-to-cart-button" id="tocart" @click="curid = 5; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="7">
           <a href="./list.html?categoryId=100012">
             <span class="floor-text">手机</span>
             <img class="floor-img" src="../../../public/image/floor/7.jpg" alt="手机" />
           </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 7; addtocart();">添加至购物车</button>
+          <button class="add-to-cart-button" id="tocart" @click="curid = 6; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="8">
           <a href="./list.html?categoryId=100013">
             <span class="floor-text">平板电脑</span>
             <img class="floor-img" src="../../../public/image/floor/8.jpg" alt="平板电脑" />
           </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 8; addtocart();">添加至购物车</button>
+          <button class="add-to-cart-button" id="tocart" @click="curid = 7; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="9">
           <a href="./list.html?categoryId=100014">
             <span class="floor-text">数码相机</span>
             <img class="floor-img" src="../../../public/image/floor/9.jpg" alt="数码相机" />
           </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 9; addtocart();">添加至购物车</button>
+          <button class="add-to-cart-button" id="tocart" @click="curid = 8; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="10">
           <a href="./list.html?categoryId=100015">
             <span class="floor-text">3C配件</span>
             <img class="floor-img" src="../../../public/image/floor/10.jpg" alt="3C配件" />
           </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 10; addtocart();">添加至购物车</button>
+          <button class="add-to-cart-button" id="tocart" @click="curid = 9; addtocart();">添加至购物车</button>
         </li>
       </ul>
     </div>
@@ -319,12 +342,6 @@ function addtocart() {
 <style>
 @import "../../CSS/index/index_multi.css";
 @import "../../CSS/index/index_anime.css";
-
-/* 临时界面：尝试父级能否修改子级 */
-.add-to-cart-button {
-  /* background-color: pink; */
-  /* ok修改成功：那么在这里修改button的效果应该也行了：主要是子组件渲染成了父组件的一部分了 */
-}
 
 .add-to-cart-button:active {
   left: 25%;
