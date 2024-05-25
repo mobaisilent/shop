@@ -9,7 +9,7 @@ const selectedAddress = reactive({
 
 const paymentMethods = reactive([
   { id: 'wechat', name: '微信支付' },
-  { id: 'alipay', name: '支付宝' },
+  { id: 'alipay', name: '支付宝' }, 
 ]);
 
 const selectedPaymentMethod = ref('wechat');
@@ -22,19 +22,18 @@ const totalPayable = computed(() => {
   return totalPrice;
 });
 
-function addAddress() {
-  // 跳转到添加地址页面或弹出添加地址表单
-  alert('添加地址功能尚未实现');
-}
-
 function editAddress() {
   // 跳转到编辑地址页面或弹出编辑地址表单
   alert('编辑地址功能尚未实现');
 }
 
+
 function submitOrder() {
   // 提交订单逻辑
-  alert('订单已提交');
+  window.localStorage.setItem("paymethod", selectedPaymentMethod.value);
+  alert('订单已提交，点击确认前往付款页面');
+  window.location.href = '../../html/pay/pay.html';
+
 }
 
 function backToCart() {
