@@ -61,11 +61,15 @@
 /* 下面准备实现添加至购物车按钮 */
 .add-to-cart-button {
   display: none;
+  /* 通过css实现隐藏效果 */
+  /* 鼠标拖进去的时候display设置为block即可：如下面所示 */
 }
 
 .floor-item:hover .add-to-cart-button {
   display: block;
 }
+/* 当依托组件hover时修改display样式实现展示 */
+/* 也就是根本不需要用js就可以实现 */
 
 .add-to-cart-button {
   font-family: YouYuan;
