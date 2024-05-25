@@ -63,10 +63,13 @@ console.log(localStorage.getItem("json")); //依旧是json数据块
 var json = JSON.parse(localStorage.getItem("json")); //依旧是将json数据块转为json格式
 
 
-// 下面这段是为search服务
-const token = json.data.token;
+// 下面这段是为search服务  
+// 需要 先检测token是否存在：不然就报错
+if (json) {
+  const token = json.data.token;
+}
 console.log("here is token for search");
-console.log(token); // 依旧是我最常用的打印token数据  
+// console.log(token); // 依旧是我最常用的打印token数据  
 const ifsearch = ref(false);
 const searchwhat = ref('');
 function searchbutton() {
