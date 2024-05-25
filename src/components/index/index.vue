@@ -154,9 +154,11 @@ provide("searchwhat", searchwhat);
       <a class="logo" href="./index.html">SHOP</a>
       <search v-show="ifsearch" />
       <div class="search-con">
-        <input class="search-input" id="search-input" placeholder="请输入商品名称" v-model="searchwhat" />
+        <input class="search-input" id="search-input" placeholder="请输入商品名称" v-model="searchwhat"
+          @keyup.enter="searchbutton" />
         <button class="btn search-btn" id="search-btn" @click="searchbutton">搜索</button>
       </div>
+
     </div>
   </div>
   <!--header-->

@@ -27,8 +27,6 @@ const closeWindow = () => {
 
 
 function ifbutton() {
-  clickbutton.value = !clickbutton.value;
-  console.log("here is son's item");
   // console.log(allproduct.data.total);
   // console.log(typeof (allproduct));
   // console.log(allproduct.data.item[1].name);
@@ -38,6 +36,7 @@ function ifbutton() {
     alert("请输入搜索内容");
   }
   else {
+    clickbutton.value = !clickbutton.value;
     var i;
     for (i = 0; i < allproduct.data.item.length; i++) {
       if (searchwhat.value == allproduct.data.item[i].name) {
