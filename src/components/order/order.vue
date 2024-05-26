@@ -1,12 +1,47 @@
 <script setup>
-import { reactive, computed, ref } from 'vue';
-
-window
+import { reactive, computed, ref, onMounted } from 'vue';
 
 const selectedAddress = reactive({
-  name: '',
-  address: ''
+  name: 'userID : ',
+  address: 'address : '
 });
+
+const json = localStorage.getItem('json');
+const token = JSON.parse(json)?.data?.token;
+const len = ref('0');
+let items = [];
+
+
+onMounted(async () => {
+  try {
+    const response = await fetch('http://localhost:4000/api/v1/address', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    items = data.data.item || [];
+    if (items.length > 0) {
+      console.log(items[0]);
+      selectedAddress.name += items[0].userID;
+      selectedAddress.address += items[0].address;
+    }
+    else {
+      selectedAddress.name += "无信息";
+      selectedAddress.address += "无地址";
+    }
+  } catch (error) {
+    alert('地址响应失败，请检查服务器/你的网络状态');
+    console.error('There has been a problem with your fetch operation:', error);
+  }
+});
+
+
 
 const paymentMethods = reactive([
   { id: 'wechat', name: '微信支付' },
