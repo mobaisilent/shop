@@ -1,0 +1,18 @@
+.container {
+  z-index: 101;
+  position: fixed;
+  width: 100%;
+  margin-right: 0px;
+  margin-left: 0px;
+  text-align: center;
+  left: 40%;
+  /* transform: translate(-50%); */
+}
+
+.bigimg {
+  z-index: 100;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
