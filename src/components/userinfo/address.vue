@@ -159,7 +159,16 @@ function changeaddress() {
 }
 
 function backfunc() {
-  window.location.href = "../index/index.html";
+  const backwhere = window.localStorage.getItem("backwhere");
+  console.log(backwhere);
+  // alert("here");
+  if (backwhere) {
+    window.localStorage.removeItem("backwhere");
+    window.location.href = "../order/order.html";
+  }
+  else {
+    window.location.href = "../index/index.html";
+  }
 }
 </script>
 

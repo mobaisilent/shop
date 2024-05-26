@@ -1,15 +1,16 @@
 <script setup>
 import { reactive, computed, ref } from 'vue';
 
+window
+
 const selectedAddress = reactive({
-  name: '张三',
-  phone: '13800000000',
-  address: '北京市朝阳区某街道某小区'
+  name: '',
+  address: ''
 });
 
 const paymentMethods = reactive([
   { id: 'wechat', name: '微信支付' },
-  { id: 'alipay', name: '支付宝' }, 
+  { id: 'alipay', name: '支付宝' },
 ]);
 
 const selectedPaymentMethod = ref('wechat');
@@ -24,7 +25,9 @@ const totalPayable = computed(() => {
 
 function editAddress() {
   // 跳转到编辑地址页面或弹出编辑地址表单
-  alert('编辑地址功能尚未实现');
+  // 先设置一个全局变量方便编辑地址页面的跳转
+  window.localStorage.setItem("backwhere", true);
+  window.location.href = "../user/address.html"
 }
 
 
