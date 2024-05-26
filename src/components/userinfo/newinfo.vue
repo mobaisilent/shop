@@ -51,7 +51,7 @@ function handleSubmit(event) {
       })
       .then(data => {
         console.log(data);
-
+        alert("修改昵称成功");
       })
       .catch(error => {
         console.log(error);
