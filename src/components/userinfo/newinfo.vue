@@ -107,7 +107,7 @@ const uploadFile = async () => {
     })
     .then(data => {
       console.log(data);
-
+      alert("上传成功：重新登录展示新头像")
     })
     .catch(error => {
       console.log(error);
