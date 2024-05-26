@@ -1,0 +1,16 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "688576",
+      "name": "置顶",
+      "font_class": "zhiding",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    }
+  ]
+}

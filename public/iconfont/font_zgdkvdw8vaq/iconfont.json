@@ -1,0 +1,16 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "24849347",
+      "name": "主题色",
+      "font_class": "zhutise",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    }
+  ]
+}

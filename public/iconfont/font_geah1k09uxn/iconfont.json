@@ -1,0 +1,16 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "577348",
+      "name": "留言",
+      "font_class": "liuyan",
+      "unicode": "e744",
+      "unicode_decimal": 59204
+    }
+  ]
+}

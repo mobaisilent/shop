@@ -6,6 +6,7 @@ import search from './search.vue';
 import { provide } from 'vue';
 import { nextTick } from 'vue';
 import { stringifyQuery } from 'vue-router';
+import "../../JS/index/toup";
 
 
 // 位置要正确：否则报错
@@ -220,118 +221,120 @@ provide("cartinfo", cartinfo);
     </div>
   </div>
   <!--nav-->
-  <!--header-->
-  <div class="header">
+  <div id="boddy">
+    <!--header-->
+    <div class="header">
+      <div class="w">
+        <a class="logo" href="./index.html">SHOP</a>
+        <search v-show="ifsearch" />
+        <div class="search-con">
+          <input class="search-input" id="search-input" placeholder="请输入商品名称" v-model="searchwhat"
+            @keyup.enter="searchbutton" />
+          <button class="btn search-btn" id="search-btn" @click="searchbutton">搜索</button>
+        </div>
+
+      </div>
+    </div>
+    <!--header-->
+    <!--index-->
     <div class="w">
-      <a class="logo" href="./index.html">SHOP</a>
-      <search v-show="ifsearch" />
-      <div class="search-con">
-        <input class="search-input" id="search-input" placeholder="请输入商品名称" v-model="searchwhat"
-          @keyup.enter="searchbutton" />
-        <button class="btn search-btn" id="search-btn" @click="searchbutton">搜索</button>
+      <div class="banner-con" style="margin-left: 135px;">
+        <!--<div class="loading"></div>-->
+        <ul>
+          <li><a href="" title=""><img class="banner-img" src="../../../../public/logo/logo.png" alt=""></a> </li>
+        </ul>
+      </div>
+    </div>
+    <div class="w imganime">
+      <div class="floor-wrap">
+        <h1 class="floor-title">F1 家用电器</h1>
+        <ul class="floor-list">
+          <li class="floor-item" id="1">
+            <a>
+              <span class="floor-text">双开门冰箱</span>
+              <img class="floor-img" src="../../../public/image/floor/1.jpg" alt="双开门冰箱" />
+            </a>
+            <button class="add-to-cart-button" id="tocart" @click="curid = 0; addtocart();">添加至购物车</button>
+            <!-- md终于成功了：：原来是要用分号 -->
+          </li>
+          <li class="floor-item" id="2">
+            <a>
+              <span class="floor-text">电视</span>
+              <img class="floor-img" src="../../../public/image/floor/2.jpg" alt="电视" />
+            </a>
+            <button class="add-to-cart-button" id="tocart" @click="curid = 1; addtocart();">添加至购物车</button>
+          </li>
+          <li class="floor-item" id="3">
+            <a>
+              <span class="floor-text">洗衣机</span>
+              <img class="floor-img" src="../../../public/image/floor/3.jpg" alt="洗衣机" />
+            </a>
+            <button class="add-to-cart-button" id="tocart" @click="curid = 2; addtocart();">添加至购物车</button>
+          </li>
+          <li class="floor-item" id="4">
+            <a>
+              <span class="floor-text">空调</span>
+              <img class="floor-img" src="../../../public/image/floor/4.jpg" alt="空调" />
+            </a>
+            <button class="add-to-cart-button" id="tocart" @click="curid = 3; addtocart();">添加至购物车</button>
+          </li>
+          <li class="floor-item" id="5">
+            <a>
+              <span class="floor-text">热水器</span>
+              <img class="floor-img" src="../../../public/image/floor/5.jpg" alt="热水器" />
+            </a>
+            <button class="add-to-cart-button" id="tocart" @click="curid = 4; addtocart();">添加至购物车</button>
+          </li>
+        </ul>
+      </div>
+      <div class="floor-wrap">
+        <h1 class="floor-title">F2 数码3C</h1>
+        <ul class="floor-list">
+          <li class="floor-item" id="6">
+            <a>
+              <span class="floor-text">笔记本电脑</span>
+              <img class="floor-img" src="../../../public/image/floor/6.jpg" alt="笔记本电脑" />
+            </a>
+            <button class="add-to-cart-button" id="tocart" @click="curid = 5; addtocart();">添加至购物车</button>
+          </li>
+          <li class="floor-item" id="7">
+            <a>
+              <span class="floor-text">手机</span>
+              <img class="floor-img" src="../../../public/image/floor/7.jpg" alt="手机" />
+            </a>
+            <button class="add-to-cart-button" id="tocart" @click="curid = 6; addtocart();">添加至购物车</button>
+          </li>
+          <li class="floor-item" id="8">
+            <a>
+              <span class="floor-text">平板电脑</span>
+              <img class="floor-img" src="../../../public/image/floor/8.jpg" alt="平板电脑" />
+            </a>
+            <button class="add-to-cart-button" id="tocart" @click="curid = 7; addtocart();">添加至购物车</button>
+          </li>
+          <li class="floor-item" id="9">
+            <a>
+              <span class="floor-text">数码相机</span>
+              <img class="floor-img" src="../../../public/image/floor/9.jpg" alt="数码相机" />
+            </a>
+            <button class="add-to-cart-button" id="tocart" @click="curid = 8; addtocart();">添加至购物车</button>
+          </li>
+          <li class="floor-item" id="10">
+            <a>
+              <span class="floor-text">3C配件</span>
+              <img class="floor-img" src="../../../public/image/floor/10.jpg" alt="3C配件" />
+            </a>
+            <button class="add-to-cart-button" id="tocart" @click="curid = 9; addtocart();">添加至购物车</button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bigimg"></div><!--遮罩层-->
+
+      <div class="anime1" id="animatedElement">
+        <p>其他功能正在完善中，敬请期待...</p>
       </div>
 
     </div>
-  </div>
-  <!--header-->
-  <!--index-->
-  <div class="w">
-    <div class="banner-con" style="margin-left: 135px;">
-      <!--<div class="loading"></div>-->
-      <ul>
-        <li><a href="" title=""><img class="banner-img" src="../../../../public/logo/logo.png" alt=""></a> </li>
-      </ul>
-    </div>
-  </div>
-  <div class="w imganime">
-    <div class="floor-wrap">
-      <h1 class="floor-title">F1 家用电器</h1>
-      <ul class="floor-list">
-        <li class="floor-item" id="1">
-          <a>
-            <span class="floor-text">双开门冰箱</span>
-            <img class="floor-img" src="../../../public/image/floor/1.jpg" alt="双开门冰箱" />
-          </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 0; addtocart();">添加至购物车</button>
-          <!-- md终于成功了：：原来是要用分号 -->
-        </li>
-        <li class="floor-item" id="2">
-          <a>
-            <span class="floor-text">电视</span>
-            <img class="floor-img" src="../../../public/image/floor/2.jpg" alt="电视" />
-          </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 1; addtocart();">添加至购物车</button>
-        </li>
-        <li class="floor-item" id="3">
-          <a>
-            <span class="floor-text">洗衣机</span>
-            <img class="floor-img" src="../../../public/image/floor/3.jpg" alt="洗衣机" />
-          </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 2; addtocart();">添加至购物车</button>
-        </li>
-        <li class="floor-item" id="4">
-          <a>
-            <span class="floor-text">空调</span>
-            <img class="floor-img" src="../../../public/image/floor/4.jpg" alt="空调" />
-          </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 3; addtocart();">添加至购物车</button>
-        </li>
-        <li class="floor-item" id="5">
-          <a>
-            <span class="floor-text">热水器</span>
-            <img class="floor-img" src="../../../public/image/floor/5.jpg" alt="热水器" />
-          </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 4; addtocart();">添加至购物车</button>
-        </li>
-      </ul>
-    </div>
-    <div class="floor-wrap">
-      <h1 class="floor-title">F2 数码3C</h1>
-      <ul class="floor-list">
-        <li class="floor-item" id="6">
-          <a>
-            <span class="floor-text">笔记本电脑</span>
-            <img class="floor-img" src="../../../public/image/floor/6.jpg" alt="笔记本电脑" />
-          </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 5; addtocart();">添加至购物车</button>
-        </li>
-        <li class="floor-item" id="7">
-          <a>
-            <span class="floor-text">手机</span>
-            <img class="floor-img" src="../../../public/image/floor/7.jpg" alt="手机" />
-          </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 6; addtocart();">添加至购物车</button>
-        </li>
-        <li class="floor-item" id="8">
-          <a>
-            <span class="floor-text">平板电脑</span>
-            <img class="floor-img" src="../../../public/image/floor/8.jpg" alt="平板电脑" />
-          </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 7; addtocart();">添加至购物车</button>
-        </li>
-        <li class="floor-item" id="9">
-          <a>
-            <span class="floor-text">数码相机</span>
-            <img class="floor-img" src="../../../public/image/floor/9.jpg" alt="数码相机" />
-          </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 8; addtocart();">添加至购物车</button>
-        </li>
-        <li class="floor-item" id="10">
-          <a>
-            <span class="floor-text">3C配件</span>
-            <img class="floor-img" src="../../../public/image/floor/10.jpg" alt="3C配件" />
-          </a>
-          <button class="add-to-cart-button" id="tocart" @click="curid = 9; addtocart();">添加至购物车</button>
-        </li>
-      </ul>
-    </div>
-
-    <div class="bigimg"></div><!--遮罩层-->
-
-    <div class="anime1" id="animatedElement">
-      <p>其他功能正在完善中，敬请期待...</p>
-    </div>
-
   </div>
 
   <!--index-->
@@ -339,10 +342,11 @@ provide("cartinfo", cartinfo);
   <div class=" footer">
     <div class="w">
       <div class="links">
-        <a class="link" href="http://www.imooc.com" target="_blank">慕课网</a> |
-        <a class="link" href="https://www.baidu.com" target="_blank">百度</a> |
         <a class="link" href="https://www.taobao.com" target="_blank">淘宝</a> |
-        <a class="link" href="https://www.zhihu.com" target="_blank">知乎</a>
+        <a class="link" href="https://m.pinduoduo.com/" target="_blank">拼多多</a> |
+        <a class="link" href="https://m.jd.com/" target="_blank">京东</a> |
+        <a class="link" href="https://www.zhihu.com" target="_blank">知乎</a> |
+        <a class="link" href="https://www.baidu.com" target="_blank">百度</a> |
       </div>
       <p class="copyright">
         Copyright © 2024 mobai All Right Reserved
@@ -350,12 +354,20 @@ provide("cartinfo", cartinfo);
     </div>
   </div>
   <!--footer-->
+
+
+  <!-- other function -->
+  <div class="toup" id="toup">
+    <span class="iconfont icon-zhutise" id="changecolor"></span>
+    <span class="iconfont icon-zhiding" id="totop"></span>
+  </div>
 </template>
 
 <style>
 @import "../../CSS/index/index_multi.css";
 @import "../../CSS/index/index_anime.css";
 @import "../../CSS/index/img_enlarge.css";
+@import "../../CSS/index/toup.css";
 
 .add-to-cart-button:active {
   left: 25%;
