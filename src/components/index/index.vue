@@ -247,7 +247,7 @@ provide("cartinfo", cartinfo);
       <h1 class="floor-title">F1 家用电器</h1>
       <ul class="floor-list">
         <li class="floor-item" id="1">
-          <a href="./list.html?categoryId=100006">
+          <a href="">
             <span class="floor-text">双开门冰箱</span>
             <img class="floor-img" src="../../../public/image/floor/1.jpg" alt="双开门冰箱" />
           </a>
@@ -255,28 +255,28 @@ provide("cartinfo", cartinfo);
           <!-- md终于成功了：：原来是要用分号 -->
         </li>
         <li class="floor-item" id="2">
-          <a href="./list.html?categoryId=100007">
+          <a href="">
             <span class="floor-text">电视</span>
             <img class="floor-img" src="../../../public/image/floor/2.jpg" alt="电视" />
           </a>
           <button class="add-to-cart-button" id="tocart" @click="curid = 1; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="3">
-          <a href="./list.html?categoryId=100008">
+          <a href="">
             <span class="floor-text">洗衣机</span>
             <img class="floor-img" src="../../../public/image/floor/3.jpg" alt="洗衣机" />
           </a>
           <button class="add-to-cart-button" id="tocart" @click="curid = 2; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="4">
-          <a href="./list.html?categoryId=100009">
+          <a href="">
             <span class="floor-text">空调</span>
             <img class="floor-img" src="../../../public/image/floor/4.jpg" alt="空调" />
           </a>
           <button class="add-to-cart-button" id="tocart" @click="curid = 3; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="5">
-          <a href="./list.html?categoryId=100010">
+          <a href="">
             <span class="floor-text">热水器</span>
             <img class="floor-img" src="../../../public/image/floor/5.jpg" alt="热水器" />
           </a>
@@ -288,35 +288,35 @@ provide("cartinfo", cartinfo);
       <h1 class="floor-title">F2 数码3C</h1>
       <ul class="floor-list">
         <li class="floor-item" id="6">
-          <a href="./list.html?categoryId=100011">
+          <a href="">
             <span class="floor-text">笔记本电脑</span>
             <img class="floor-img" src="../../../public/image/floor/6.jpg" alt="笔记本电脑" />
           </a>
           <button class="add-to-cart-button" id="tocart" @click="curid = 5; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="7">
-          <a href="./list.html?categoryId=100012">
+          <a href="">
             <span class="floor-text">手机</span>
             <img class="floor-img" src="../../../public/image/floor/7.jpg" alt="手机" />
           </a>
           <button class="add-to-cart-button" id="tocart" @click="curid = 6; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="8">
-          <a href="./list.html?categoryId=100013">
+          <a href="">
             <span class="floor-text">平板电脑</span>
             <img class="floor-img" src="../../../public/image/floor/8.jpg" alt="平板电脑" />
           </a>
           <button class="add-to-cart-button" id="tocart" @click="curid = 7; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="9">
-          <a href="./list.html?categoryId=100014">
+          <a href="">
             <span class="floor-text">数码相机</span>
             <img class="floor-img" src="../../../public/image/floor/9.jpg" alt="数码相机" />
           </a>
           <button class="add-to-cart-button" id="tocart" @click="curid = 8; addtocart();">添加至购物车</button>
         </li>
         <li class="floor-item" id="10">
-          <a href="./list.html?categoryId=100015">
+          <a href="">
             <span class="floor-text">3C配件</span>
             <img class="floor-img" src="../../../public/image/floor/10.jpg" alt="3C配件" />
           </a>
