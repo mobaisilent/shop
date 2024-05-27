@@ -7,7 +7,7 @@ import { provide } from 'vue';
 import { nextTick } from 'vue';
 import { stringifyQuery } from 'vue-router';
 import "../../JS/index/toup";
-
+import seckill from '../seckill/seckill.vue';
 
 // 位置要正确：否则报错
 // var json = JSON.parse(localStorage.getItem("json"));
@@ -238,6 +238,7 @@ provide("cartinfo", cartinfo);
     <!--header-->
     <!--index-->
     <div class="w">
+      <seckill />
       <div class="banner-con" style="margin-left: 135px;">
         <!--<div class="loading"></div>-->
         <ul>
