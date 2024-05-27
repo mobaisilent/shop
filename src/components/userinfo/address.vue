@@ -236,6 +236,7 @@ body {
   height: 180px;
   background-color: #ffffff;
   text-align: center;
+  border: 2px solid #72bbe6;
 }
 
 .address-container {
