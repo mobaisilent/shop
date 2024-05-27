@@ -4,8 +4,8 @@ import { ref } from 'vue';
 const paymethod = window.localStorage.getItem("paymethod");
 console.log(paymethod);
 const method = ref('');
-const url1 = "https://images.mobaisama.top/i/2024/05/26/000518.jpg";
-const url2 = "https://images.mobaisama.top/i/2024/05/26/000541.png";
+const url1 = "https://img.nxtf.net/ScJpc7.jpg";
+const url2 = "https://img.nxtf.net/lTMyJ5.png";
 if (paymethod == 'alipay') {
   method.value = url1;
 } else {

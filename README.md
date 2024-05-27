@@ -17,27 +17,92 @@
 
 通过alert警告框实现
 
-![laertinputpassword](C:\Users\27892\Desktop\shop\README.assets\NwttNJ.png)
+![laertinputpassword](https://img.nxtf.net/NwttNJ.png)
 
 #### 输入密码警告框
 
-![alertpassworderror](C:\Users\27892\Desktop\shop\README.assets\neD3wc.png)
+![alertpassworderror](https://img.nxtf.net/L5FTKi.png)
 
 #### 正确登录
 
 正确登录会跳出加载动画
 
-![image-20240527142102763](C:\Users\27892\Desktop\shop\README.assets\image-20240527142136432.png)
+![image-20240527142102763](C:\Users\27892\Desktop\shop\README.assets\image-20240527152657557.png)
 
 #### 允许跳过登录
 
-![image-20240527135731950](C:\Users\27892\Desktop\shop\README.assets\image-20240527142234692-1716790964944-16.png)
+![image-20240527135731950](C:\Users\27892\Desktop\shop\README.assets\image-20240527152730667.png)
 
 ### 忘记密码界面
 
 > 暂不支持改密功能
 
-![image-20240527135839059](https://img.nxtf.net/DFP6tW.png)
+![image-20240527135839059](https://img.nxtf.net/fJxCUI.png)
 
 ### 注册功能
 
+![adduser](https://img.nxtf.net/sPeX7B.png)
+
+## 主页
+
+主页预览(上部）：
+
+![https://img.nxtf.net/x7Te0I.png](https://img.nxtf.net/P5n9Hd.png)
+
+主页预览（下部）：
+
+![index2](https://img.nxtf.net/x7Te0I.png)
+
+### 	图片放大展示功能
+
+点击图片进行居中放大展示：
+
+![enlargeimg](https://img.nxtf.net/q2TCi5.png)
+
+### 鼠标指针放入某个商品区域块实现”添加到购物车“按钮自动浮现
+
+![addbuton](https://img.nxtf.net/3aTU6o.png)
+
+### 图片自动放大并悬浮
+
+![anime1](https://img.nxtf.net/59cpzV.png)
+
+### 动态文字与导航与免责声明
+
+![anime2](https://img.nxtf.net/mjMxHY.png)
+
+### 一键置顶与暗黑模式按键
+
+![anime3](https://img.nxtf.net/MnnDrO.png)
+
+### 暗黑模式
+
+![anime4](https://img.nxtf.net/aqQKhg.png)
+
+### 搜索功能
+
+![search](https://img.nxtf.net/AN0aze.png)
+
+### 添加至购物车
+
+现在对这三件商品添加至购物车
+
+![](https://img.nxtf.net/3rOfoW.png)
+
+同步数据更新
+
+![t1](https://img.nxtf.net/WjKUjJ.png)
+
+## 购物车
+
+对上面添加到购物车的商品的信息展示
+
+![t2](https://img.nxtf.net/cdmTK0.png)
+
+### 结算功能
+
+> 显示的地址是多个地址中的第一个：详情请见 “我的地址” 区块
+
+![t3](https://img.nxtf.net/LzYuEp.png)
+
+> 点击结算默认扣除余额：（实际上不需要付款：请勿随意付款，谨防诈骗）
