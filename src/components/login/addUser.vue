@@ -87,46 +87,53 @@ function handleSubmit(event) {
 // const form = document.querySelector('form');
 // form.addEventListener('submit', handleSubmit);
 // 由于已经绑定@submit="handleSubmit"就不需要额外添加监控器了
+
+function back() {
+  console.log("here");
+  window.location.href = "../../index.html";
+}
 </script>
 
 <template>
   <div class="main">
-    <div class="title">
-      <span>用户注册</span>
-    </div>
+    <button class="back" id="back" @click="back">
+      < 返回</button>
+        <div class="title">
+          <span>用户注册</span>
+        </div>
 
-    <div class="title-msg">
-      <span>请输入新建账户和密码</span>
-    </div>
-    <!-- 注册之后跳转到登录界面 所以这个index还算是合理 -->
-    <form class="login-form" action="../../../html/login/logn.html" method="post" novalidate @submit="handleSubmit">
-      <div class="input-content">
-        <div>
-          <input type="text" autocomplete="off" placeholder="用户名(必填)" name="username" required v-model="name" />
+        <div class="title-msg">
+          <span>请输入新建账户和密码</span>
         </div>
-        <div id="cnamed" class="cnamed">
-          <p id="cname" class="cname" v-if="showcname">{{ checkname }}</p>
-        </div>
-        <div style="margin-top: 10px">
-          <input type="text" autocomplete="off" placeholder="昵称(选填:默认momo)" name="nickname" required
-            v-model="nickname" />
-        </div>
-        <div style="margin-top: 16px">
-          <input type="password" id="p1" autocomplete="off" placeholder="密码" name="password" required maxlength="32"
-            v-model="passwords.p1" @input="checkcname" />
-        </div>
-        <div style="margin-top: 16px">
-          <input type="password" id="p2" autocomplete="off" placeholder="确认密码" name="password" required maxlength="32"
-            v-model="passwords.p2" @input="checkPasswords" />
-        </div>
-        <div id="check" class="check">
-          <p id="checkmassage" class="checkmassage" v-if="showCheckMessage">{{ checkmessage }}</p>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 125px;">
-        <button type="submit" class="enter-btn">创建用户</button>
-      </div>
-    </form>
+        <!-- 注册之后跳转到登录界面 所以这个index还算是合理 -->
+        <form class="login-form" action="../../../html/login/logn.html" method="post" novalidate @submit="handleSubmit">
+          <div class="input-content">
+            <div>
+              <input type="text" autocomplete="off" placeholder="用户名(必填)" name="username" required v-model="name" />
+            </div>
+            <div id="cnamed" class="cnamed">
+              <p id="cname" class="cname" v-if="showcname">{{ checkname }}</p>
+            </div>
+            <div style="margin-top: 10px">
+              <input type="text" autocomplete="off" placeholder="昵称(选填:默认momo)" name="nickname" required
+                v-model="nickname" />
+            </div>
+            <div style="margin-top: 16px">
+              <input type="password" id="p1" autocomplete="off" placeholder="密码" name="password" required maxlength="32"
+                v-model="passwords.p1" @input="checkcname" />
+            </div>
+            <div style="margin-top: 16px">
+              <input type="password" id="p2" autocomplete="off" placeholder="确认密码" name="password" required
+                maxlength="32" v-model="passwords.p2" @input="checkPasswords" />
+            </div>
+            <div id="check" class="check">
+              <p id="checkmassage" class="checkmassage" v-if="showCheckMessage">{{ checkmessage }}</p>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 125px;">
+            <button type="submit" class="enter-btn">创建用户</button>
+          </div>
+        </form>
   </div>
   <!-- 这里表单的格式就采用登录页面的格式就行 -->
 </template>
@@ -139,7 +146,7 @@ body {
 }
 
 .main {
-  height: 410px;
+  height: 430px;
 }
 
 .checkmassage {
@@ -156,6 +163,24 @@ body {
   color: red;
   font-size: 12px;
   position: relative;
+}
+
+.back {
+  font-size: 11px;
+  padding: 4px;
+  background-color: white;
+  border-radius: 8px;
+  border: 0.5px solid black
+}
+
+.back:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.back:active {
+  background-color: #3e8e41;
+  transform: scale(0.95);
 }
 </style>
 <!-- ok 注册框架创建成功：就差调用API进行交互了 -->
