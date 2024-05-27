@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 const address = ref('');
 const judge = ref(false);
@@ -14,6 +14,36 @@ console.log(token);
 
 // 获取token和打印token
 // 这边是使用/检测登录信息
+
+onMounted(async () => {
+  try {
+    const response = await fetch('http://localhost:4000/api/v1/address', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+
+    // 这里实现显示地址：通过响应式变量实现
+    items = data.data.item || []; // 确保 items 是一个数组
+    console.log(items);
+    console.log("here check items[0].address");
+    len.value = data.data.total;
+    console.log(len.value);
+    if (items.length > 0) {
+      address.value = items[cnt.value]?.address || '无地址';
+      startid.value = items[0].id;
+    }
+  } catch (error) {
+    alert('响应失败，请检查服务器/你的网络状态');
+    console.error('There has been a problem with your fetch operation:', error);
+  }
+});
 
 async function fetchAddress() {
   console.log("Here");
@@ -199,7 +229,6 @@ function backfunc() {
           </form>
         </div>
         <div id="info" v-show="creatbutton">
-          <p>务必先显示地址再删除地址</p>
           <p>请谨慎删除地址，遇见显示问题请刷新页面</p>
         </div>
   </div>
