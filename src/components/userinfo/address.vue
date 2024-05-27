@@ -176,31 +176,32 @@ function backfunc() {
 
 <template>
   <div class="main">
-    <button id="back" @click="backfunc"> < 返回</button>
-    <h2 style="margin-top: 10%;">地址信息</h2>
-    <div class="address">
-      <p style="font-size: 23px;">address</p>
-      <p v-show="judge" id="addressposition">{{ address }}</p>
-      <!-- <hr style="margin-top:100px; position: absolute;;"> -->
-      <button id="nextpage" @click="changeaddress" v-show="judge">下一页</button>
-      <!-- 地址显示模块 -->
-    </div>
-    <div class="address-container" v-show="creatbutton">
-      <button @click="changeaddress2">创建地址</button>
-      <button @click="fetchAddress">显示地址</button>
-      <button @click="deleteAddress">删除地址</button>
-    </div>
-    <div class="create" v-show="!creatbutton">
-      <form action="" @submit="addresform">
-        新地址<input type="text" v-model="newaddress">
-        <br> <button style="margin-top: 10px;">确认创建</button>
-        <button style="margin-top: 10px;" @click="nosubmit">取消创建</button>
-      </form>
-    </div>
-    <div id="info" v-show="creatbutton">
-      <p>务必先显示地址再删除地址</p>
-      <p>请谨慎删除地址，遇见显示问题请刷新页面</p>
-    </div>
+    <button id="back" @click="backfunc">
+      < 返回</button>
+        <h2 style="margin-top: 10%;">地址信息</h2>
+        <div class="address">
+          <p style="font-size: 23px;">address</p>
+          <p v-show="judge" id="addressposition">{{ address }}</p>
+          <!-- <hr style="margin-top:100px; position: absolute;;"> -->
+          <button id="nextpage" @click="changeaddress" v-show="judge">下一页</button>
+          <!-- 地址显示模块 -->
+        </div>
+        <div class="address-container" v-show="creatbutton">
+          <button @click="changeaddress2">创建地址</button>
+          <button @click="fetchAddress">显示地址</button>
+          <button @click="deleteAddress">删除地址</button>
+        </div>
+        <div class="create" v-show="!creatbutton">
+          <form action="" @submit="addresform">
+            新地址<input type="text" v-model="newaddress">
+            <br> <button style="margin-top: 10px;">确认创建</button>
+            <button style="margin-top: 10px;" @click="nosubmit">取消创建</button>
+          </form>
+        </div>
+        <div id="info" v-show="creatbutton">
+          <p>务必先显示地址再删除地址</p>
+          <p>请谨慎删除地址，遇见显示问题请刷新页面</p>
+        </div>
   </div>
 </template>
 
@@ -220,7 +221,7 @@ body {
   position: absolute;
   width: 600px;
   height: 600px;
-  /* background-color: pink; */
+  background-color: white;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
