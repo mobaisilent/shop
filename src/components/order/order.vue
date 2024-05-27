@@ -71,10 +71,8 @@ function submitOrder() {
   // 提交订单逻辑
   window.localStorage.setItem("paymethod", selectedPaymentMethod.value);
   alert('订单已提交，点击确认前往付款页面');
-
-
   // // 1 引入
-  // const mysql = require('mysql');
+  // const mysql = mysql('mysql');
   // // 2 创建链接配置
   // const conn = mysql.createConnection({
   //   host: '172.31.250.4',   // 主机名 （服务器地址）
@@ -96,11 +94,6 @@ function submitOrder() {
   //   // 6 处理结果
   //   console.log(result)
   // })
-
-
-
-
-
   window.location.href = '../../html/pay/pay.html';
 }
 
