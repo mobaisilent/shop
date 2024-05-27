@@ -12,7 +12,7 @@ if (paymethod == 'alipay') {
 } else {
   method.value = url2;
 }
-console.log("here method=" + method.value);
+// console.log("here method=" + method.value);
 function tocart() {
   window.location.href = "../../html/order/order.html"
 }

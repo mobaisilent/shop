@@ -38,7 +38,7 @@ onMounted(async () => {
   } catch (error) {
     alert('地址响应失败，请检查服务器/你的网络状态');
     console.error('There has been a problem with your fetch operation:', error);
-  }
+  };
 });
 
 
@@ -70,13 +70,43 @@ function submitOrder() {
   // 提交订单逻辑
   window.localStorage.setItem("paymethod", selectedPaymentMethod.value);
   alert('订单已提交，点击确认前往付款页面');
-  window.location.href = '../../html/pay/pay.html';
 
+
+  // 1 引入
+  const mysql = require('mysql');
+  // 2 创建链接配置
+  const conn = mysql.createConnection({
+    host: '172.31.250.4',   // 主机名 （服务器地址）
+    user: 'asus',    //用户名
+    password: '123456',    // 密码
+    database: 'mall_demo',  // 写上自己要连接的数据库名字
+  })
+  // 3 建立链接
+  conn.connect()
+  console.log(conn);
+  // 4 生成sql语句 增删改查操作
+  let sql = 'UPDATE user SET money = 5000 WHERE id = 3'
+  //5  执行sql语句
+  conn.query(sql, (err, result) => {
+    if (err) {
+      console.log(err);
+      return
+    }
+    // 6 处理结果
+    console.log(result)
+  })
+
+
+
+
+
+  window.location.href = '../../html/pay/pay.html';
 }
 
 function backToCart() {
   window.location.href = "../../html/index/cart.html";
 }
+
 </script>
 
 <template>
