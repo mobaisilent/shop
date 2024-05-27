@@ -15,6 +15,11 @@ if (paymethod == 'alipay') {
 function tocart() {
   window.location.href = "../../html/order/order.html"
 }
+
+function payed() {
+  console.log("here solve the payed fetch");
+
+}
 </script>
 
 <template>
@@ -24,6 +29,9 @@ function tocart() {
         <img :src="method" alt="">
         <!-- 呃，在标签里面使用就不用两个大括号了 -->
         <p>请扫码🥰</p>
+        <br>
+        <br>
+        <button class="payed" id="payed" @click="payed" style="">已付款</button>
   </div>
 </template>
 
@@ -38,7 +46,7 @@ body {
 .main {
   position: absolute;
   width: 400px;
-  height: 450px;
+  height: 481px;
   /* background-color: pink; */
   left: 50%;
   top: 50%;
@@ -74,7 +82,7 @@ body {
   /* height: 100px; */
   display: block;
   /* background-color: aqua; */
-  top: 90.5%;
+  top: 84.3%;
 }
 
 .back:hover {
@@ -82,6 +90,26 @@ body {
 }
 
 .back:active {
+  transform: scale(0.95);
+}
+
+.payed {
+  color: black;
+  margin-top: 9px;
+  width: 90%;
+  height: 25px;
+  background-color: white;
+  border: 0;
+  background-color: aqua;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.payed:hover {
+  transform: scale(1.05);
+}
+
+.payed:active {
   transform: scale(0.95);
 }
 </style>
