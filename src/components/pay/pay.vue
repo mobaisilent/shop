@@ -18,7 +18,8 @@ function tocart() {
 
 function payed() {
   console.log("here solve the payed fetch");
-
+  window.localStorage.removeItem("tocartinfo");
+  window.location.href="../../html/index/index.html";
 }
 </script>
 
