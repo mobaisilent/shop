@@ -88,6 +88,8 @@ function handleSubmit(event) {
           storage.setItem("json", json);
           console.log(json);
 
+          window.localStorage.setItem("password", passwordRef.value);
+
           // 下面是动态界面的判断逻辑
           document.getElementById("main").style.display = "none";
           jumpdiv.value = !jumpdiv.value;

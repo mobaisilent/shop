@@ -107,7 +107,7 @@ const uploadFile = async () => {
     })
     .then(data => {
       console.log(data);
-      alert("上传成功：重新登录展示新头像")
+      alert("上传成功：刷新展示新头像")
     })
     .catch(error => {
       console.log(error);
@@ -119,7 +119,7 @@ const uploadFile = async () => {
 <template>
   <hr>
   <div id="new" class="new">
-    <h2>修改用户信息（重新登录显示新信息）</h2>
+    <h2>修改用户信息（刷新显示新信息）</h2>
     <form action="" class="form" @submit="handleSubmit">
       <label>新用户名：</label><input v-model="newUserName" type=" text" name="newUserName" placeholder="新的用户名">
       <br>
@@ -135,9 +135,9 @@ const uploadFile = async () => {
       <button id="button" class="button">提交信息</button>
     </form>
     <br>
-    <label style="font-size: 18px;">上传头像</label>
+    <label style="font-size: 18px; ">上传头像(只有一次机会)</label>
     <br>
-    <input type="file" ref="fileInput">
+    <input type="file" ref="fileInput" style="margin-top: 8px;">
     <button id="uploadfile" @click="uploadFile">上传</button>
     <!-- https://images.mobaisama.top/i/2024/05/23/153415.png -->
   </div>
