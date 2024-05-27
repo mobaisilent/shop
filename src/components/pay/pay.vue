@@ -19,7 +19,8 @@ function tocart() {
 function payed() {
   console.log("here solve the payed fetch");
   window.localStorage.removeItem("tocartinfo");
-  window.location.href="../../html/index/index.html";
+  window.location.href = "../../html/index/index.html";
+  alert("购买成功，将返回主界面");
 }
 </script>
 
