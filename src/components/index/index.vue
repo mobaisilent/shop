@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import addbutton from "../../components/shop/addbutton.vue";
+// import addbutton from "../../components/shop/addbutton.vue";
 //导入动态展示“添加到购物车”的按键  我还是放弃了该组件：：什么时候我的每个组件下面都一个按钮了？？？
 import search from './search.vue';
 import { provide } from 'vue';
