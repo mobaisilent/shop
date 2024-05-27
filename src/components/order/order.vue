@@ -1,5 +1,6 @@
 <script setup>
 import { reactive, computed, ref, onMounted } from 'vue';
+import mysql from 'mysql';
 
 const selectedAddress = reactive({
   name: '用户ID : ',
@@ -72,29 +73,29 @@ function submitOrder() {
   alert('订单已提交，点击确认前往付款页面');
 
 
-  // 1 引入
-  const mysql = require('mysql');
-  // 2 创建链接配置
-  const conn = mysql.createConnection({
-    host: '172.31.250.4',   // 主机名 （服务器地址）
-    user: 'asus',    //用户名
-    password: '123456',    // 密码
-    database: 'mall_demo',  // 写上自己要连接的数据库名字
-  })
-  // 3 建立链接
-  conn.connect()
-  console.log(conn);
-  // 4 生成sql语句 增删改查操作
-  let sql = 'UPDATE user SET money = 5000 WHERE id = 3'
-  //5  执行sql语句
-  conn.query(sql, (err, result) => {
-    if (err) {
-      console.log(err);
-      return
-    }
-    // 6 处理结果
-    console.log(result)
-  })
+  // // 1 引入
+  // const mysql = require('mysql');
+  // // 2 创建链接配置
+  // const conn = mysql.createConnection({
+  //   host: '172.31.250.4',   // 主机名 （服务器地址）
+  //   user: 'asus',    //用户名
+  //   password: '123456',    // 密码
+  //   database: 'mall_demo',  // 写上自己要连接的数据库名字
+  // })
+  // // 3 建立链接
+  // conn.connect()
+  // console.log(conn);
+  // // 4 生成sql语句 增删改查操作
+  // let sql = 'UPDATE user SET money = 5000 WHERE id = 3'
+  // //5  执行sql语句
+  // conn.query(sql, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //     return
+  //   }
+  //   // 6 处理结果
+  //   console.log(result)
+  // })
 
 
 
