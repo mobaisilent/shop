@@ -109,21 +109,21 @@
 ### 提示功能
 
 
-![tr](https://img.nxtf.net/rw9ibA.png)
+![tr]()
 
 #### 微信支付
 
 > 点击已付款默认扣除余额：（请勿随意付款，谨防诈骗）
 
-![t23](https://img.nxtf.net/iFaWEx.png)
+![t23]()
 
 ### 支付宝付款
 
-![tfjj](https://img.nxtf.net/HajR13.png)
+![tfjj]()
 
 ### 已付款功能
 
 > 付款之后实现修改余额，提示反馈信息:反馈信息如下
 
-![jfsdk](https://img.nxtf.net/zIFSPv.png)
+![jfsdk]()
 

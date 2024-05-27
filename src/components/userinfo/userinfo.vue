@@ -78,7 +78,7 @@ function backtoindex() {
           <!-- <p v-else="nickName_from_son.length != 0">{{ nickName_from_son }}</p> -->
           <p style="font-weight: bold;">余额</p>
           <button @click="show_money_button = !show_money_button, getmoney()" v-show="show_money_button">点击显示</button>
-          <p style="font-weight: bold;" v-show="!show_money_button" id="shownum"></p>
+          <p style="font-weight: bold;"  v-show="!show_money_button" id="shownum"></p>
           <p style="top: 49%; left: 38%; position: absolute; font-size: 12px;">重新登录刷新显示信息 </p>
         </div>
         <newinfo />
