@@ -5,8 +5,9 @@
   /* background-color: rgba(255, 255, 255, 0.8);    */
 }
 .loading-img {
-  width: 5.556vw;
-  height: 5.556vw;
+  width: 3vw;
+  height: 3vw;
+  /* 修改尺寸：防止图片溢出 */
   position: absolute;
   left: 0;
   right: 0;
