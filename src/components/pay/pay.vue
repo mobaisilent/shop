@@ -4,14 +4,15 @@ import { ref } from 'vue';
 const paymethod = window.localStorage.getItem("paymethod");
 console.log(paymethod);
 const method = ref('');
-const url1 = "https://img.nxtf.net/ScJpc7.jpg";
-const url2 = "https://img.nxtf.net/lTMyJ5.png";
+const url1 = "../../../public/image/paymethods/alipay.jpg";
+const url2 = "../../../public/image/paymethods/wechat.png";
+// 鉴于图床无法上传付款吗：故本地部署本地url
 if (paymethod == 'alipay') {
   method.value = url1;
 } else {
   method.value = url2;
 }
-
+console.log("here method=" + method.value);
 function tocart() {
   window.location.href = "../../html/order/order.html"
 }
