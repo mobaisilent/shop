@@ -176,7 +176,7 @@ function backfunc() {
 
 <template>
   <div class="main">
-    <button id="back" @click="backfunc">返回</button>
+    <button id="back" @click="backfunc"> < 返回</button>
     <h2 style="margin-top: 10%;">地址信息</h2>
     <div class="address">
       <p style="font-size: 23px;">address</p>

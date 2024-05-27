@@ -63,7 +63,7 @@ function backtoindex() {
 
 <template>
   <div class="main">
-    <button id="back" @click="backtoindex">返回</button>
+    <button id="back" @click="backtoindex"> < 返回</button>
     <div class="origin_info">
       <h2>基本信息</h2>
       <div id="avatar" class="avatar">
