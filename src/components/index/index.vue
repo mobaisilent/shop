@@ -342,9 +342,9 @@ provide("cartinfo", cartinfo);
   <div class=" footer">
     <div class="w">
       <div class="links">
-        <a class="link" href="https://www.taobao.com" target="_blank">淘宝</a> |
-        <a class="link" href="https://m.pinduoduo.com/" target="_blank">拼多多</a> |
-        <a class="link" href="https://m.jd.com/" target="_blank">京东</a> |
+        <a class="link" href="https://www.taobao.com/" target="_blank">淘宝</a> |
+        <a class="link" href="https://www.pinduoduo.com/" target="_blank">拼多多</a> |
+        <a class="link" href="https://www.jd.com/" target="_blank">京东</a> |
         <a class="link" href="https://www.zhihu.com" target="_blank">知乎</a> |
         <a class="link" href="https://www.baidu.com" target="_blank">百度</a> |
       </div>
