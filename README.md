@@ -27,11 +27,11 @@
 
 正确登录会跳出加载动画
 
-![image-20240527142102763](C:\Users\27892\Desktop\shop\README.assets\image-20240527152657557.png)
+![image-20240527142102763](https://img.nxtf.net/URUjPx.png)
 
 #### 允许跳过登录
 
-![image-20240527135731950](C:\Users\27892\Desktop\shop\README.assets\image-20240527152730667.png)
+![image-20240527135731950](https://img.nxtf.net/r4a45C.png)
 
 ### 忘记密码界面
 
@@ -113,4 +113,17 @@
 
 #### 微信支付
 
-> 点击已付款默认扣除余额：（实际上不需要付款：请勿随意付款，谨防诈骗）
+> 点击已付款默认扣除余额：（请勿随意付款，谨防诈骗）
+
+![t23](https://img.nxtf.net/iFaWEx.png)
+
+### 支付宝付款
+
+![tfjj](https://img.nxtf.net/HajR13.png)
+
+### 已付款功能
+
+> 付款之后实现修改余额，提示反馈信息:反馈信息如下
+
+![jfsdk](https://img.nxtf.net/zIFSPv.png)
+

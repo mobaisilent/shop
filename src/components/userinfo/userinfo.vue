@@ -63,27 +63,28 @@ function backtoindex() {
 
 <template>
   <div class="main">
-    <button id="back" @click="backtoindex"> < 返回</button>
-    <div class="origin_info">
-      <h2>基本信息</h2>
-      <div id="avatar" class="avatar">
-        <img :src="avatar" alt="头像信息" id="showavatar">
-        <!-- 使用vue绑定的方式来显示avatar -->
-      </div>
-      <p>用户名</p>
-      <p>{{ userName }}</p>
-      <p>昵称</p>
-      <p>{{ nickName }}</p>
-      <!-- <p v-else="nickName_from_son.length != 0">{{ nickName_from_son }}</p> -->
-      <p>余额</p>
-      <button @click="show_money_button = !show_money_button, getmoney()" v-show="show_money_button">点击显示</button>
-      <p v-show="!show_money_button" id="shownum"></p>
-      <p style="top: 49%; left: 38%; position: absolute; font-size: 12px;">重新登录刷新显示信息 </p>
-    </div>
-    <newinfo />
-    <!--     <newinfo @update-nickname="handleNickNameUpdate" />
+    <button id="back" @click="backtoindex">
+      < 返回</button>
+        <div class="origin_info">
+          <h2>基本信息</h2>
+          <div id="avatar" class="avatar">
+            <img :src="avatar" alt="头像信息" id="showavatar">
+            <!-- 使用vue绑定的方式来显示avatar -->
+          </div>
+          <p style="font-weight: bold;">用户名</p>
+          <p style="font-weight: bold;">{{ userName }}</p>
+          <p style="font-weight: bold;">昵称</p>
+          <p style="font-weight: bold;">{{ nickName }}</p>
+          <!-- <p v-else="nickName_from_son.length != 0">{{ nickName_from_son }}</p> -->
+          <p style="font-weight: bold;">余额</p>
+          <button @click="show_money_button = !show_money_button, getmoney()" v-show="show_money_button">点击显示</button>
+          <p style="font-weight: bold;" v-show="!show_money_button" id="shownum"></p>
+          <p style="top: 49%; left: 38%; position: absolute; font-size: 12px;">重新登录刷新显示信息 </p>
+        </div>
+        <newinfo />
+        <!--     <newinfo @update-nickname="handleNickNameUpdate" />
  -->
-    <!-- 这里使用另一 -->
+        <!-- 这里使用另一 -->
   </div>
 
 </template>
@@ -104,7 +105,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 500px;
-  height: 600px;
+  height: 610px;
   /* background-color: pink; */
   /* display: flex; */
   text-align: center;
@@ -126,7 +127,7 @@ body {
   display: block;
   width: 50px;
   height: 50px;
-  background-color: pink;
+  /* background-color: pink; */
   left: 45%;
   /* overflow: hidden; */
   margin-bottom: 10px;
