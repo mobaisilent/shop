@@ -2,8 +2,8 @@
 import { reactive, computed, ref, onMounted } from 'vue';
 
 const selectedAddress = reactive({
-  name: 'userID : ',
-  address: 'address : '
+  name: '用户ID : ',
+  address: '收货地址 : '
 });
 
 const json = localStorage.getItem('json');
