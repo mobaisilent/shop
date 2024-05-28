@@ -1,8 +1,11 @@
 <script setup>
 import { ref } from 'vue';
 
+
+const json = localStorage.getItem('json');
+const token = JSON.parse(json)?.data?.token;
+console.log(token);  // 一直使用的应用token的方式
 const paymethod = window.localStorage.getItem("paymethod");
-console.log(paymethod);
 const method = ref('');
 const url1 = "../../../public/image/paymethods/alipay.jpg";
 const url2 = "../../../public/image/paymethods/wechat.png";
@@ -18,11 +21,56 @@ function tocart() {
 }
 
 function payed() {
+  const tt = ref();
   console.log("here solve the payed fetch");
   window.localStorage.removeItem("tocartinfo");
-  window.location.href = "../../html/index/index.html";
-  alert("购买成功，余额已结算，将返回主界面");
+  fetch("http://localhost:4000/api/v1/order", {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+    },
+  }).then(response => {
+    if (!response.ok) {
+      console.log(response);
+    }
+    return response.json();
+  }).then(data => {
+    console.log(data);
+    console.log(data.data.item[0].id);
+    console.log(data.data.total);
+    console.log("here begin to sovle for");
+    let promises = [];
+    for (var i = 0; i < data.data.total; i++) {
+      // 里面需要调用fetch // 下面这句显示总共有多少订单待结算
+      console.log(data.data.item[i].id);
+      fetch("http://localhost:4000/api/v1/pay", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+        body: JSON.stringify({
+          OrderID: data.data.item[i].id,
+          OrderNum: 1,
+          UserKey: "1234567887654321",
+          BossKey: "1234567887654321",
+        }),
+      }).then(response => {
+        console.log("here");
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      }).then(data => {
+        tt.value = data.code;
+        console.log(data);
+        console.log(tt.value);
+      })
+    }
+  })
 }
+
 </script>
 
 <template>
