@@ -112,44 +112,85 @@ function submitOrder() {
         console.log("here begin to make order  2");
         // 通过打印信息：似乎两段代码的执行顺序有问题？
         console.log(allproduct);
-        // 下面执行双重for循环循环添加订单的逻辑
         // console.log(addressid.value);
         // 先获取购物车信息（好像通过一件商品这边改价值就可以了：不必创建多个订单在for循环支付
-        // 调用api接口修改余额
-        const ftotalPrice = totalPrice * (-1);
-        console.log(ftotalPrice);
-        console.log(typeof (ftotalPrice));
+        // 调用api接口修改余额:显示余额
 
-        fetch("http://localhost:4000/api/v1/order", {
-          method: "POST",
+
+
+        // 添加一个比对：如果购物车中商品总额大于当前余额：那么创订单失败：就不会产生无效订单了
+        console.log("here begin to compare");
+        // 先获取余额
+        const money = ref(0);
+        fetch('http://localhost:4000/api/v1/money', {
+          method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'User-Agent': 'PostmanRuntime-ApipostRuntime/1.1.0',
+            'Cache-Control': 'no-cache',
+            'Accept': '*/*',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
             'Authorization': 'Bearer ' + token,
+            'Content-Type': 'multipart/form-data; boundary=--------------------------325823930463777833009108',
           },
           body: JSON.stringify({
-            BossID: allproduct.value[0].bossID,
-            AddressID: addressid.value,
-            Money: ftotalPrice,
-            ProductID: allproduct.value[0].id,
-            Num: 1,
-            Type: 0
-          })
-        }).then(response => {
-          if (!response.ok) {
-            alert("创建订单失败");
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
+            Key: '1234567887654321',
+          }),
         })
-          .then(data => {
-            console.log(data);
-            // 调试的时候就先不进行跳转
-            // 测试成功:创建订单成功：前往支付界面
-            if (data.code == 200) {
-              alert("提交订单成功，将前往支付界面");
+          .then(response => {
+            console.log("Here");
+            if (!response.ok) {
+              console.log(response);
+              throw new Error('Network response was not ok');
             }
-            window.location.href = '../../html/pay/pay.html';
+            return response.json();
+          })
+          .then(data => {
+            console.log(data.data);
+            // data.data就是余额：那么直接传值就行
+            money.value = data.data;
+            console.log(money.value);
           });
+
+        if (money.value < totalPrice.value) {
+          alert("余额不足，创建订单失败");
+        }
+        else {
+          const ftotalPrice = totalPrice * (-1);
+          console.log(ftotalPrice);
+          // console.log(typeof (ftotalPrice));
+
+          fetch("http://localhost:4000/api/v1/order", {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token,
+            },
+            body: JSON.stringify({
+              BossID: allproduct.value[0].bossID,
+              AddressID: addressid.value,
+              Money: -ftotalPrice,
+              ProductID: allproduct.value[0].id,
+              Num: 1,
+              Type: 0
+            })
+          }).then(response => {
+            if (!response.ok) {
+              alert("创建订单失败,请检查服务器状态和网络状态");
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+            .then(data => {
+              console.log(data);
+              // 调试的时候就先不进行跳转
+              // 测试成功:创建订单成功：前往支付界面
+              if (data.code == 200) {
+                alert("提交订单成功，将前往支付界面");
+              }
+              window.location.href = '../../html/pay/pay.html';
+            });
+        }
       }
     });
 }
@@ -216,3 +257,6 @@ function backToCart() {
 /* 这里备注一下 导入css文件需要使用@符号 */
 </style>
 <!-- 使用导入的方式将代码简化实现更方便的询问ai了 -->
+
+
+<!-- order 界面创建一个余额判断：不产生无效订单就不出出现那种支付订单前几个可以付款后几个付款失败的情况 -->

@@ -4,7 +4,7 @@ import { ref } from 'vue';
 
 const json = localStorage.getItem('json');
 const token = JSON.parse(json)?.data?.token;
-console.log(token);  // 一直使用的应用token的方式
+//console.log(token);  // 一直使用的应用token的方式
 const paymethod = window.localStorage.getItem("paymethod");
 const method = ref('');
 const url1 = "../../../public/image/paymethods/alipay.jpg";
@@ -67,10 +67,11 @@ function payed() {
         console.log(data);
         console.log(tt.value);
         if (tt.value == 500) {
-          alert("余额不够");
+          alert("余额不足");
         }
         else if (tt.value == 200) {
-          alert("支付成功");
+          alert("支付成功,已结算余额，正在前往主页面");
+          window.location.href = "../../html/index/index.html";
         }
         else {
           alert("支付失败，请检查服务器状态");
