@@ -1,6 +1,5 @@
 <script setup>
 import { reactive, computed, ref, onMounted } from 'vue';
-import mysql from 'mysql';
 
 const selectedAddress = reactive({
   name: '用户ID : ',
@@ -9,9 +8,9 @@ const selectedAddress = reactive({
 
 const json = localStorage.getItem('json');
 const token = JSON.parse(json)?.data?.token;
-const len = ref('0');
+console.log(token);
 let items = [];
-
+const addressid = ref();
 
 onMounted(async () => {
   try {
@@ -32,6 +31,8 @@ onMounted(async () => {
       console.log(items[0]);
       selectedAddress.name += items[0].userID;
       selectedAddress.address += items[0].address;
+      addressid.value = items[0].id;  // 没啥问题剂的使用value
+      // console.log(typeof (addressid.value));  // number
     }
     else {
       selectedAddress.name += "无信息";
@@ -110,8 +111,19 @@ async function submitOrder() {
     alert("无地址信息：请前往编辑地址");
   }
   else {
-    alert('订单已提交，点击确认前往付款页面');
+    // 下面执行循环添加订单的逻辑
+    console.log(addressid.value);
 
+
+
+
+
+
+
+
+
+
+    alert('订单已提交，点击确认前往付款页面');
   }
 
 

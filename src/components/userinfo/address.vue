@@ -238,7 +238,7 @@ function backfunc() {
           </form>
         </div>
         <div id="info" v-show="creatbutton">
-          <p>请谨慎删除地址，遇见显示问题请刷新页面</p>
+          <p>请谨慎删除地址，遇见显示/删除问题请刷新页面</p>
         </div>
   </div>
 </template>
@@ -330,7 +330,7 @@ body {
   position: absolute;
   display: block;
   top: 86%;
-  left: 24.3%;
+  left: 21%;
 }
 
 #addressposition {
