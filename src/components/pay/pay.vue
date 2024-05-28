@@ -66,6 +66,15 @@ function payed() {
         tt.value = data.code;
         console.log(data);
         console.log(tt.value);
+        if (tt.value == 500) {
+          alert("余额不够");
+        }
+        else if (tt.value == 200) {
+          alert("支付成功");
+        }
+        else {
+          alert("支付失败，请检查服务器状态");
+        }
       })
     }
   })
