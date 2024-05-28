@@ -12,7 +12,7 @@ console.log("here is token");
 console.log(token);
 var num;
 // 打印token信息用于调试
-const show_money_button = ref(true);
+const show_money_button = ref("true");
 
 onMounted(async => {
   fetch('http://localhost:4000/api/v1/user/login', {
@@ -117,6 +117,7 @@ function tonew() {
       nickName.value = data.data.userInfo.nickName;
       avatar.value = data.data.userInfo.avatar;
       console.log("here avatar.value  " + avatar.value);
+      show_money_button.value = true;
     })
 }
 </script>
