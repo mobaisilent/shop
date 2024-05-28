@@ -188,6 +188,7 @@ function submitOrder() {
               if (data.code == 200) {
                 alert("提交订单成功，将前往支付界面");
               }
+              window.localStorage.setItem("paymethod", selectedPaymentMethod.value);
               window.location.href = '../../html/pay/pay.html';
             });
         }
