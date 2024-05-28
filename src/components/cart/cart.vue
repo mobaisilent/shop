@@ -37,7 +37,7 @@ onMounted(async () => {
       }
       return response.json();
     })
-    .then(data => { 
+    .then(data => {
       console.log(data);
       allinfo.value = data.data.item;
       console.log(allinfo.value);
@@ -180,6 +180,7 @@ function clearcart() {
         <button class="checkout-button" @click="clearcart"
           style="background-color: greenyellow;margin-top: 30px;">清空购物车</button>
         <!-- alt+shift上下键实现快速添加一行（同） -->
+        <p>(注：此页面增减  商品数量只影响结算，若要移除商品请清空购物车)</p>
   </div>
 </template>
 

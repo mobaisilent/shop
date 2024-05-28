@@ -87,6 +87,8 @@ function payed() {
   <div class="main">
     <button class="back" @click="tocart">
       < 返回</button>
+        <button class="cancle" @click="cancle">
+          取消支付</button>
         <img :src="method" alt="">
         <!-- 呃，在标签里面使用就不用两个大括号了 -->
         <p>请扫码🥰</p>
@@ -171,6 +173,28 @@ body {
 }
 
 .payed:active {
+  transform: scale(0.95);
+}
+
+
+.main .cancle {
+  display: block;
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-left: 3px;
+  margin-bottom: 2px;
+  margin-left: 81%;
+  top:2%;
+}
+
+.cancle:hover {
+  transform: scale(1.05);
+}
+
+.cancle:active {
   transform: scale(0.95);
 }
 </style>
