@@ -26,7 +26,6 @@ onMounted(async () => {
       throw new Error('Network response was not ok');
     }
     const data = await response.json();
-    console.log(data);
     items = data.data.item || [];
     if (items.length > 0) {
       console.log(items[0]);
@@ -68,65 +67,34 @@ function editAddress() {
 }
 
 
-
-const allproduct = ref([]);
-async function submitOrder() {
-  // 提交订单逻辑:目的是希望实现直接通过余额进行修改（但是算了：即使带很多不必要的参数我也懒得说什么了：影响心情）
-  // 通过这里单独调用api获取地址信息（地址id）
-  // 同时看看总信息是否需要单独调用或者使用全局变量？
-  // const allproduct = (window.localStorage.getItem("allproduct"));
-  // 使用不了：重新调用吧
-
-  fetch("http://localhost:4000/api/v1/product/search", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token,
-    },
-    body: JSON.stringify({
-    })
-  })
-    .then(response => {
-      if (!response.ok) {
-        alert("请检查你的登录状态/服务器/网络状态")
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      console.log("here test all information for all product");
-      allproduct.value = data.data.item;
-      console.log(allproduct.value[0]);
-      console.log(allproduct.value[0].bossID);
-      console.log(allproduct.value.length);
-      // 所有尚品数据获取成功：：保存到allproduct上（响应式变量记得使用.value）：：具体每项数据将单项数据展开查看就行
-    });
-
-
-  // 下面是获取地址信息：呃
-  // 额，好像上面就获取过了信息（第一个）那么直接使用就好
-  if (items.length == 0) {
-    alert("无地址信息：请前往编辑地址");
-  }
-  else {
-    alert('订单已提交，点击确认前往付款页面');
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-  // 先调试：不跳转
-  // window.location.href = '../../html/pay/pay.html';
+function submitOrder() {
+  // 提交订单逻辑
+  window.localStorage.setItem("paymethod", selectedPaymentMethod.value);
+  alert('订单已提交，点击确认前往付款页面');
+  // // 1 引入
+  // const mysql = mysql('mysql');
+  // // 2 创建链接配置
+  // const conn = mysql.createConnection({
+  //   host: '172.31.250.4',   // 主机名 （服务器地址）
+  //   user: 'asus',    //用户名
+  //   password: '123456',    // 密码
+  //   database: 'mall_demo',  // 写上自己要连接的数据库名字
+  // })
+  // // 3 建立链接
+  // conn.connect()
+  // console.log(conn);
+  // // 4 生成sql语句 增删改查操作
+  // let sql = 'UPDATE user SET money = 5000 WHERE id = 3'
+  // //5  执行sql语句
+  // conn.query(sql, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //     return
+  //   }
+  //   // 6 处理结果
+  //   console.log(result)
+  // })
+  window.location.href = '../../html/pay/pay.html';
 }
 
 function backToCart() {

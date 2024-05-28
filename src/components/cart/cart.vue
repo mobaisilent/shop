@@ -37,7 +37,7 @@ onMounted(async () => {
       }
       return response.json();
     })
-    .then(data => {
+    .then(data => { 
       console.log(data);
       allinfo.value = data.data.item;
       console.log(allinfo.value);
@@ -60,6 +60,8 @@ onMounted(async () => {
       }
     }
   }
+  // 使用js循环前端计算商品数量对应的价格
+
   if (cartinfo.length == 0) {
     alert("请添加商品");
   }

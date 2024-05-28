@@ -16,6 +16,7 @@ console.log(token);
 // 这边是使用/检测登录信息
 
 onMounted(async () => {
+  console.log("here onMounted");
   try {
     const response = await fetch('http://localhost:4000/api/v1/address', {
       method: 'GET',
@@ -35,7 +36,12 @@ onMounted(async () => {
     console.log("here check items[0].address");
     len.value = data.data.total;
     console.log(len.value);
+
+
+
     if (items.length > 0) {
+      console.log("here check1");
+      console.log(startid.value);
       address.value = items[cnt.value]?.address || '无地址';
       startid.value = items[0].id;
     }
@@ -86,8 +92,9 @@ async function fetchAddress() {
         startid.value = items[0].id;
         console.log(startid.value);
         // 得到初始id 45
-        dynamicurl.value += startid.value;
+        // dynamicurl.value += startid.value;
         console.log(dynamicurl.value);
+        // 删除上面那行：因为开始组件加载的时候就已经完成id的初始化了：这里再写就出现了错误的startid
       }
     }
   } catch (error) {
@@ -99,6 +106,8 @@ async function fetchAddress() {
 async function deleteAddress() {
   console.log(dynamicurl.value);
   // 记得使用value
+  dynamicurl.value += startid.value;
+  console.log(dynamicurl.value);
   try {
     const response = await fetch(dynamicurl.value, {
       method: 'DELETE',
