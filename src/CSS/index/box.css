@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.box {
+  margin: 50px auto;
+  height: 600px;
+  width: 1000px;
+  background-size: 1000px;
+  background-image: url(./img/img1.png);
+  overflow: hidden;
+}
+
+.box::before,
+.box::after {
+  content: "";
+  float: left;
+  width: 50%;
+  height: 600px;
+  background-size: 1000px;
+  background-image: url(./img/img2.png);
+  transition: all 1s;
+}
+
+.box::after {
+  background-position: right 0;
+}
+
+.box:hover::before {
+  transform: translateX(-100%);
+}
+
+.box:hover::after {
+  transform: translateX(100%);
+}

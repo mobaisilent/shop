@@ -242,7 +242,9 @@ provide("cartinfo", cartinfo);
       <div class="banner-con" style="margin-left: 135px;">
         <!--<div class="loading"></div>-->
         <ul>
-          <li><a href="" title=""><img class="banner-img" src="../../../../public/logo/logo.png" alt=""></a> </li>
+          <div class="box">
+            <li><a href="" title=""><img class="banner-img" src="../../../../public/logo/logo.png" alt=""></a> </li>
+          </div>
         </ul>
       </div>
     </div>
@@ -369,6 +371,7 @@ provide("cartinfo", cartinfo);
 @import "../../CSS/index/index_anime.css";
 @import "../../CSS/index/img_enlarge.css";
 @import "../../CSS/index/toup.css";
+@import "../../CSS/index/box.css";
 
 .add-to-cart-button:active {
   left: 25%;
