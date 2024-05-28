@@ -6,11 +6,12 @@ const json = localStorage.getItem('json');
 const token = JSON.parse(json)?.data?.token;
 //console.log(token);  // 一直使用的应用token的方式
 const paymethod = window.localStorage.getItem("paymethod");
+console.log(paymethod);
 const method = ref('');
 const url1 = "../../../public/image/paymethods/alipay.jpg";
 const url2 = "../../../public/image/paymethods/wechat.png";
 // 鉴于图床无法上传付款吗：故本地部署本地url
-if (paymethod == 'alipay') {
+if (paymethod === 'alipay') {
   method.value = url1;
 } else {
   method.value = url2;
