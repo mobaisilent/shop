@@ -71,7 +71,7 @@ function editAddress() {
 
 
 const allproduct = ref([]);
-async function submitOrder() {
+function submitOrder() {
   // 提交订单逻辑:目的是希望实现直接通过余额进行修改（但是算了：即使带很多不必要的参数我也懒得说什么了：影响心情）
   // 通过这里单独调用api获取地址信息（地址id）
   // 同时看看总信息是否需要单独调用或者使用全局变量？
@@ -96,50 +96,64 @@ async function submitOrder() {
     })
     .then(data => {
       console.log(data);
-      console.log("here test all information for all product");
+      console.log("here test all information for all product  1");
       allproduct.value = data.data.item;
       console.log(allproduct.value[0]);
       console.log(allproduct.value[0].bossID);
       console.log(allproduct.value.length);
       // 所有尚品数据获取成功：：保存到allproduct上（响应式变量记得使用.value）：：具体每项数据将单项数据展开查看就行
+
+      // 下面是获取地址信息：呃
+      // 额，好像上面就获取过了信息（第一个）那么直接使用就好
+      if (items.length == 0) {
+        alert("无地址信息：请前往编辑地址");
+      }
+      else {
+        console.log("here begin to make order  2");
+        // 通过打印信息：似乎两段代码的执行顺序有问题？
+        console.log(allproduct);
+        // 下面执行双重for循环循环添加订单的逻辑
+        // console.log(addressid.value);
+        // 先获取购物车信息（好像通过一件商品这边改价值就可以了：不必创建多个订单在for循环支付
+        // 调用api接口修改余额
+        const ftotalPrice = totalPrice * (-1);
+        console.log(ftotalPrice);
+        console.log(typeof (ftotalPrice));
+
+        fetch("http://localhost:4000/api/v1/order", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+          },
+          body: JSON.stringify({
+            BossID: allproduct.value[0].bossID,
+            AddressID: addressid.value,
+            Money: ftotalPrice,
+            ProductID: allproduct.value[0].id,
+            Num: 1,
+            Type: 0
+          })
+        }).then(response => {
+          if (!response.ok) {
+            alert("创建订单失败");
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+          .then(data => {
+            console.log(data);
+            // 调试的时候就先不进行跳转
+            // 测试成功:创建订单成功：前往支付界面
+            if (data.code == 200) {
+              alert("提交订单成功，将前往支付界面");
+            }
+            window.location.href = '../../html/pay/pay.html';
+          });
+      }
     });
-
-
-  // 下面是获取地址信息：呃
-  // 额，好像上面就获取过了信息（第一个）那么直接使用就好
-  if (items.length == 0) {
-    alert("无地址信息：请前往编辑地址");
-  }
-  else {
-    // 下面执行循环添加订单的逻辑
-    console.log(addressid.value);
-
-
-
-
-
-
-
-
-
-
-    alert('订单已提交，点击确认前往付款页面');
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-  // 先调试：不跳转
-  // window.location.href = '../../html/pay/pay.html';
 }
+
 
 function backToCart() {
   window.location.href = "../../html/index/cart.html";
