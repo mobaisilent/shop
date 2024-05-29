@@ -1,11 +1,15 @@
+<<<<<<< HEAD
 # shop(前端doing...)
+=======
+# shop(doing)
+>>>>>>> main
 `注：` 该项目由vue构建框架,鉴于这不是最主要考察前端以及相关技术不熟练或未掌握(比如路由实现局部刷新（懒加载）vue-router），就不把前端写复杂了，尽量展示API调用接口实现数据库的功能
 
 ## 登录界面:
 
 登录页面形式如下：
 
-![loginPage](https://img.nxtf.net/3jJ9Zq.png)
+![image-20240529111028114](.\README.assets\image-20240529111028114.png)
 
 页面实现代码见components下login文件夹的login.vue文件，主要是用fetch调用后端API接口：这里不再赘述。
 
@@ -17,71 +21,101 @@
 
 通过alert警告框实现
 
-![laertinputpassword](https://img.nxtf.net/NwttNJ.png)
+![image-20240529111050259](.\README.assets\image-20240529111050259.png)
 
 #### 输入密码警告框:
 
-![alertpassworderror](https://img.nxtf.net/L5FTKi.png)
+![image-20240529111106123](.\README.assets\image-20240529111106123.png)
 
 #### 正确登录:
 
-正确登录会跳出加载动画
+正确登录会跳出加载动画，动画结束后进入index主页
 
-![image-20240527142102763](https://img.nxtf.net/URUjPx.png)
+![image-20240529111124087](.\README.assets\image-20240529111124087.png)
 
 #### 允许跳过登录:
 
-![image-20240527135731950](https://img.nxtf.net/r4a45C.png)
+> 但是跳过登录很多功能都无法使用
+
+![image-20240529111203098](.\README.assets\image-20240529111203098.png)
 
 ### 忘记密码界面:
 
-> 暂不支持改密功能
+> 暂不支持改密功能：需要改密请练习管理员
 
-![image-20240527135839059](https://img.nxtf.net/fJxCUI.png)
+![image-20240529111429728](.\README.assets\image-20240529111429728.png)
 
 ### 注册功能:
 
+> 调用接口注册用户
+
 ![adduser](https://img.nxtf.net/sPeX7B.png)
+
+#### 注册信息提示:
+
+> 用户名是必填项：密码不一致也有提示信息
+
+![image-20240529111613168](.\README.assets\image-20240529111613168.png)
+
+两个弹窗警告：
+
+![image-20240529111642904](.\README.assets\image-20240529111642904.png)
+
+![image-20240529111651622](.\README.assets\image-20240529111651622.png)
+
+> 这里注册一个mobaisilent用于演示
+
+#### 注册成功
+
+![image-20240529111757320](.\README.assets\image-20240529111757320.png)
 
 ## 主页:
 
-主页预览(上部）：
+### 预览
 
-![https://img.nxtf.net/x7Te0I.png](https://img.nxtf.net/P5n9Hd.png)
+#### 主页预览(上部）：
 
-主页预览（下部）：
+![image-20240529111904885](.\README.assets\image-20240529111904885.png)
 
-![index2](https://img.nxtf.net/x7Te0I.png)
+#### 主页预览（下部）：
 
-### 图片放大展示功能:
+![image-20240529111930278](.\README.assets\image-20240529111930278.png)
 
-点击图片进行居中放大展示：
+### 功能区块
 
-![enlargeimg](https://img.nxtf.net/q2TCi5.png)
+#### 双开门动画演示
+
+![image-20240529112120164](.\README.assets\image-20240529112120164.png)
+
+
 
 ### 鼠标指针放入某个商品区域块实现”添加到购物车“按钮自动浮现:
 
 ![addbuton](https://img.nxtf.net/3aTU6o.png)
 
-### 图片自动放大并悬浮:
+### 悬浮按钮与图片自动缩放
 
-![anime1](https://img.nxtf.net/59cpzV.png)
+![image-20240529112213516](.\README.assets\image-20240529112213516.png)
 
-### 动态文字与导航与免责声明:
+### 动态文字与导航与侵权免责声明
 
-![anime2](https://img.nxtf.net/mjMxHY.png)
+![image-20240529112237389](.\README.assets\image-20240529112237389.png)
 
 ### 一键置顶与暗黑模式按键:
 
-![anime3](https://img.nxtf.net/MnnDrO.png)
+![image-20240529112315138](.\README.assets\image-20240529112315138.png)
 
 ### 暗黑模式:
 
-![anime4](https://img.nxtf.net/aqQKhg.png)
+![image-20240529112342191](.\README.assets\image-20240529112342191.png)
+
+### 一键置顶
+
+> 详见项目网页：暂不演示
 
 ### 搜索功能:
 
-![search](https://img.nxtf.net/AN0aze.png)
+![image-20240529112639428](.\README.assets\image-20240529112639428.png)
 
 ### 添加至购物车:
 
