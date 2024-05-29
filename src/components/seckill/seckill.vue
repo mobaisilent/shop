@@ -8,7 +8,7 @@
     <!-- 左边放秒杀商品图片 -->
   <!-- <div class="right">right</div> -->
   <!-- 右边放入秒杀商品详情 -->
-  <!-- </div> --> -->
+  <!-- </div> -->
 </template>
 
 <style scoped>

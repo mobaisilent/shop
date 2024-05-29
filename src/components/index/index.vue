@@ -239,12 +239,13 @@ provide("cartinfo", cartinfo);
     <!--index-->
     <div class="w">
       <seckill />
-      <div class="banner-con" style="margin-left: 135px;">
-        <!--<div class="loading"></div>-->
+      <div class="banner-con">
+        <!--<div class=" loading"></div>-->
         <ul>
-          <div class="box">
-            <li><a href="" title=""><img class="banner-img" src="../../../../public/logo/logo.png" alt=""></a> </li>
-          </div>
+          <a href="">
+            <div class="box">
+            </div>
+          </a>
         </ul>
       </div>
     </div>

@@ -5,11 +5,11 @@
 }
 
 .box {
-  margin: 50px auto;
-  height: 600px;
+  /* margin: 50px auto; */
+  height: 450px;
   width: 1000px;
-  background-size: 1000px;
-  background-image: url(./img/img1.png);
+  background-size: cover;
+  background-image: url(../../../public/box/img1.png);
   overflow: hidden;
 }
 
@@ -18,9 +18,10 @@
   content: "";
   float: left;
   width: 50%;
-  height: 600px;
-  background-size: 1000px;
-  background-image: url(./img/img2.png);
+  height: 450px;  
+  background-size: cover;
+  background-image: url(../../../public/box/img2.png);
+  /* background-repeat: no-repeat; */
   transition: all 1s;
 }
 

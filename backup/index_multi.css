@@ -339,6 +339,7 @@
 .keywords-list .keywords-item .link:hover {
   color: #c60023;
 }
+
 /* floor */
 .floor-wrap .floor-title {
   height: 50px;
@@ -428,7 +429,7 @@ input[type="checkbox"] {
 /* panel */
 .panel {
   padding: 10px;
-  /* margin-bottom: 10px; */
+  margin-bottom: 10px;
   background: #fff;
 }
 .panel .panel-title {
@@ -468,7 +469,7 @@ input[type="checkbox"] {
   line-height: 40px;
   vertical-align: middle;
   border: none;
-  background: orange;
+  background: orange  ;
   font-size: 17px;
   font-weight: bold;
   color: #fff;
@@ -484,7 +485,7 @@ input[type="checkbox"] {
 }
 /* loading */
 .loading {
-  /* margin: 10px auto; */
+  margin: 10px auto;
   display: block;
   width: 65px;
   height: 65px;
@@ -520,7 +521,7 @@ input[type="checkbox"] {
 .user-con .user-box .error-item {
   position: relative;
   padding: 4px 0 4px 40px;
-  /* margin-bottom: 10px; */
+  margin-bottom: 10px;
   border: 1px solid red;
   color: red;
   background: #fde9e9;
