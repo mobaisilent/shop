@@ -5,7 +5,7 @@
 
 登录页面形式如下：
 
-![image-20240529111028114](C:\Users\27892\Desktop\shop\README.assets\image-20240529111028114.png)
+![image-20240529111028114](.\README.assets\image-20240529111028114.png)
 
 页面实现代码见components下login文件夹的login.vue文件，主要是用fetch调用后端API接口：这里不再赘述。
 
@@ -17,29 +17,29 @@
 
 通过alert警告框实现
 
-![image-20240529111050259](C:\Users\27892\Desktop\shop\README.assets\image-20240529111050259.png)
+![image-20240529111050259](.\README.assets\image-20240529111050259.png)
 
 #### 输入密码警告框:
 
-![image-20240529111106123](C:\Users\27892\Desktop\shop\README.assets\image-20240529111106123.png)
+![image-20240529111106123](.\README.assets\image-20240529111106123.png)
 
 #### 正确登录:
 
 正确登录会跳出加载动画，动画结束后进入index主页
 
-![image-20240529111124087](C:\Users\27892\Desktop\shop\README.assets\image-20240529111124087.png)
+![image-20240529111124087](.\README.assets\image-20240529111124087.png)
 
 #### 允许跳过登录:
 
 > 但是跳过登录很多功能都无法使用
 
-![image-20240529111203098](C:\Users\27892\Desktop\shop\README.assets\image-20240529111203098.png)
+![image-20240529111203098](.\README.assets\image-20240529111203098.png)
 
 ### 忘记密码界面:
 
 > 暂不支持改密功能：需要改密请练习管理员
 
-![image-20240529111429728](C:\Users\27892\Desktop\shop\README.assets\image-20240529111429728.png)
+![image-20240529111429728](.\README.assets\image-20240529111429728.png)
 
 ### 注册功能:
 
@@ -51,19 +51,19 @@
 
 > 用户名是必填项：密码不一致也有提示信息
 
-![image-20240529111613168](C:\Users\27892\Desktop\shop\README.assets\image-20240529111613168.png)
+![image-20240529111613168](.\README.assets\image-20240529111613168.png)
 
 两个弹窗警告：
 
-![image-20240529111642904](C:\Users\27892\Desktop\shop\README.assets\image-20240529111642904.png)
+![image-20240529111642904](.\README.assets\image-20240529111642904.png)
 
-![image-20240529111651622](C:\Users\27892\Desktop\shop\README.assets\image-20240529111651622.png)
+![image-20240529111651622](.\README.assets\image-20240529111651622.png)
 
 > 这里注册一个mobaisilent用于演示
 
 #### 注册成功
 
-![image-20240529111757320](C:\Users\27892\Desktop\shop\README.assets\image-20240529111757320.png)
+![image-20240529111757320](.\README.assets\image-20240529111757320.png)
 
 ## 主页:
 
@@ -71,17 +71,17 @@
 
 #### 主页预览(上部）：
 
-![image-20240529111904885](C:\Users\27892\Desktop\shop\README.assets\image-20240529111904885.png)
+![image-20240529111904885](.\README.assets\image-20240529111904885.png)
 
 #### 主页预览（下部）：
 
-![image-20240529111930278](C:\Users\27892\Desktop\shop\README.assets\image-20240529111930278.png)
+![image-20240529111930278](.\README.assets\image-20240529111930278.png)
 
 ### 功能区块
 
 #### 双开门动画演示
 
-![image-20240529112120164](C:\Users\27892\Desktop\shop\README.assets\image-20240529112120164.png)
+![image-20240529112120164](.\README.assets\image-20240529112120164.png)
 
 
 
@@ -89,29 +89,29 @@
 
 ![addbuton](https://img.nxtf.net/3aTU6o.png)
 
-#### 悬浮按钮与图片自动缩放
+### 悬浮按钮与图片自动缩放
 
-![image-20240529112213516](C:\Users\27892\Desktop\shop\README.assets\image-20240529112213516.png)
+![image-20240529112213516](.\README.assets\image-20240529112213516.png)
 
-#### 动态文字与导航与侵权免责声明
+### 动态文字与导航与侵权免责声明
 
-![image-20240529112237389](C:\Users\27892\Desktop\shop\README.assets\image-20240529112237389.png)
+![image-20240529112237389](.\README.assets\image-20240529112237389.png)
 
-#### 一键置顶与暗黑模式按键:
+### 一键置顶与暗黑模式按键:
 
-![image-20240529112315138](C:\Users\27892\Desktop\shop\README.assets\image-20240529112315138.png)
+![image-20240529112315138](.\README.assets\image-20240529112315138.png)
 
-##### 暗黑模式:
+### 暗黑模式:
 
-![image-20240529112342191](C:\Users\27892\Desktop\shop\README.assets\image-20240529112342191.png)
+![image-20240529112342191](.\README.assets\image-20240529112342191.png)
 
-##### 一键置顶
+### 一键置顶
 
 > 详见项目网页：暂不演示
 
 ### 搜索功能:
 
-![search](https://img.nxtf.net/AN0aze.png)
+![image-20240529112639428](.\README.assets\image-20240529112639428.png)
 
 ### 添加至购物车:
 
