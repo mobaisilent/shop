@@ -70,7 +70,7 @@ function ifbutton() {
         <p><strong>是否打折:</strong> {{ showinfo.onSale ? '是' : '否' }}</p>
         <p><strong>库存数量:</strong> {{ showinfo.num }}</p>
       </div>
-      <button class="close" @click="closeWindow">关闭</button>
+      <button class="close" @click="closeWindow">X</button>
     </div>
   </div>
 </template>

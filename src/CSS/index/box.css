@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.box {
+  /* margin: 50px auto; */
+  height: 450px;
+  width: 1000px;
+  background-size: cover;
+  background-image: url(../../../public/box/img1.png);
+  overflow: hidden;
+}
+
+.box::before,
+.box::after {
+  content: "";
+  float: left;
+  width: 50%;
+  height: 450px;  
+  background-size: cover;
+  background-image: url(../../../public/box/img2.png);
+  /* background-repeat: no-repeat; */
+  transition: all 1s;
+}
+
+.box::after {
+  background-position: right 0;
+}
+
+.box:hover::before {
+  transform: translateX(-100%);
+}
+
+.box:hover::after {
+  transform: translateX(100%);
+}

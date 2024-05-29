@@ -18,10 +18,7 @@ if (paymethod === 'alipay') {
 }
 // console.log("here method=" + method.value);
 function tocart() {
-  window.location.href = "../../html/order/order.html"
-}
-
-function payed() {
+  // 先付个0元的订单结算即可
   const tt = ref();
   console.log("here solve the payed fetch");
   window.localStorage.removeItem("tocartinfo");
@@ -41,7 +38,6 @@ function payed() {
     console.log(data.data.item[0].id);
     console.log(data.data.total);
     console.log("here begin to sovle for");
-    let promises = [];
     for (var i = 0; i < data.data.total; i++) {
       // 里面需要调用fetch // 下面这句显示总共有多少订单待结算
       console.log(data.data.item[i].id);
@@ -80,6 +76,70 @@ function payed() {
       })
     }
   })
+  window.location.href = "../../html/order/order.html"
+}
+
+function payed() {
+  const tt = ref();
+  console.log("here solve the payed fetch");
+  window.localStorage.removeItem("tocartinfo");
+  fetch("http://localhost:4000/api/v1/order", {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+    },
+  }).then(response => {
+    if (!response.ok) {
+      console.log(response);
+    }
+    return response.json();
+  }).then(data => {
+    console.log(data);
+    console.log(data.data.item[0].id);
+    console.log(data.data.total);
+    console.log("here begin to sovle for");
+    let promises = [];
+    let maxlen = data.data.total - 1;
+    // for (var i = 0; i < data.data.total; i++) {
+    // 里面需要调用fetch // 下面这句显示总共有多少订单待结算
+    // console.log(data.data.item[i].id);
+    
+    fetch("http://localhost:4000/api/v1/pay", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+      body: JSON.stringify({
+        OrderID: data.data.item[maxlen].id,
+        OrderNum: 1,
+        UserKey: "1234567887654321",
+        BossKey: "1234567887654321",
+      }),
+    }).then(response => {
+      console.log("here");
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    }).then(data => {
+      tt.value = data.code;
+      console.log(data);
+      console.log(tt.value);
+      if (tt.value == 500) {
+        alert("余额不足");
+      }
+      else if (tt.value == 200) {
+        alert("支付成功,已结算余额，正在前往主页面");
+        window.location.href = "../../html/index/index.html";
+      }
+      else {
+        alert("支付失败，请检查服务器状态");
+      }
+    })
+    // }
+  })
 }
 
 </script>
@@ -88,7 +148,7 @@ function payed() {
   <div class="main">
     <button class="back" @click="tocart">
       < 返回</button>
-        <button class="cancle" @click="cancle">
+        <button class="cancle" @click="tocart">
           取消支付</button>
         <img :src="method" alt="">
         <!-- 呃，在标签里面使用就不用两个大括号了 -->
@@ -188,7 +248,7 @@ body {
   margin-left: 3px;
   margin-bottom: 2px;
   margin-left: 81%;
-  top:2%;
+  top: 2%;
 }
 
 .cancle:hover {
@@ -199,3 +259,5 @@ body {
   transform: scale(0.95);
 }
 </style>
+
+<!-- 返回按钮理应上和取消支付的效果是一致的 -->

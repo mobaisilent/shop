@@ -3,12 +3,12 @@
 </script>
 
 <template>
-  <div class="seckill" id="seckill">
+  <!-- <div class="seckill" id="seckill">
     <div class="left">left</div>
     <!-- 左边放秒杀商品图片 -->
-    <div class="right">right</div>
-    <!-- 右边放入秒杀商品详情 -->
-  </div>
+  <!-- <div class="right">right</div> -->
+  <!-- 右边放入秒杀商品详情 -->
+  <!-- </div> -->
 </template>
 
 <style scoped>
@@ -16,7 +16,7 @@
   position: absolute;
   left: 50%;
   transform: translate(-50%);
-  z-index: 1000;
+  z-index: 100;
   width: 500px;
   height: 300px;
   text-align: center;
