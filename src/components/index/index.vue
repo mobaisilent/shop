@@ -174,7 +174,7 @@ function addtocart() {
       found = true;
       break;
     }
-  }
+  } 
   if (!found) {
     cartcnt.value++;
     cartinfo.value.push({ key: curid.value, cnt: 1 });
@@ -184,6 +184,11 @@ function addtocart() {
 }
 provide("cartinfo", cartinfo);
 // 向购物车传入购物信息
+
+
+// 下面是关于秒杀部分的内容
+const ifseckill = ref(false);
+
 </script>
 <!-- 直接复制模块竟然出错了 -->
 
@@ -238,7 +243,7 @@ provide("cartinfo", cartinfo);
     <!--header-->
     <!--index-->
     <div class="w">
-      <seckill />
+      <seckill v-show="ifseckill" />
       <div class="banner-con">
         <!--<div class=" loading"></div>-->
         <ul>
