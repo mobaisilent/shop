@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref, onUnmounted } from 'vue';
 // import addbutton from "../../components/shop/addbutton.vue";
 //导入动态展示“添加到购物车”的按键  我还是放弃了该组件：：什么时候我的每个组件下面都一个按钮了？？？
 import search from './search.vue';
@@ -174,7 +174,7 @@ function addtocart() {
       found = true;
       break;
     }
-  } 
+  }
   if (!found) {
     cartcnt.value++;
     cartinfo.value.push({ key: curid.value, cnt: 1 });
@@ -186,8 +186,28 @@ provide("cartinfo", cartinfo);
 // 向购物车传入购物信息
 
 
-// 下面是关于秒杀部分的内容
-const ifseckill = ref(false);
+
+// 下面是关于秒杀部分的内容:写一个定时函数
+const seckillnum = ref(Math.floor(Math.random() * 10));  // 秒杀商品的id号  // 使用随机初始化数据
+const ifseckill = ref(true)  // 控制是否出现秒杀商品
+let timerId;
+
+onMounted(() => {
+  timerId = setInterval(function toshowseckill() {
+    ifseckill.value = !ifseckill.value;
+    // 调试的时候常驻显示  //注意第198行！！！等下写完记得改回去
+    // 每20s显示1次，然后关闭20s，每次显示的时候使用随机函数获取从0到9的自然数（也就是下标）
+    seckillnum.value = Math.floor(Math.random() * 10);
+    console.log(ifseckill.value);
+    console.log(seckillnum.value);
+
+  }, 5000);
+});
+provide("seckillnum", seckillnum);
+
+onUnmounted(() => {
+  clearInterval(timerId);
+})
 
 </script>
 <!-- 直接复制模块竟然出错了 -->
@@ -244,6 +264,8 @@ const ifseckill = ref(false);
     <!--index-->
     <div class="w">
       <seckill v-show="ifseckill" />
+      <!-- 实现了动态显示，处理该组件的信息就行了，主要是需要和购物车那边同步一下 -->
+      <!-- 反正购物车的结算和订单的总结算都是用第一件商品结算的所以应该还算好写· -->
       <div class="banner-con">
         <!--<div class=" loading"></div>-->
         <ul>
