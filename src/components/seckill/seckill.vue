@@ -105,11 +105,6 @@ img {
   /* 限定尺寸使得图片实现自适应缩放 */
 }
 
-.right {
-  /* background-color: skyblue; */
-  /* 分区块调试用 */
-}
-
 .t {
   position: absolute;
   left: 20%;
