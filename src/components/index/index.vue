@@ -194,14 +194,14 @@ let timerId;
 
 onMounted(() => {
   timerId = setInterval(function toshowseckill() {
-    // ifseckill.value = !ifseckill.value;
+    ifseckill.value = !ifseckill.value;
     // 调试的时候常驻显示  //注意第198行！！！等下写完记得改回去
     // 每20s显示1次，然后关闭20s，每次显示的时候使用随机函数获取从0到9的自然数（也就是下标）
     seckillnum.value = Math.floor(Math.random() * 10);
     console.log(ifseckill.value);
     console.log(seckillnum.value);
 
-  }, 20000);
+  }, 5000);
 });
 provide("seckillnum", seckillnum);
 

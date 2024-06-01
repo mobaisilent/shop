@@ -62,7 +62,7 @@ watch(seckillnum, fetchData);
       <p style="text-align: left;"><strong>bossName:</strong> {{ showseckillinfo.bossName }}</p>
       <p style="text-align: left;"><strong>标题:</strong> {{ showseckillinfo.title }}</p>
       <p style="text-align: left;"><strong>描述:</strong> {{ showseckillinfo.info }}</p>
-      <p style="text-align: left;"><strong>价格:</strong> {{ showseckillinfo.price }}</p>
+      <p style="text-align: left;"><strong>价格:</strong> {{ showseckillinfo.price / 2 }}</p>
     </div>
   </div>
 </template>
