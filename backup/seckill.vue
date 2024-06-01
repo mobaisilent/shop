@@ -12,49 +12,79 @@ const allseckillproduct = ref([]);
 const showseckillinfo = ref('');
 
 // 打开界面的时候调用10次函数实现添加redis商品
-let count = ref(8);
 onMounted(function () {
   console.log("here in onMouted");
 
-  // 这中间删除了一个前端插件一件商品的逻辑：具体得看backup文件夹下的备份代码块
+  let imageUrl = '../../../public/image/floor/10.jpg';  // 使用相对路径
+  let image = new Image();
+  image.src = imageUrl;
+  // 使用文件格式
 
-  // 下面是执行默认查询所有商品
-  fetch("http://localhost:4000/api/v1/secKill", {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token,
-    },
-  })
-    .then(response => {
-      if (!response.ok) {
-        alert("获取秒杀商品失败，请检查你的登录状态/服务器/网络状态")
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      allseckillproduct.value = data.data.item[data.data.total - 1];
-      // 使用最后一项的id的内容值
-      // 这里data可以处理开始和结束的id信息
-      // 就是默认使用查询到的最后一个id的值
-      showseckillinfo.value = allseckillproduct.value;
-      console.log(showseckillinfo.value);
-      seckillnum.value = showseckillinfo.value.id;
-      console.log(seckillnum.value);
-      // 一直使用最后一项商品
+  fetch(imageUrl)  // 使用相对路径
+    .then(response => response.blob())
+    .then(blob => {
+      let file = new File([blob], '10.jpg', { type: 'image/jpg' });
+
+      let formData = new FormData();
+      formData.append('file', file);
+      formData.append('Name', '秒杀3C配件');
+      formData.append('CategoryID', '10');
+      formData.append('Title', '秒杀3C配件');
+      formData.append('Info', '秒杀3C配件');
+      formData.append('Price', '500');
+      formData.append('SecKillPrice', '250');
+      formData.append('Num', '200000');
+
+      // 下面是执行默认创建1个
+      fetch("http://localhost:4000/api/v1/secKill/add", {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        },
+        body: formData
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log(data);
+          console.log("创建秒杀商品成功");
+        })
+        .then(() => {
+          // 下面是执行默认查询所有商品
+          fetch("http://localhost:4000/api/v1/secKill", {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token,
+            },
+          })
+            .then(response => {
+              if (!response.ok) {
+                alert("获取秒杀商品失败，请检查你的登录状态/服务器/网络状态")
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              console.log(data);
+              allseckillproduct.value = data.data.item[data.data.total - 1];
+              // 使用最后一项的id的内容值
+              // 这里data可以处理开始和结束的id信息
+              // 就是默认使用查询到的最后一个id的值
+              showseckillinfo.value = allseckillproduct.value;
+              console.log(showseckillinfo.value);
+              seckillnum.value = showseckillinfo.value.id;
+              console.log(seckillnum.value);
+              // 一直使用最后一项商品
+            });
+        })
     });
-
-  let countdown = setInterval(() => {
-    if (count.value > 0) {
-      count.value--;
-    } else {
-      clearInterval(countdown);
-    }
-  }, 1000);
-});
-// 真创建成功和使用成功了
+  // 真创建成功和使用成功了
+})
 
 
 // 必须实现先后顺序：所以下列弃置
@@ -151,15 +181,9 @@ function toseckill() {
 
 <template>
   <div class="seckill" id="seckill" v-show="judge2">
-    <!-- 倒计时区域 -->
-    <div class="countdown" v-if="count > 0">
-      <strong>秒杀倒计时:</strong>
-      <p style="color: red; display: inline;">{{ count }} </p>秒
-    </div>
-
     <div class="left">
       <!-- 左边放图片 -->
-      <strong class="t">图片</strong>
+      <strong class="t">图片:</strong>
       <p style="text-align: left;"><img :src="showseckillinfo.imgPath" alt="secimg" class="product-image" /></p>
     </div>
     <div class="right">
@@ -240,13 +264,5 @@ img {
 
 .ttbutton:active {
   transform: scale(0.95);
-}
-
-.countdown {
-  position: absolute;
-  left: 32%;
-  top: 3%;
-  border: 2px solid red;
-  padding: 1px 4px 1px 4px;
 }
 </style>
