@@ -60,6 +60,9 @@ onMounted(async () => {
       }
     }
   }
+
+  //后面再添加一段段对秒杀商品的for循环
+
   // 使用js循环前端计算商品数量对应的价格
 
   if (cartinfo.length == 0) {
@@ -180,7 +183,7 @@ function clearcart() {
         <button class="checkout-button" @click="clearcart"
           style="background-color: greenyellow;margin-top: 30px;">清空购物车</button>
         <!-- alt+shift上下键实现快速添加一行（同） -->
-        <p>(注：此页面增减  商品数量只影响结算，若要移除商品请清空购物车)</p>
+        <p>(注：此页面增减 商品数量只影响结算，若要移除商品请清空购物车)</p>
   </div>
 </template>
 
