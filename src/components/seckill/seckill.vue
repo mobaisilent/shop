@@ -19,40 +19,42 @@ onMounted(function () {
   // 这中间删除了一个前端插件一件商品的逻辑：具体得看backup文件夹下的备份代码块
 
   // 下面是执行默认查询所有商品
-  fetch("http://localhost:4000/api/v1/secKill", {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token,
-    },
-  })
-    .then(response => {
-      if (!response.ok) {
-        alert("获取秒杀商品失败，请检查你的登录状态/服务器/网络状态")
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
+  if (token) {
+    fetch("http://localhost:4000/api/v1/secKill", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
     })
-    .then(data => {
-      console.log(data);
-      allseckillproduct.value = data.data.item[data.data.total - 1];
-      // 使用最后一项的id的内容值
-      // 这里data可以处理开始和结束的id信息
-      // 就是默认使用查询到的最后一个id的值
-      showseckillinfo.value = allseckillproduct.value;
-      console.log(showseckillinfo.value);
-      seckillnum.value = showseckillinfo.value.id;
-      console.log(seckillnum.value);
-      // 一直使用最后一项商品
-    });
+      .then(response => {
+        if (!response.ok) {
+          alert("获取秒杀商品失败，请检查你的登录状态/服务器/网络状态")
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        allseckillproduct.value = data.data.item[data.data.total - 1];
+        // 使用最后一项的id的内容值
+        // 这里data可以处理开始和结束的id信息
+        // 就是默认使用查询到的最后一个id的值
+        showseckillinfo.value = allseckillproduct.value;
+        console.log(showseckillinfo.value);
+        seckillnum.value = showseckillinfo.value.id;
+        console.log(seckillnum.value);
+        // 一直使用最后一项商品
+      });
 
-  let countdown = setInterval(() => {
-    if (count.value > 0) {
-      count.value--;
-    } else {
-      clearInterval(countdown);
-    }
-  }, 1000);
+    let countdown = setInterval(() => {
+      if (count.value > 0) {
+        count.value--;
+      } else {
+        clearInterval(countdown);
+      }
+    }, 1000);
+  }
 });
 // 真创建成功和使用成功了
 

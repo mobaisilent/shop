@@ -5,7 +5,7 @@
 
 登录页面形式如下：
 
-![image-20240529111028114](.\README.assets\image-20240529111028114.png)
+![image-20240529111028114](./${images}/image-20240601180311114.png)
 
 页面实现代码见components下login文件夹的login.vue文件，主要是用fetch调用后端API接口：这里不再赘述。
 
