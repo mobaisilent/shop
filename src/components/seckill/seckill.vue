@@ -16,8 +16,6 @@ function fetchData() {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token,
-      // 这里注意Bearer后面有一个空格：否则错误
-      // ok 接收到响应数据：只是尚未处理罢了
     },
   })
     .then(response => {
@@ -62,8 +60,9 @@ watch(seckillnum, fetchData);
       <p style="text-align: left;"><strong>bossName:</strong> {{ showseckillinfo.bossName }}</p>
       <p style="text-align: left;"><strong>标题:</strong> {{ showseckillinfo.title }}</p>
       <p style="text-align: left;"><strong>描述:</strong> {{ showseckillinfo.info }}</p>
-      <p style="text-align: left;"><strong>价格:</strong> {{ showseckillinfo.price / 2 }}</p>
+      <p style="text-align: left;"><strong>价格:</strong> 0.01 </p>
     </div>
+    <button class="ttbutton">秒杀抢购</button>
   </div>
 </template>
 
@@ -74,7 +73,7 @@ watch(seckillnum, fetchData);
   transform: translate(-50%);
   z-index: 100;
   width: 500px;
-  height: 288px;
+  height: 265px;
   text-align: center;
   background-color: white;
   margin-right: 100px;
@@ -115,5 +114,24 @@ img {
   position: absolute;
   left: 20%;
   top: 3%;
+}
+
+.ttbutton {
+  right: 2%;
+  top: 15%;
+  position: absolute;
+  width: 28px;
+  height: 200px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.ttbutto:hover {
+  background-color: pink;
+  transform: scale(1.05);
+}
+
+.ttbutton:hover {
+  transform: scale(0.95);
 }
 </style>
