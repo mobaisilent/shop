@@ -188,22 +188,23 @@ provide("cartinfo", cartinfo);
 
 
 // 下面是关于秒杀部分的内容:写一个定时函数
-const seckillnum = ref(Math.floor(Math.random() * 10));  // 秒杀商品的id号  // 使用随机初始化数据
-const ifseckill = ref(true)  // 控制是否出现秒杀商品
+const noseckill = window.localStorage.getItem("noseckill");
+const ifseckill = ref(noseckill ? false : !statu.value);
+// 控制是否出现秒杀商品
 let timerId;
 
 onMounted(() => {
   timerId = setInterval(function toshowseckill() {
-    ifseckill.value = !ifseckill.value;
-    // 调试的时候常驻显示  //注意第198行！！！等下写完记得改回去
-    // 每20s显示1次，然后关闭20s，每次显示的时候使用随机函数获取从0到9的自然数（也就是下标）
-    seckillnum.value = Math.floor(Math.random() * 10);
-    console.log(ifseckill.value);
-    console.log(seckillnum.value);
-
-  }, 5000);
+    if (statu.value == false) {
+      ifseckill.value = false;
+      // 调试的时候常驻显示  //注意第198行！！！等下写完记得改回去
+      // 每20s显示1次，然后关闭20s，每次显示的时候使用随机函数获取从0到9的自然数（也就是下标）
+      console.log(ifseckill.value);
+      window.localStorage.setItem("noseckill", false);
+    }
+  }, 8000);
 });
-provide("seckillnum", seckillnum);
+// 还是使用全局变量控制吧：一旦为false就不再修改为true不再显示 
 
 onUnmounted(() => {
   clearInterval(timerId);

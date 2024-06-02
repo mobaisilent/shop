@@ -37,11 +37,14 @@ function handleSubmit(event) {
   if (name.value.length == 0) {
     alert("用户名不为空！");
   }
-  if (nickname.value.length == 0) {
+  else if (nickname.value.length == 0) {
     nickname.value = "momo";
   }
-  if (passwords.p1 != passwords.p2) {
+  else if (passwords.p1 != passwords.p2) {
     alert("输入的密码不一致！")
+  }
+  else if (passwords.p1.length == 0) {
+    alert("请输入密码");
   }
   else if (name.value.length != 0) {
     fetch('http://localhost:4000/api/v1/user/register', {

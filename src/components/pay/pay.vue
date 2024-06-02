@@ -21,7 +21,8 @@ function tocart() {
   // 先付个0元的订单结算即可
   const tt = ref();
   console.log("here solve the payed fetch");
-  window.localStorage.removeItem("tocartinfo");
+  // window.localStorage.removeItem("tocartinfo");
+  // 这里是错误的
   fetch("http://localhost:4000/api/v1/order", {
     method: 'GET',
     headers: {
@@ -65,6 +66,7 @@ function tocart() {
         console.log(tt.value);
         if (tt.value == 500) {
           alert("余额不足");
+          window.location.href = "../../html/index/index.html";
         }
         else if (tt.value == 200) {
           alert("支付成功,已结算余额，正在前往主页面");
@@ -104,7 +106,7 @@ function payed() {
     // for (var i = 0; i < data.data.total; i++) {
     // 里面需要调用fetch // 下面这句显示总共有多少订单待结算
     // console.log(data.data.item[i].id);
-    
+
     fetch("http://localhost:4000/api/v1/pay", {
       method: "POST",
       headers: {
