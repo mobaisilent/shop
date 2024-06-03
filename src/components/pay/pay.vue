@@ -84,7 +84,6 @@ function tocart() {
 function payed() {
   const tt = ref();
   console.log("here solve the payed fetch");
-  window.localStorage.removeItem("tocartinfo");
   fetch("http://localhost:4000/api/v1/order", {
     method: 'GET',
     headers: {
@@ -134,6 +133,7 @@ function payed() {
       }
       else if (tt.value == 200) {
         alert("支付成功,已结算余额，正在前往主页面");
+        window.localStorage.removeItem("tocartinfo");
         window.location.href = "../../html/index/index.html";
       }
       else {
