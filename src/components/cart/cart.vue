@@ -46,6 +46,7 @@ onMounted(async () => {
     });
 
   //增加商品信息
+  console.log(cartinfo);
   for (var i = 0; i < cartinfo.length; i++) {
     for (var j = 0; j < allinfo.value.length; j++) {
       if (cartinfo[i].key == j) {
@@ -55,7 +56,7 @@ onMounted(async () => {
           name: allinfo.value[j].name,
           price: allinfo.value[j].price,
           quantity: cartinfo[i].cnt,
-          image: allinfo.value[i].imgPath
+          image: allinfo.value[j].imgPath
         })
       }
     }
